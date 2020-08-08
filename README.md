@@ -10,6 +10,27 @@
 
 Restmanage is an app for manage restaurants.
 
+## User Stories
+### Client
+- **home** - As a client I want to see the homepage of the restaurant
+- **login** - As a client I want to be access to login form
+- **signup** - As a client I want to be access to signup form and create my account
+- **profile** - As a client I want to see and edit my profile data
+- **menu** - As a client I want to see the menu.
+- **:productId** - As a client I want to see the product details
+- **dailymenu** - As a client I want to see the daily menu
+- **cart** - As a client I want to see the cart with my current order
+
+### Admin
+- **admin home** - As a Admin I want to see the home page with statistics and information
+- **admin login** - As a Admin I want to see the login form
+- **admin menu** - As a Admin I want to add products and manage them
+- **admin :productId** - As a Admin I want to see product details and manage them
+- **admin dailymenu** - As a Admin I want to manage the daily menu
+- **admin orders** - As a Admin I want to see the order view
+- **admin config** - As a Admin I want to see the config of my business and manage them
+- **admin customize** - As a Admin I want to manage the client view (theme, font, images...)
+
 ## Routes for Clients
 
 | URL                                           | Description                                                                   |
