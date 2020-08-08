@@ -13,7 +13,7 @@ Restmanage is an app for manage restaurants.
 ## Routes for Clients
 
 | URL                                           | Description                                                                   |
-| ---------------- ---------------------------- | ----------------------------------------------------------------------------- |
+| -------------------------------------------- | ----------------------------------------------------------------------------- |
 | '/'                                           | Render Restaurant Homepage                                                    |
 | '/login'                                      | Render Login form                                                             |
 | '/signup'                                     | Render signup form                                                            |
@@ -28,7 +28,7 @@ Restmanage is an app for manage restaurants.
 ## Routes for Owner/Admin
 
 | URL                                           | Description                                                                   |
-| ---------------- ---------------------------- | ----------------------------------------------------------------------------- |
+| -------------------------------------------- | ----------------------------------------------------------------------------- |
 | '/admin'                                      | Render Admin Homepage (Protected)                                             |
 | '/admin/login'                                | Render Login form                                                             |
 | '/admin/menu'                                 | Render the menu of restaurant                                                 |
