@@ -21,10 +21,9 @@ function AddProduct() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(form)
         axios.post('http://localhost:3000/admin/addproduct', {...form})
-            .then(res => {
-                alert('Producto guardado con exito', res)
+            .then(()=> {
+                alert('Producto guardado con exito')
             })
             .catch(err => console.error(err))
     }
