@@ -4,6 +4,7 @@ function Home() {
     return (
         <div>
             <h1>Home administrador</h1>
+            
         </div>
     )
 }

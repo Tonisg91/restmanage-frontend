@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { render } from '@testing-library/react'
+import AddProduct from '../admin-side/AddProduct'
 
 function Menu(props) {
     const isAdminRoute = props.location.pathname === '/admin/menu'
@@ -30,10 +31,16 @@ function Menu(props) {
         return (
             <div>
                 <h1>menu vista administrador</h1>
-                {renderProduct}
+                <div>
+                    {renderProduct}
+                </div>
+                <div>
+                    <AddProduct />
+                </div>
             </div>
         )    
     }
+    
     return (
         <div>
             <h1>menu vista cliente</h1>
