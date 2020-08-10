@@ -31,7 +31,6 @@ function AddProduct() {
     const { name, description, category, price } = form 
 
     return (
-        
         <div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Nombre</label>

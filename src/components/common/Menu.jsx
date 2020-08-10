@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { render } from '@testing-library/react'
 import AddProduct from '../admin-side/AddProduct'
 
 function Menu(props) {
@@ -18,7 +17,7 @@ function Menu(props) {
     useEffect(getProducts, [])
 
     const renderProduct = products.map(product => (
-        <div>
+        <div key={product._id}>
             <img src={product.image} alt={product.name}/>
             <div>
                 <h4>{product.name}</h4>
