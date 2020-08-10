@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import AddProduct from '../admin-side/AddProduct'
+import {isAdminRoute} from '../../tools/pathFunctions'
 
 function Menu(props) {
-    const isAdminRoute = props.location.pathname === '/admin/menu'
     
+    console.log(isAdminRoute(props.match.path))
     const [products, setProducts] = useState([])
 
     const getProducts = () => {
@@ -26,7 +27,7 @@ function Menu(props) {
         </div>
     ))
 
-    if (isAdminRoute) {
+    if (isAdminRoute(props.match.path)) {
         return (
             <div>
                 <h1>menu vista administrador</h1>

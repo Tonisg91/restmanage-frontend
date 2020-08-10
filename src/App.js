@@ -4,6 +4,7 @@ import AdminHome from './components/admin-side/AdminHome'
 import ClientHome from './components/client-side/ClientHome'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login';
+import Signup from './components/common/Signup';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Route exact path="/admin" component={AdminHome}/>
       <Route path="/menu" component={Menu}/>
       <Route path="/admin/menu" component={Menu}/>
-      <Route path={"/login"} component={Login}/> 
+      <Route path="/signup" component={Signup}/>
+      <Route path="/admin/signup" component={Signup}/>
+      <Route path="/login" component={Login}/> 
     </Switch>
   );
 }

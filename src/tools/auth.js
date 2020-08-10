@@ -30,19 +30,23 @@ class Auth {
         this.isAdmin = false
     }
 
-    signup(data, cb) {
+    signup(data, cb, isAdminRoute) {
         //hacer peticion a la api y crear una cuenta. Cambiar a loggedin cuando acabe.
-        axios.post('http://localhost:3000/signup', data)
-            .then(res => {
-                const adminCreated = res.status === 200 && res.data.adminPermissions
+        const body = {
+            ...data,
+            isAdmin: isAdminRoute
+        }
+
+            axios.post("http://localhost:3000/signup", body).then(res => {
+                const adminCreated = res.status === 200 && res.data.adminPermissions;
                 if (adminCreated) {
-                    this.logAdmin()
-                    cb(res.data)
-                    return
+                    this.logAdmin();
+                    cb(res.data);
+                    return;
                 }
-                cb(res.data)
-                this.isLogged = true
-            })
+                cb(res.data);
+                this.isLogged = true;
+            });
     }
 }
 
