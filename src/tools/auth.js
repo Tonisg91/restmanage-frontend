@@ -31,13 +31,12 @@ class Auth {
     }
 
     signup(data, cb, isAdminRoute) {
-        //hacer peticion a la api y crear una cuenta. Cambiar a loggedin cuando acabe.
         const body = {
             ...data,
             isAdmin: isAdminRoute
         }
-
             axios.post("http://localhost:3000/signup", body).then(res => {
+                //adminCreated evalua si la respuesta es OK y si el usuario devuelto tiene permisos
                 const adminCreated = res.status === 200 && res.data.adminPermissions;
                 if (adminCreated) {
                     this.logAdmin();

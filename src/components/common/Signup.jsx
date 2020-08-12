@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { isAdminRoute } from '../../tools/pathFunctions'
 import auth from '../../tools/auth'
 
@@ -24,7 +24,10 @@ function Signup(props) {
     const handleSubmit = (e, data = form) => {
         e.preventDefault()
         auth.signup(data, setUser, isAdminRoute(path))
+        setForm(initialState)
     }
+
+    const {email, password, rootPassword} = form
 
 
     if (isAdminRoute(path)) {
@@ -32,11 +35,11 @@ function Signup(props) {
             <div>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={handleChange}/>
+                    <input type="email" name="email" onChange={handleChange} value={email}/>
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" name="password" onChange={handleChange}/>
+                    <input type="password" name="password" onChange={handleChange} value={password}/>
                     <label htmlFor="rootPassword">Contraseña Root</label>
-                    <input type="password" name="rootPassword" onChange={handleChange}/>
+                    <input type="password" name="rootPassword" onChange={handleChange} value={rootPassword}/>
                     <input type="submit" value="CREAR CUENTA"/>
                 </form>
             </div>
@@ -48,9 +51,9 @@ function Signup(props) {
             <div>
                 <form onSubmit={(e) => handleSubmit(e, {email: form.email, password: form.password})}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={handleChange} />
+                    <input type="email" name="email" onChange={handleChange} value={email}/>
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" name="password" onChange={handleChange} />
+                    <input type="password" name="password" onChange={handleChange} value={password}/>
                     <input type="submit" value="CREAR CUENTA" />
                 </form>
             </div>
