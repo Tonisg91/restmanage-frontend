@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import auth from '../../tools/auth'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 function Login(props) {
-
+    const dispatch = useDispatch()
+    //const userFromRedux = useSelector(state => state.user)
+    const history = useHistory()
+    
     const initialState = {
         email: '',
         password: ''
     }
 
     const [loginForm, setLoginForm] = useState(initialState);
-    const [user, setUser] = useState({})
 
     const handleChange = ({target}) => {
         setLoginForm({
@@ -20,7 +24,14 @@ function Login(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        auth.login(loginForm, setUser)
+        const authCB = data => dispatch({
+            type: 'LOG_USER',
+            payload: data
+        })
+
+        auth.login(loginForm, authCB)
+        
+        history.push('/')
     }
 
 

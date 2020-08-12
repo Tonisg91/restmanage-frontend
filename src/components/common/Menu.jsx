@@ -2,37 +2,44 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import AddProduct from '../admin-side/AddProduct'
 import {isAdminRoute} from '../../tools/pathFunctions'
+import { useSelector, useDispatch } from 'react-redux'
 
 function Menu(props) {
     
-    console.log(isAdminRoute(props.match.path))
-    const [products, setProducts] = useState([])
+    const {products} = useSelector(state => state.products)
+    const dispatch = useDispatch()
 
-    const getProducts = () => {
+
+    const getProducts = (hasProducts = products) => {
         axios.get('http://localhost:3000/menu')
             .then(res => {
-                setProducts(res.data)
+                dispatch({
+                    type: 'SET_PRODUCTS',
+                    payload: res.data
+                })
             })
     }
 
     useEffect(getProducts, [])
 
-    const renderProduct = products.map(product => (
+    const renderProducts = products.length ? 
+    products.map(product => (
         <div key={product._id}>
-            <img src={product.image} alt={product.name}/>
+            <img src={product.image} alt={product.name} />
             <div>
                 <h4>{product.name}</h4>
                 <p>{product.description}</p>
             </div>
         </div>
-    ))
+    )) : 
+    null
 
     if (isAdminRoute(props.match.path)) {
         return (
             <div>
                 <h1>menu vista administrador</h1>
                 <div>
-                    {renderProduct}
+                    {renderProducts}
                 </div>
                 <div>
                     <AddProduct />
@@ -44,7 +51,7 @@ function Menu(props) {
     return (
         <div>
             <h1>menu vista cliente</h1>
-            {renderProduct}
+            {renderProducts}
         </div>
     )
     

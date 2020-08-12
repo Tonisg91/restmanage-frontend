@@ -6,11 +6,46 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 
+
+  const initialUser = {
+    user: JSON.parse(localStorage.getItem('currentUser')) || {}
+  }
+
+  const initialProducts = {
+    products: []
+  }
+
+  const userHandler = (state = initialUser, action) => {
+    switch (action.type) {
+      case 'LOG_USER':
+          return {...state, user: action.payload}
+      default:
+          return state
+    }
+  }
+
+  const productsHandler = (state = initialProducts, action) => {
+    switch (action.type) {
+      case 'SET_PRODUCTS':
+        return {...state, products: action.payload}
+      default:
+        return state
+    }
+  }
+
+
+  const allReducers = combineReducers({
+    user: userHandler,
+    products: productsHandler
+  })
+
+  const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
 ReactDOM.render(
   <BrowserRouter>
-    <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );
