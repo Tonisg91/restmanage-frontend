@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom'
 
 function Login(props) {
     const dispatch = useDispatch()
-    //const userFromRedux = useSelector(state => state.user)
     const history = useHistory()
     
     const initialState = {

@@ -8,7 +8,7 @@ import { createStore, combineReducers } from 'redux'
 
 
   const initialUser = {
-    user: JSON.parse(localStorage.getItem('currentUser')) || {}
+    user: JSON.parse(localStorage.getItem('currentUser')) || null
   }
 
   const initialProducts = {

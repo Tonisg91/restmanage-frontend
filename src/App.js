@@ -5,18 +5,24 @@ import ClientHome from './components/client-side/ClientHome'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login';
 import Signup from './components/common/Signup';
+import Wrapper from './components/admin-side/Wrapper'
 
 function App() {
   return (
+    <>
     <Switch>
       <Route exact path="/" component={ClientHome}/>
       <Route exact path="/admin" component={AdminHome}/>
       <Route path="/menu" component={Menu}/>
-      <Route path="/admin/menu" component={Menu}/>
+      <Route 
+        path="/admin/menu" 
+        render={(props) => <Wrapper children={<Menu {...props} />}/>}
+      />
       <Route path="/signup" component={Signup}/>
       <Route path="/admin/signup" component={Signup}/>
       <Route path="/login" component={Login}/> 
     </Switch>
+    </>
   );
 }
 
