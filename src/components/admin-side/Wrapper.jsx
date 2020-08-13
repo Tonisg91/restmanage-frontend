@@ -1,20 +1,20 @@
 import React from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory, Link, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Wrapper(props) {
-    console.log(props)
     let history = useHistory()
     const {user} = useSelector(state => state.user)
+    
 
     if (!user) {
-        history.push('/login')
+        return <Redirect to="/login"/>
     }
 
     if (!user.adminPermissions) {
         return (
             <div>
-                No tienes permisos para acceder a esta ruta.
+                <p>No tienes permisos para acceder a esta ruta.</p>
                 <Link to="/">Volver a la página principal</Link>
             </div>
         )

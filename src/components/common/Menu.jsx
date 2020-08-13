@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import axios from 'axios'
 import AddProduct from '../admin-side/AddProduct'
 import {isAdminRoute} from '../../tools/pathFunctions'

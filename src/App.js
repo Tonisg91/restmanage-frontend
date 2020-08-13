@@ -12,14 +12,23 @@ function App() {
     <>
     <Switch>
       <Route exact path="/" component={ClientHome}/>
-      <Route exact path="/admin" component={AdminHome}/>
+      {/* <Route exact path="/admin" component={AdminHome}/> */}
+        <Route
+          exact
+          path="/admin"
+          render={(props) => <Wrapper children={<AdminHome {...props} />} />}
+        />
       <Route path="/menu" component={Menu}/>
       <Route 
         path="/admin/menu" 
         render={(props) => <Wrapper children={<Menu {...props} />}/>}
       />
       <Route path="/signup" component={Signup}/>
-      <Route path="/admin/signup" component={Signup}/>
+      {/* <Route path="/admin/signup" component={Signup}/> */}
+        <Route
+          path="/admin/signup"
+          render={(props) => <Wrapper children={<Signup {...props} />} />}
+        />
       <Route path="/login" component={Login}/> 
     </Switch>
     </>
