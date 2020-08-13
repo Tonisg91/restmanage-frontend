@@ -1,11 +1,9 @@
 import React from 'react'
-import { useHistory, Link, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Wrapper(props) {
-    let history = useHistory()
     const {user} = useSelector(state => state.user)
-    
 
     if (!user) {
         return <Redirect to="/login"/>

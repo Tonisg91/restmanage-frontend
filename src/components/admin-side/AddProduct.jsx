@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import productService from '../../tools/productService'
 import axios from 'axios'
 
 function AddProduct() {
@@ -8,6 +9,7 @@ function AddProduct() {
         description: '',
         category: '',
         price: 0,
+        image: ''
     }
 
     const [form, setForm] = useState(initialState)
@@ -17,6 +19,19 @@ function AddProduct() {
             ...form,
             [target.name]: target.value
         })
+    }
+
+    const handleImageUrl = async ({target}) => {
+        //TODO: Cambiar alerts por algo mas bonito.
+        alert('Cargando imagen, por favor espere.')
+        const imageToUpload = new FormData()
+        imageToUpload.append('image', target.files[0])
+        const imageUrl = await productService.upload(imageToUpload)
+        setForm({
+            ...form,
+            [target.name]: imageUrl
+        })
+        alert('Imagen Cargada')
     }
 
     const handleSubmit = (e) => {
@@ -41,7 +56,10 @@ function AddProduct() {
                 <input type="text" name="category" value={category} onChange={handleChange}/>
                 <label htmlFor="price">Precio</label>
                 <input type="number" min="0" step="0.01" name="price" value={price} onChange={handleChange}/>
+                <label htmlFor="image">Imagen</label>
+                <input type="file" name="image" onChange={handleImageUrl}/>
                 <input type="submit" value="GUARDAR"/>
+                
             </form>
         </div>
     )

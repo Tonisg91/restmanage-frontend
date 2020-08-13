@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { isAdminRoute } from '../../tools/pathFunctions'
-import auth from '../../tools/auth'
+import userAuth from '../../tools/userAuth'
 
 function Signup(props) {
     const path = props.match.path
@@ -23,7 +23,7 @@ function Signup(props) {
 
     const handleSubmit = (e, data = form) => {
         e.preventDefault()
-        auth.signup(data, setUser, isAdminRoute(path))
+        userAuth.signup(data, setUser, isAdminRoute(path))
         setForm(initialState)
     }
 

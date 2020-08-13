@@ -1,22 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import AdminHome from './components/admin-side/AdminHome'
-import ClientHome from './components/client-side/ClientHome'
 import Menu from './components/common/Menu'
-import Login from './components/common/Login';
-import Signup from './components/common/Signup';
+import Login from './components/common/Login'
+import Signup from './components/common/Signup'
 import Wrapper from './components/admin-side/Wrapper'
+import NavBar from './components/common/NavBar'
+import Home from './components/common/Home'
 
 function App() {
   return (
     <>
+    <NavBar />
     <Switch>
-      <Route exact path="/" component={ClientHome}/>
-      {/* <Route exact path="/admin" component={AdminHome}/> */}
+      <Route exact path="/" component={Home}/>
         <Route
           exact
           path="/admin"
-          render={(props) => <Wrapper children={<AdminHome {...props} />} />}
+          render={(props) => <Wrapper children={<Home {...props} />} />}
         />
       <Route path="/menu" component={Menu}/>
       <Route 
@@ -24,7 +24,6 @@ function App() {
         render={(props) => <Wrapper children={<Menu {...props} />}/>}
       />
       <Route path="/signup" component={Signup}/>
-      {/* <Route path="/admin/signup" component={Signup}/> */}
         <Route
           path="/admin/signup"
           render={(props) => <Wrapper children={<Signup {...props} />} />}

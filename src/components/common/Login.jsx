@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import auth from '../../tools/auth'
-import { useSelector, useDispatch } from 'react-redux'
+import userAuth from '../../tools/userAuth'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+
 
 function Login(props) {
     const dispatch = useDispatch()
     const history = useHistory()
+    const { user } = useSelector(state => state.user)
     
     const initialState = {
         email: '',
@@ -21,16 +23,16 @@ function Login(props) {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const authCB = data => dispatch({
             type: 'LOG_USER',
             payload: data
         })
 
-        auth.login(loginForm, authCB)
-        
-        history.push('/')
+        const hasAdminPermissions = await userAuth.login(loginForm, authCB)
+
+        hasAdminPermissions ? history.push('/admin') : history.push('/')
     }
 
 
