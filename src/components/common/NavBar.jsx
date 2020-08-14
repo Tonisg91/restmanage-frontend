@@ -1,11 +1,20 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { isAdminRoute } from  '../../tools/pathFunctions'
-
+import styled from 'styled-components'
 
 function NavBar() {
     const {pathname} = useLocation()
+    const isClientHome = pathname === '/'
 
+    const ClientStyledNav = styled.nav`
+        position: fixed;
+        bottom: 0;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    `
 
     if (isAdminRoute(pathname)) {
         return (
@@ -19,13 +28,17 @@ function NavBar() {
         )
     }
 
+    if (isClientHome) {
+        return null
+    }
+
     return (
-        <nav>
+        <ClientStyledNav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/menu">Carta</NavLink>
             <NavLink to="/login">Login</NavLink>
             <NavLink to="/signup">Signup</NavLink>
-        </nav>
+        </ClientStyledNav>
     )
 
     
