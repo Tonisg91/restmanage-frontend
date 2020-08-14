@@ -34,9 +34,44 @@ const StyledClientHome = styled.main`
         }
     `
 
+const StyledClientMenu = styled.main`
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        background-color: #fafafa;
+        justify-items: center;
+        margin: 2em 0 3.5em;
+        .food-container {
+            width: 90%;
+            text-align: center;
+            background: #FF416C;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            padding: 1em 0 0 0;
+            box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.10);
+        }
+        .food-image {
+            width: 100%;
+            height: 120px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 25px 0 0 0;
+        }
+        .border {
+            border-radius: 25px 0 25px 0;
+        }
+        .text-container {
+            background-color: #fafbfc;
+            border-radius: 0 0 25px 0;
+            padding: .8em 0;
+        }
+    `
 
 
 
-export {
-    StyledClientHome
+export  {
+    StyledClientHome,
+    StyledClientMenu
 }
