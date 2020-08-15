@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login'
 import Signup from './components/common/Signup'
-import Wrapper from './components/admin-side/Wrapper'
+import FlowControl from './components/admin-side/FlowControl'
 import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
 import './App.css'
@@ -18,17 +18,17 @@ function App() {
           <Route
             exact
             path="/admin"
-            render={(props) => <Wrapper children={<Home {...props} />} />}
+            render={(props) => <FlowControl children={<Home {...props} />} />}
           />
         <Route path="/menu" component={Menu}/>
         <Route 
           path="/admin/menu" 
-          render={(props) => <Wrapper children={<Menu {...props} />}/>}
+          render={(props) => <FlowControl children={<Menu {...props} />}/>}
         />
         <Route path="/signup" component={Signup}/>
           <Route
             path="/admin/signup"
-            render={(props) => <Wrapper children={<Signup {...props} />} />}
+            render={(props) => <FlowControl children={<Signup {...props} />} />}
           />
         <Route path="/login" component={Login}/> 
       </Switch>

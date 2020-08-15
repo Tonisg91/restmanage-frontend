@@ -1,12 +1,14 @@
-import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { NavLink, useLocation, Link } from 'react-router-dom'
 import { isAdminRoute } from  '../../tools/pathFunctions'
 import { useSelector } from 'react-redux'
 import { StyledClientNav } from '../styled-components/client-side'
+import { StyledAdminNav } from  '../styled-components/admin-side'
 
 function NavBar() {
     const {pathname} = useLocation()
     const {user} = useSelector(state => state.user)
+    const [showSidenav, setShowSidenav] = useState(false)
 
     const isClientHome = pathname === '/'
 
@@ -30,14 +32,31 @@ function NavBar() {
 
     const userLogged = user ? profileButtonOnNav : loginButtonOnNav
 
+    const rotateIcon = ({target}) => {
+        setShowSidenav(state => !state)
+        const action = (show) => target.style.transform = `rotate(${90 * show}deg)`
+        !showSidenav ? action(1) : action(-1)
+    }
+
     if (isAdminRoute(pathname)) {
         return (
-            <nav>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/admin">Home Administrador</NavLink>
-                <NavLink to="/admin/menu">Carta</NavLink>
-                <NavLink to="/login">Login</NavLink>
-            </nav>
+            <StyledAdminNav >
+                <div className="default-nav">
+                    <i 
+                        className="fas fa-chevron-circle-down" 
+                        id="button-sidenav"
+                        onClick={rotateIcon}
+                        >
+                    </i>
+                    <Link to="/">Vista Cliente</Link>
+                </div>
+                <div className="sidenav">
+                    <NavLink exact to="/">Home</NavLink>
+                    <NavLink to="/admin">Home Administrador</NavLink>
+                    <NavLink to="/admin/menu">Carta</NavLink>
+                    {userLogged}
+                </div>
+            </StyledAdminNav>
         )
     }
 

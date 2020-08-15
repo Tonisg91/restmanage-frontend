@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-function Wrapper(props) {
+function FlowControl(props) {
     const {user} = useSelector(state => state.user)
 
     if (!user) {
@@ -26,4 +26,4 @@ function Wrapper(props) {
 
 }
 
-export default Wrapper
+export default FlowControl

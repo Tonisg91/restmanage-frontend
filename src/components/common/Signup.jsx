@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { isAdminRoute } from '../../tools/pathFunctions'
 import userAuth from '../../tools/userAuth'
 import { Link } from 'react-router-dom'
-import { StyledLoginSignup } from '../styled-components/client-side'
+import { StyledLoginSignup } from '../styled-components/common-side'
 
 function Signup(props) {
     const path = props.match.path
