@@ -34,14 +34,13 @@ const StyledClientHome = styled.main`
         }
     `
 
-const StyledClientMenu = styled.main`
+const StyledClientMenu = styled.div`
         width: 100%;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 15px;
-        background-color: #fafafa;
         justify-items: center;
-        margin: 2em 0 3.5em;
+        padding: 2em 0 3.5em;
         .food-container {
             width: 90%;
             text-align: center;

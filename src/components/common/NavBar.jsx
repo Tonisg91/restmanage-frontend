@@ -11,25 +11,26 @@ function NavBar() {
     const ClientStyledNav = styled.nav`
         position: fixed;
         bottom: 0;
-        height: 3rem;
         overflow: hidden;
         width: 100%;
+        padding: 0.25em 0;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: #000000;  /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: var(--navbar);  /* fallback for old browsers */
         border-radius: 10px 10px 0 0;
         i {
             color: #ffff;
             font-size: 1.5em;
+            padding: 0.5em;
+            width: 50px;
+            text-align: center;
         }
         .active {
-            font-size: 1.8em;
+            background-color: white;
+            border-radius: 25px;
             & i {
                 color: #35A7FF;
-                
             }
         }
     `
@@ -41,7 +42,6 @@ function NavBar() {
                 <NavLink to="/admin">Home Administrador</NavLink>
                 <NavLink to="/admin/menu">Carta</NavLink>
                 <NavLink to="/login">Login</NavLink>
-                <NavLink to="/admin/signup">Signup Administrador</NavLink>
             </nav>
         )
     }
@@ -54,8 +54,7 @@ function NavBar() {
         <ClientStyledNav>
             <NavLink exact to="/"><i className="fas fa-home"></i></NavLink>
             <NavLink to="/menu"><i className="fas fa-book-open"></i></NavLink>
-            <NavLink to="/login"><i className="fas fa-sign-in-alt"></i></NavLink>
-            <NavLink to="/signup"><i className="fas fa-user-plus"></i></NavLink>
+            <NavLink to="/login"><i className="fas fa-user"></i></NavLink>
         </ClientStyledNav>
     )
 

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
 }
 
 html {
@@ -15,3 +16,4 @@ html {
   margin: 0;
   padding: 0;
 }
+
