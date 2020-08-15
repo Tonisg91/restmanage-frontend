@@ -28,7 +28,6 @@ function Menu(props) {
         <div key={product._id} className="food-container border">
             <div className="food-image" style={{backgroundImage: `url(${product.image})`}}>
             </div>
-            {/* <img src={product.image} alt={product.name} /> */}
             <div className="text-container">
                 <h4>{product.name}</h4>
                 <p>{product.description}</p>

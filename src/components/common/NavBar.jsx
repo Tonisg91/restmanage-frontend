@@ -1,39 +1,34 @@
 import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { isAdminRoute } from  '../../tools/pathFunctions'
-
-import styled from 'styled-components'
+import { useSelector } from 'react-redux'
+import { StyledClientNav } from '../styled-components/client-side'
 
 function NavBar() {
     const {pathname} = useLocation()
+    const {user} = useSelector(state => state.user)
+
     const isClientHome = pathname === '/'
 
-    const ClientStyledNav = styled.nav`
-        position: fixed;
-        bottom: 0;
-        overflow: hidden;
-        width: 100%;
-        padding: 0.25em 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: var(--navbar);  /* fallback for old browsers */
-        border-radius: 10px 10px 0 0;
-        i {
-            color: #ffff;
-            font-size: 1.5em;
-            padding: 0.5em;
-            width: 50px;
-            text-align: center;
-        }
-        .active {
-            background-color: white;
-            border-radius: 25px;
-            & i {
-                color: #35A7FF;
-            }
-        }
-    `
+    const loginButtonOnNav = (
+            <NavLink to="/login">
+                <div className="nav-element">
+                    <i className="fas fa-sign-in-alt"></i>
+                    <p>Login</p>
+                </div>
+            </NavLink>
+    )
+
+    const profileButtonOnNav = (
+        <NavLink to="/profile">
+            <div className="nav-element">
+                <i className="fas fa-user"></i>
+                <p>Mi Cuenta</p>
+            </div>
+        </NavLink>
+    )
+
+    const userLogged = user ? profileButtonOnNav : loginButtonOnNav
 
     if (isAdminRoute(pathname)) {
         return (
@@ -51,11 +46,21 @@ function NavBar() {
     }
 
     return (
-        <ClientStyledNav>
-            <NavLink exact to="/"><i className="fas fa-home"></i></NavLink>
-            <NavLink to="/menu"><i className="fas fa-book-open"></i></NavLink>
-            <NavLink to="/login"><i className="fas fa-user"></i></NavLink>
-        </ClientStyledNav>
+        <StyledClientNav>
+            <NavLink exact to="/">
+                <div className="nav-element">
+                    <i className="fas fa-home"></i>
+                    <p>Inicio</p>
+                </div>
+            </NavLink>
+            <NavLink to="/menu">
+                <div className="nav-element">
+                    <i className="fas fa-book-open"></i>
+                    <p>Menu</p>
+                </div>
+            </NavLink>
+            {userLogged}
+        </StyledClientNav>
     )
 
     

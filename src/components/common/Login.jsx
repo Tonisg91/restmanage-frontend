@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import userAuth from '../../tools/userAuth'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-
+import { useHistory, Link } from 'react-router-dom'
+import  { StyledLoginSignup } from '../styled-components/client-side'
 
 function Login(props) {
     const dispatch = useDispatch()
@@ -29,23 +29,38 @@ function Login(props) {
             type: 'LOG_USER',
             payload: data
         })
-
         const hasAdminPermissions = await userAuth.login(loginForm, authCB)
 
-        hasAdminPermissions ? history.push('/admin') : history.push('/')
+        hasAdminPermissions ? history.push('/admin') : history.push('/menu')
     }
-
+    
+    const {email, password} = loginForm
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" onChange={handleChange}/>
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" onChange={handleChange}/>
-                <input type="submit" value="LOGIN"/>
-            </form>
-        </div>
+        <StyledLoginSignup>
+            <div className="inside-container">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="email">Email</label>
+                    <input 
+                        type="email" 
+                        name="email"
+                        value={email} 
+                        onChange={handleChange} />
+                    <label htmlFor="password">Password</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        value={password} 
+                        onChange={handleChange}/>
+                    <input className="submit" type="submit" value="LOGIN"/>
+                </form>
+                <div className="have-account">
+                        <p>No tienes cuenta?
+                        <Link to="/signup"> Haz click aquí</Link>
+                        </p>
+                </div>
+            </div>  
+        </StyledLoginSignup>
     )
 }
 

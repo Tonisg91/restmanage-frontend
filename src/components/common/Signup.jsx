@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { isAdminRoute } from '../../tools/pathFunctions'
 import userAuth from '../../tools/userAuth'
+import { Link } from 'react-router-dom'
+import { StyledLoginSignup } from '../styled-components/client-side'
 
 function Signup(props) {
     const path = props.match.path
@@ -32,32 +34,77 @@ function Signup(props) {
 
     if (isAdminRoute(path)) {
         return (
-            <div>
+            <StyledLoginSignup>
+            <div className="inside-container">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={handleChange} value={email}/>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        onChange={handleChange} 
+                        value={email}
+                    />
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" name="password" onChange={handleChange} value={password}/>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        onChange={handleChange} 
+                        value={password}
+                    />
                     <label htmlFor="rootPassword">Contraseña Root</label>
-                    <input type="password" name="rootPassword" onChange={handleChange} value={rootPassword}/>
-                    <input type="submit" value="CREAR CUENTA"/>
+                    <input 
+                        type="password" 
+                        name="rootPassword" 
+                        onChange={handleChange} 
+                        value={rootPassword}
+                    />
+                    <input 
+                        type="submit" 
+                        value="CREAR CUENTA ADMINISTRADOR"
+                        className="submit"    
+                    />
                 </form>
+                <div className="have-account">
+                    <p>Ya tienes una cuenta?
+                    <Link to="/login"> Haz click aquí</Link>
+                    </p>
+                </div>
             </div>
+            </StyledLoginSignup>
         )
     }
 
     return (
-        <div>
-            <div>
+        <StyledLoginSignup>
+            <div className="inside-container">
                 <form onSubmit={(e) => handleSubmit(e, {email: form.email, password: form.password})}>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" onChange={handleChange} value={email}/>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        onChange={handleChange} 
+                        value={email}
+                    />
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" name="password" onChange={handleChange} value={password}/>
-                    <input type="submit" value="CREAR CUENTA" />
+                    <input 
+                        type="password" 
+                        name="password" 
+                        onChange={handleChange} 
+                        value={password}
+                    />
+                    <input 
+                        className="submit" 
+                        type="submit" 
+                        value="CREAR CUENTA" 
+                    />
                 </form>
+                <div className="have-account">
+                    <p>Ya tienes una cuenta?
+                        <Link to="/login"> Haz click aquí</Link>
+                    </p>
+                </div>
             </div>
-        </div>
+        </StyledLoginSignup>
     )
 }
 

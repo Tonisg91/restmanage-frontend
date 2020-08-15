@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const StyledClientHome = styled.main`
+const StyledClientHome = styled.div`
         height: 100vh;
         width: 100%;
         position: fixed;
@@ -9,7 +9,6 @@ const StyledClientHome = styled.main`
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-
         .title-container {
             width: 80%;
         }
@@ -35,24 +34,22 @@ const StyledClientHome = styled.main`
     `
 
 const StyledClientMenu = styled.div`
-        width: 100%;
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 15px;
-        justify-items: center;
-        padding: 2em 0 3.5em;
+        grid-auto-flow: columns;
+        grid-template-columns: repeat(auto-fill, 300px);
+        gap: 25px;
+        justify-content: center;
+        padding: 2em 0 5em;
         .food-container {
-            width: 90%;
+            justify-content:center;
             text-align: center;
-            background: #FF416C;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-color: var(--red);
             padding: 1em 0 0 0;
             box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.10);
         }
         .food-image {
             width: 100%;
-            height: 120px;
+            height: 28vh;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -68,9 +65,82 @@ const StyledClientMenu = styled.div`
         }
     `
 
+const StyledClientNav = styled.nav`
+        position: fixed;
+        bottom: 0;
+        overflow: hidden;
+        width: 100%;
+        padding: 0.25em 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: var(--navbar);  /* fallback for old browsers */
+        border-radius: 10px 10px 0 0;
+        .nav-element {
+            text-align: center;
+            color: var(--background-color)
+        }
+        p {
+            font-size: 0.8em;
+        }
+        i {
+            font-size: 1.4em;
+            padding: 0.5em;
+            width: 50px;
+            text-align: center;
+        }
+        .active i , .active p{
+            color: var(--selected);
+        }
+    `
+
+const StyledLoginSignup = styled.div`
+            height: 92vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        .inside-container {
+            width: 80vw;
+            padding: 2em 0;
+            background-color: var(--navbar);
+            border-radius: 25px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        input {
+            width: 85%;
+            margin-bottom: 1em;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5em 0;
+        }
+        .submit {
+            margin-top: 1em;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            font-weight: bold;
+        }
+        .have-account {
+            text-align: center;
+            color: white;
+        }
+        .have-account a {
+            color: white;
+        }
+    `
 
 
 export  {
     StyledClientHome,
-    StyledClientMenu
+    StyledClientMenu,
+    StyledClientNav,
+    StyledLoginSignup
 }

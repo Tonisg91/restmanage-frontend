@@ -2,9 +2,11 @@
   --background-color: #F1FAEE;
   --red: #E63946;
   --blue: #A8DADC;
-  --celadon-blue: #457b9d;
+  --alt-background: #457b9d;
   --navbar: #1d3557;
+  --selected: #ffe66d;
 }
 main {
+  min-height: 100vh;
   background-color: var(--background-color);
 }
