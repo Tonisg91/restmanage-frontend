@@ -36,7 +36,7 @@ const StyledAdminNav = styled.nav`
         transition: 0.5s;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
     }
     #sidenav a {
         padding: 0 1em 1em;
@@ -47,29 +47,51 @@ const StyledAdminNav = styled.nav`
         color: var(--selected);
         text-decoration: underline !important;
     }
-    
-/*
-    a {
-        padding: 0.5em;
-        text-decoration: none;
+`
+
+const StyledAdminMenu = styled.div`
+    margin: 0 1.5em;
+    h1, h2 {
         text-align: center;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
+        margin: .4em 0;
     }
-    a:hover {
-        color: #f1f1f1;
+    #content {
+        padding-bottom: 2em;
     }
-    .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
+`
+
+const StyledAddProductForm = styled.div`
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 1em;
+        border-radius: 5px;
+        border: 2px solid lightgray;
     }
-    */
+    label {
+        font-weight: bold;
+        margin-top: .5em;
+    }
+    #submit {
+        margin-top: 1em;
+    }
+`
+const StyledAdminProduct = styled.td`
+    list-style: none;
+    padding: .25em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .btn-container button:first-child {
+        margin-right: .5em;
+    }
 `
 
 export {
-    StyledAdminNav
+    StyledAdminNav,
+    StyledAdminMenu,
+    StyledAddProductForm,
+    StyledAdminProduct
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import productService from '../../tools/productService'
 import axios from 'axios'
+import { StyledAddProductForm } from '../styled-components/admin-side'
 
 function AddProduct() {
 
@@ -46,11 +47,11 @@ function AddProduct() {
     const { name, description, category, price } = form 
 
     return (
-        <div>
+        <StyledAddProductForm>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Nombre</label>
                 <input type="text" name="name" value={name} onChange={handleChange}/>
-                <label htmlFor="description"></label>
+                <label htmlFor="description">Descripción</label>
                 <textarea name="description" value={description} cols="30" rows="10" onChange={handleChange}></textarea>
                 <label htmlFor="category">Categoría</label>
                 <input type="text" name="category" value={category} onChange={handleChange}/>
@@ -58,10 +59,14 @@ function AddProduct() {
                 <input type="number" min="0" step="0.01" name="price" value={price} onChange={handleChange}/>
                 <label htmlFor="image">Imagen</label>
                 <input type="file" name="image" onChange={handleImageUrl}/>
-                <input type="submit" value="GUARDAR"/>
-                
+                <input 
+                    type="submit" 
+                    value="GUARDAR PRODUCTO" 
+                    class="btn btn-blue"
+                    id="submit"
+                />
             </form>
-        </div>
+        </StyledAddProductForm>
     )
 }
 

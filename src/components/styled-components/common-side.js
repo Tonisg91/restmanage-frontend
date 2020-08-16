@@ -43,6 +43,16 @@ const StyledLoginSignup = styled.div`
         }
     `
 
+const StyledGenericTable = styled.table `
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    tr:nth-child(even) {
+        background-color: lightgray;
+    }
+`
+
 export {
-    StyledLoginSignup
+    StyledLoginSignup,
+    StyledGenericTable
 }

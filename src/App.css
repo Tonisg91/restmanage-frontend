@@ -5,8 +5,25 @@
   --alt-background: #457b9d;
   --navbar: #1d3557;
   --selected: #ffe66d;
+  --green: #2a9d8f;
+  --blue-btn: #0077b6;
 }
 main {
   min-height: 100vh;
-  background-color: var(--background-color);
+  background-color: #f7f7f7;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: .5em;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-blue {
+  background-color: var(--blue-btn);
+}
+.btn-red {
+  background-color: var(--red);
 }

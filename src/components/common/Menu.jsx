@@ -4,6 +4,10 @@ import AddProduct from '../admin-side/AddProduct'
 import {isAdminRoute} from '../../tools/pathFunctions'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientMenu } from '../styled-components/client-side'
+import { StyledAdminMenu } from '../styled-components/admin-side'
+import Category from '../admin-side/Category'
+import Product from '../admin-side/Product'
+import GenericTable from './GenericTable'
 
 function Menu(props) {
     
@@ -23,7 +27,7 @@ function Menu(props) {
 
     useEffect(getProductsAndDispatch, [])
 
-    const renderProducts = products.length ? 
+    const renderProductsClientSide = products.length ? 
     products.map(product => (
         <div key={product._id} className="food-container border">
             <div className="food-image" style={{backgroundImage: `url(${product.image})`}}>
@@ -36,23 +40,47 @@ function Menu(props) {
     )) : 
     null
 
+    const renderProductsAdminSide = products.length ?
+        products.map(product => (
+            <tr>
+                <Product product={product}/>
+            </tr>
+        )) :
+    null
+
+    const renderUniqueCategories = [...new Set(products.map(e => e.category))].map(category => (
+        <tr>
+            <Category text={category}/>
+        </tr>
+    ))
+
     if (isAdminRoute(props.match.path)) {
         return (
-            <div>
-                <h1>menu vista administrador</h1>
-                <div>
-                    {renderProducts}
+            <StyledAdminMenu>
+                <h1>La carta</h1>
+                <div id="content">
+                    <div>
+                        <div className="field">
+                            <h2>Categorías</h2>
+                            <GenericTable tr={renderUniqueCategories}/> 
+                        </div>
+                        <div id="add-product" className="field">
+                            <h2>Agregar Producto</h2>
+                            <AddProduct />
+                        </div>
+                    </div>
+                    <div className="field">
+                        <h2>Listado de Productos</h2>
+                        <GenericTable tr={renderProductsAdminSide} id="product-table"/>
+                    </div>
                 </div>
-                <div>
-                    <AddProduct />
-                </div>
-            </div>
+            </StyledAdminMenu>
         )    
     }
 
     return (
         <StyledClientMenu>
-            {renderProducts}
+            {renderProductsClientSide}
         </StyledClientMenu>
     )
     
