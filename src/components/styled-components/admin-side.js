@@ -21,38 +21,34 @@ const StyledAdminNav = styled.nav`
         padding: 1.1em 2em;
     }
     #button-sidenav {
-        transform: rotate(-90deg);
+        transition: 0.7s;
+        outline: none;
     }
-    .sidenav {
+    #sidenav {
         height: 100%;
         width: 0;
         position: fixed;
         z-index: 1;
-        top: 0;
-        right: 0;
-        background-color: #111;
+        top: 60px;
+        left: 0;
+        background-color: var(--navbar);
         overflow-x: hidden;
         transition: 0.5s;
-        padding-top: 60px;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
     }
-/*
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    #sidenav a {
+        padding: 0 1em 1em;
+        padding-right: 1em;
+        text-decoration: none;
+    }
+    .active {
+        color: var(--selected);
+        text-decoration: underline !important;
+    }
     
+/*
     a {
         padding: 0.5em;
         text-decoration: none;

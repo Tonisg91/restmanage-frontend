@@ -32,10 +32,13 @@ function NavBar() {
 
     const userLogged = user ? profileButtonOnNav : loginButtonOnNav
 
+    const openNav = (isOpen = showSidenav) =>  document.getElementById("sidenav").style.width = isOpen ? "0" : "250px"
+
     const rotateIcon = ({target}) => {
         setShowSidenav(state => !state)
-        const action = (show) => target.style.transform = `rotate(${90 * show}deg)`
-        !showSidenav ? action(1) : action(-1)
+        const action = (degrees) => target.style.transform = `rotate(${degrees}deg)`
+        !showSidenav ? action(90) : action(0)
+        openNav()
     }
 
     if (isAdminRoute(pathname)) {
@@ -43,18 +46,17 @@ function NavBar() {
             <StyledAdminNav >
                 <div className="default-nav">
                     <i 
-                        className="fas fa-chevron-circle-down" 
+                        className="fas fa-bars" 
                         id="button-sidenav"
                         onClick={rotateIcon}
                         >
                     </i>
                     <Link to="/">Vista Cliente</Link>
                 </div>
-                <div className="sidenav">
-                    <NavLink exact to="/">Home</NavLink>
-                    <NavLink to="/admin">Home Administrador</NavLink>
+                <div id="sidenav">
+                    <NavLink  exact to="/admin">Home Administrador</NavLink>
                     <NavLink to="/admin/menu">Carta</NavLink>
-                    {userLogged}
+                    <NavLink to="/admin/profile">Mi Cuenta</NavLink>
                 </div>
             </StyledAdminNav>
         )
