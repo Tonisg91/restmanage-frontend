@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientMenu } from '../styled-components/client-side'
 import { StyledAdminMenu } from '../styled-components/admin-side'
 import Category from '../admin-side/Category'
-import Product from '../admin-side/Product'
+import AdminProduct  from '../admin-side/AdminProduct'
+import ClientProduct from '../client-side/ClientProduct'
 import GenericTable from './GenericTable'
 
 function Menu(props) {
@@ -29,21 +30,14 @@ function Menu(props) {
 
     const renderProductsClientSide = products.length ? 
     products.map(product => (
-        <div key={product._id} className="food-container border">
-            <div className="food-image" style={{backgroundImage: `url(${product.image})`}}>
-            </div>
-            <div className="text-container">
-                <h4>{product.name}</h4>
-                <p>{product.description}</p>
-            </div>
-        </div>
+        <ClientProduct product={product} key={product._id}/>
     )) : 
     null
 
     const renderProductsAdminSide = products.length ?
         products.map(product => (
             <tr>
-                <Product product={product}/>
+                <AdminProduct product={product} />
             </tr>
         )) :
     null

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledAdminProduct } from '../styled-components/admin-side'
 
-function Product({product}) {
+function AdminProduct({product}) {
     return (
         <StyledAdminProduct key={product._id} className="container">
             <h4>{product.name}</h4>
@@ -13,4 +13,4 @@ function Product({product}) {
     )
 }
 
-export default Product
+export default AdminProduct

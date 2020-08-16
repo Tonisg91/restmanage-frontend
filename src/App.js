@@ -6,6 +6,7 @@ import Signup from './components/common/Signup'
 import FlowControl from './components/admin-side/FlowControl'
 import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
+import ProductDetails from './components/client-side/ProductDetails'
 import './App.css'
 
 
@@ -20,7 +21,8 @@ function App() {
             path="/admin"
             render={(props) => <FlowControl children={<Home {...props} />} />}
           />
-        <Route path="/menu" component={Menu}/>
+        <Route exact path="/menu" component={Menu}/>
+        <Route path="/menu/:productName" component={ProductDetails}/>
         <Route 
           path="/admin/menu" 
           render={(props) => <FlowControl children={<Menu {...props} />}/>}
