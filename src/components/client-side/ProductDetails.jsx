@@ -1,18 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import productService from  '../../tools/productService'
+import ClientProduct from './ClientProduct'
+import { StyledClientSingleProduct } from '../styled-components/client-side'
 
 function ProductDetails({match}) {
-    const productNameFromParams = match.params.productName
 
+    const productIdFromParams = match.params.id
     const { products }  = useSelector(state => state.products) || null
 
-    const getDataFromRedux = (name = productNameFromParams) => [...products].find(product => product.name === name)
-    const getDataFromAxios = (name = productNameFromParams) => 'llamada a axios'
+    const getDataFromRedux = (id = productIdFromParams) => [...products].find(product => product._id === id)
+    const getDataFromAxios = async (id = productIdFromParams) => await productService.getSingleProduct(id)
 
-    const test = !products.length ?  getDataFromAxios() : getDataFromRedux()
-
+    const singleProduct = !products.length ?  getDataFromAxios() : getDataFromRedux()
+    console.log(singleProduct)
     return (
-        <h1>Product details</h1>
+        <StyledClientSingleProduct>
+            <ClientProduct product={singleProduct}/>
+        </StyledClientSingleProduct>
     )
 }
 

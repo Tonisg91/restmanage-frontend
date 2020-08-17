@@ -1,9 +1,12 @@
 import axios from 'axios'
 
 class UserAuth {
+    constructor() {
+        this.URL = 'http://localhost:3000'
+    }
 
     async login(body, cb) {
-        const {data} = await axios.post('http://localhost:3000/login', body)
+        const {data} = await axios.post(this.URL + '/login', body)
         this.toLocalStorage(data)
         cb(data)
         return data.adminPermissions
@@ -22,7 +25,7 @@ class UserAuth {
             ...data,
             isAdmin: isAdminRoute
         }
-            axios.post("http://localhost:3000/signup", body).then(res => {
+            axios.post(this.URL + "/signup", body).then(res => {
                 this.toLocalStorage(res.data)
                 cb(res.data)
                 return

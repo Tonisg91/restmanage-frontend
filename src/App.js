@@ -22,7 +22,7 @@ function App() {
             render={(props) => <FlowControl children={<Home {...props} />} />}
           />
         <Route exact path="/menu" component={Menu}/>
-        <Route path="/menu/:productName" component={ProductDetails}/>
+        <Route path="/menu/product/:id" component={ProductDetails}/>
         <Route 
           path="/admin/menu" 
           render={(props) => <FlowControl children={<Menu {...props} />}/>}

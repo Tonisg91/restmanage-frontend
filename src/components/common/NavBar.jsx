@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { NavLink, useLocation, Link } from 'react-router-dom'
 import { isAdminRoute } from  '../../tools/pathFunctions'
 import { useSelector } from 'react-redux'

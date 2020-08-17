@@ -1,16 +1,19 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 function ClientProduct({product}) {
     const history = useHistory()
-    
-    const { image, name, description, _id } = product
-    const nameWithoutSpaces = name.replace(/ /g, "")
-    console.log(nameWithoutSpaces)
+    const location = useLocation()
+
+    const { image, name, description, _id, price } = product
     const redirectToDetails = () => {
-        history.push(`/menu/${nameWithoutSpaces}`)
+        history.push(`/menu/product/${_id}`)
     }
 
+    const showPrice = location.pathname.includes('product') ? <p>{price} €</p> : null
+
+
+    window.scrollTo(0,0)
     return (
         <div className="food-container border" onClick={redirectToDetails}>
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
@@ -18,6 +21,7 @@ function ClientProduct({product}) {
             <div className="text-container">
                 <h4>{name}</h4>
                 <p>{description}</p>
+                {showPrice}
             </div>
         </div>
     )

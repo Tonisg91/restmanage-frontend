@@ -94,6 +94,29 @@ const StyledClientNav = styled.nav`
         }
     `
 
+const StyledClientSingleProduct = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    .food-container {
+        height: 100%;
+        margin-top: 2em;
+    }
+    .food-image {
+        width: 300px;
+        height: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .text-container {
+        text-align: center;
+        margin-top: 2em;
+    }
+    h4 {
+        font-size: 1.5em;
+    }
+`
 
 
 
@@ -101,4 +124,5 @@ export  {
     StyledClientHome,
     StyledClientMenu,
     StyledClientNav,
+    StyledClientSingleProduct
 }
