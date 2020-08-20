@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const StyledAdminNav = styled.nav`
-    
     a {
         color: white;
         font-size: 1.2em;
@@ -77,7 +76,7 @@ const StyledAddProductForm = styled.div`
         margin-top: 1em;
     }
 `
-const StyledAdminProduct = styled.td`
+const StyledAdminProduct = styled.li`
     list-style: none;
     padding: .25em 0;
     display: flex;

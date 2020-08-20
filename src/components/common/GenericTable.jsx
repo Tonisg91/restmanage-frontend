@@ -1,11 +1,12 @@
 import React from 'react'
-import { StyledGenericTable } from '../styled-components/common-side'
+import { StyledGenericList } from '../styled-components/common-side'
 
-function GenericTable(props) {
+function GenericTable({content}) {
+
     return (
-        <StyledGenericTable>
-            {props.tr}
-        </StyledGenericTable>
+        <StyledGenericList >
+            {content}
+        </StyledGenericList>
     )
 }
 

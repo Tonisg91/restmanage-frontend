@@ -43,16 +43,17 @@ const StyledLoginSignup = styled.div`
         }
     `
 
-const StyledGenericTable = styled.table `
+const StyledGenericList = styled.ul `
     width: 100%;
     border-radius: 5px;
     border: 2px solid lightgray;
-    tr:nth-child(even) {
+    list-style: none;
+    li:nth-child(even) {
         background-color: lightgray;
     }
 `
 
 export {
     StyledLoginSignup,
-    StyledGenericTable
+    StyledGenericList
 }

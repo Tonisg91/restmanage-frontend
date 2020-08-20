@@ -1,19 +1,7 @@
-import React, { useState } from 'react'
-import productService from '../../tools/productService'
-import axios from 'axios'
+import React from 'react'
 import { StyledAddProductForm } from '../styled-components/admin-side'
 
-function AddProduct() {
-
-    const initialState = {
-        name: '',
-        description: '',
-        category: '',
-        price: 0,
-        image: ''
-    }
-
-    const [form, setForm] = useState(initialState)
+function AddProduct({updateList, form, setForm, initialState, productService}) {
 
     const handleChange = ({target}) => {
         setForm({
@@ -35,13 +23,11 @@ function AddProduct() {
         alert('Imagen Cargada')
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/admin/addproduct', {...form})
-            .then(()=> {
-                alert('Producto guardado con exito')
-            })
-            .catch(err => console.error(err))
+        await productService.addOrEditProduct({...form})
+        // updateList()
+        setForm(initialState)
     }
 
     const { name, description, category, price } = form 
@@ -62,7 +48,7 @@ function AddProduct() {
                 <input 
                     type="submit" 
                     value="GUARDAR PRODUCTO" 
-                    class="btn btn-blue"
+                    className="btn btn-blue"
                     id="submit"
                 />
             </form>

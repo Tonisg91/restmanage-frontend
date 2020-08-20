@@ -1,29 +1,36 @@
-import React, { useEffect} from 'react'
-import axios from 'axios'
+import React, { useState, useEffect} from 'react'
 import AddProduct from '../admin-side/AddProduct'
 import {isAdminRoute} from '../../tools/pathFunctions'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientMenu } from '../styled-components/client-side'
 import { StyledAdminMenu } from '../styled-components/admin-side'
-import Category from '../admin-side/Category'
+import CategoryList from '../admin-side/CategoryList'
 import AdminProduct  from '../admin-side/AdminProduct'
 import ClientProduct from '../client-side/ClientProduct'
-import GenericTable from './GenericTable'
+import productService from '../../tools/productService'
 
 function Menu(props) {
-    
+    const initialState = {
+        name: '',
+        description: '',
+        category: '',
+        price: 0,
+        image: '',
+    }
+
+    const [form, setForm] = useState(initialState)
+    const [isEditing, setIsEditing] = useState(false)
+
     const {products} = useSelector(state => state.products)
     const dispatch = useDispatch()
 
+    const sendDataToRedux = data => dispatch({
+        type: 'SET_PRODUCTS',
+        payload: data
+    })
 
-    const getProductsAndDispatch = (hasProducts = products) => {
-        axios.get('http://localhost:3000/menu')
-            .then(res => {
-                dispatch({
-                    type: 'SET_PRODUCTS',
-                    payload: res.data
-                })
-            })
+    const getProductsAndDispatch = (cb = sendDataToRedux) => {
+        productService.getAllProducts(cb)
     }
 
     useEffect(getProductsAndDispatch, [])
@@ -34,19 +41,17 @@ function Menu(props) {
     )) : 
     null
 
-    const renderProductsAdminSide = products.length ?
-        products.map(product => (
-            <tr>
-                <AdminProduct product={product} />
-            </tr>
-        )) :
-    null
+    const actionForm = !isEditing ? 
+            <AddProduct
+                productService={productService}
+                updateList={getProductsAndDispatch}
+                setForm={setForm}
+                form={form}
+                initialState={initialState}
+            /> :
+            <h1>Estas editando</h1>
 
-    const renderUniqueCategories = [...new Set(products.map(e => e.category))].map(category => (
-        <tr>
-            <Category text={category}/>
-        </tr>
-    ))
+    const uniqueCategories = [...new Set(products.map(e => e.category))]
 
     if (isAdminRoute(props.match.path)) {
         return (
@@ -56,16 +61,24 @@ function Menu(props) {
                     <div>
                         <div className="field">
                             <h2>Categorías</h2>
-                            <GenericTable tr={renderUniqueCategories}/> 
+                            <CategoryList categories={uniqueCategories}/>
                         </div>
                         <div id="add-product" className="field">
                             <h2>Agregar Producto</h2>
-                            <AddProduct />
+                            {actionForm}
                         </div>
                     </div>
                     <div className="field">
                         <h2>Listado de Productos</h2>
-                        <GenericTable tr={renderProductsAdminSide} id="product-table"/>
+                        <ul>
+                            <AdminProduct
+                                products={products}
+                                dispatch={sendDataToRedux}
+                                productService={productService}
+                                setForm={setForm}
+                                goEdit={setIsEditing}
+                            />
+                        </ul>
                     </div>
                 </div>
             </StyledAdminMenu>
@@ -77,7 +90,6 @@ function Menu(props) {
             {renderProductsClientSide}
         </StyledClientMenu>
     )
-    
 }
 
 export default Menu
