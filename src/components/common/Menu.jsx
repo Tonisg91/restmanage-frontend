@@ -56,30 +56,26 @@ function Menu(props) {
     if (isAdminRoute(props.match.path)) {
         return (
             <StyledAdminMenu>
-                <h1>La carta</h1>
-                <div id="content">
-                    <div>
-                        <div className="field">
-                            <h2>Categorías</h2>
-                            <CategoryList categories={uniqueCategories}/>
-                        </div>
-                        <div id="add-product" className="field">
-                            <h2>Agregar Producto</h2>
-                            {actionForm}
-                        </div>
-                    </div>
-                    <div className="field">
-                        <h2>Listado de Productos</h2>
-                        <ul>
-                            <AdminProduct
-                                products={products}
-                                dispatch={sendDataToRedux}
-                                productService={productService}
-                                setForm={setForm}
-                                goEdit={setIsEditing}
-                            />
-                        </ul>
-                    </div>
+                <div id="header">
+                    <h1>La carta</h1>
+                </div>
+                <div className="field" id="categories">
+                    <h2>Categorías</h2>
+                    <CategoryList categories={uniqueCategories}/>
+                </div>
+                <div id="add-product" className="field">
+                    <h2>Agregar Producto</h2>
+                    {actionForm}
+                </div>
+                <div className="field" id="product-list">
+                    <h2>Listado de Productos</h2>
+                        <AdminProduct
+                            products={products}
+                            dispatch={sendDataToRedux}
+                            productService={productService}
+                            setForm={setForm}
+                            goEdit={setIsEditing}
+                        />
                 </div>
             </StyledAdminMenu>
         )    

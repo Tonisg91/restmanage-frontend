@@ -25,8 +25,8 @@ function AddProduct({updateList, form, setForm, initialState, productService}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await productService.addOrEditProduct({...form})
-        // updateList()
+        await productService.addProduct({...form})
+        updateList()
         setForm(initialState)
     }
 
@@ -38,7 +38,7 @@ function AddProduct({updateList, form, setForm, initialState, productService}) {
                 <label htmlFor="name">Nombre</label>
                 <input type="text" name="name" value={name} onChange={handleChange}/>
                 <label htmlFor="description">Descripción</label>
-                <textarea name="description" value={description} cols="30" rows="10" onChange={handleChange}></textarea>
+                <textarea name="description" value={description} cols="30" rows="5" onChange={handleChange}></textarea>
                 <label htmlFor="category">Categoría</label>
                 <input type="text" name="category" value={category} onChange={handleChange}/>
                 <label htmlFor="price">Precio</label>

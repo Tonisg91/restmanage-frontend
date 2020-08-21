@@ -35,7 +35,7 @@ function AdminProduct({products, dispatch, productService, setForm, goEdit}) {
 
 
     return (
-        <GenericTable content={productList}/>
+        <GenericTable content={productList} id="admin-product-list-container"/>
     )
 }
 

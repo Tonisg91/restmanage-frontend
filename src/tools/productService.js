@@ -12,8 +12,12 @@ class ProductService {
             })
     }
 
-    async addOrEditProduct(data) {
+    async addProduct(data) {
         await axios.post(`${this.URL}/admin/addproduct`, data)
+    }
+
+    async editProduct(data, id) {
+        await axios.post(`${this.URL}/admin/addproduct`, data, id)
     }
 
     async getSingleProduct(id) {
