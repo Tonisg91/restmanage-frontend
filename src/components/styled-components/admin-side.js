@@ -50,19 +50,17 @@ const StyledAdminNav = styled.nav`
 
 const StyledAdminMenu = styled.div`
     margin: 0 1.5em;
+    padding-bottom: 1.5em;
     h1, h2 {
         text-align: center;
         margin: .4em 0;
     }
-    #content {
-        padding-bottom: 2em;
-    }
     @media (min-width: 768px) {
-        height: 100vh;
         display: grid;
         grid-template-areas: 
             "header header"
             "top top"
+            "mid mid"
             "bottom bottom";
         grid-auto-rows: minmax(min-content, max-content);
         gap: 12px 12px;
@@ -76,9 +74,12 @@ const StyledAdminMenu = styled.div`
         #add-product {
             grid-area: top | 1 / 2 / 2 / 3;
         }
+        #list-title {
+            grid-area: mid;
+        }
         #product-list {
             grid-area: bottom;
-            max-height: 41vh;
+            max-height: 37vh;
             overflow: scroll;
         }
     }
@@ -97,6 +98,17 @@ const StyledAddProductForm = styled.div`
         font-weight: bold;
         margin-top: .5em;
     }
+    input, textarea {
+        border: 1.5px solid lightgray;
+        border-radius: 5px;
+        font-weight: bold;
+        padding-left: .8em;
+    }
+    #image {
+        border: none;
+        padding: 0;
+    }
+    
     #submit {
         margin-top: 1em;
     }

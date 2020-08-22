@@ -16,8 +16,8 @@ class ProductService {
         await axios.post(`${this.URL}/admin/addproduct`, data)
     }
 
-    async editProduct(data, id) {
-        await axios.post(`${this.URL}/admin/addproduct`, data, id)
+    async editProduct(data) {
+        await axios.post(`${this.URL}/admin/editproduct`, data)
     }
 
     async getSingleProduct(id) {

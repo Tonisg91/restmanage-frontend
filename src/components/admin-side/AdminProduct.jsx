@@ -2,10 +2,9 @@ import React from 'react'
 import GenericTable from '../common/GenericTable'
 import { StyledAdminProduct } from '../styled-components/admin-side'
 
-function AdminProduct({products, dispatch, productService, setForm, goEdit}) {
+function AdminProduct({products, dispatch, productService, setEditForm, goEdit}) {
 
-    const editProduct = (product) => setForm(product)
-
+    const editProduct = (product) => setEditForm(product)
 
     const deleteProduct = (id, cb = dispatch) => {
         productService.deleteProduct(id, cb)

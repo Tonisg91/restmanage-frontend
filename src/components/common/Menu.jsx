@@ -8,9 +8,10 @@ import CategoryList from '../admin-side/CategoryList'
 import AdminProduct  from '../admin-side/AdminProduct'
 import ClientProduct from '../client-side/ClientProduct'
 import productService from '../../tools/productService'
+import EditProduct from '../admin-side/EditProduct'
 
 function Menu(props) {
-    const initialState = {
+    const addForminitialState = {
         name: '',
         description: '',
         category: '',
@@ -18,7 +19,17 @@ function Menu(props) {
         image: '',
     }
 
-    const [form, setForm] = useState(initialState)
+    const editFormInitialState = {
+        _id: '',
+        name: '',
+        description: '',
+        category: '',
+        price: 0,
+        image: '',
+    }
+
+    const [addForm, setAddForm] = useState(addForminitialState)
+    const [editForm, setEditForm] = useState(editFormInitialState)
     const [isEditing, setIsEditing] = useState(false)
 
     const {products} = useSelector(state => state.products)
@@ -43,13 +54,18 @@ function Menu(props) {
 
     const actionForm = !isEditing ? 
             <AddProduct
-                productService={productService}
                 updateList={getProductsAndDispatch}
-                setForm={setForm}
-                form={form}
-                initialState={initialState}
+                setForm={setAddForm}
+                form={addForm}
+                initialState={addForminitialState}
             /> :
-            <h1>Estas editando</h1>
+            <EditProduct 
+                updateList={getProductsAndDispatch}
+                setForm={setEditForm}
+                form={editForm}
+                initialState={editFormInitialState}
+                setIsEditing={setIsEditing}
+            />
 
     const uniqueCategories = [...new Set(products.map(e => e.category))]
 
@@ -64,16 +80,15 @@ function Menu(props) {
                     <CategoryList categories={uniqueCategories}/>
                 </div>
                 <div id="add-product" className="field">
-                    <h2>Agregar Producto</h2>
                     {actionForm}
                 </div>
+                    <h2 id="list-title">Listado de Productos</h2>
                 <div className="field" id="product-list">
-                    <h2>Listado de Productos</h2>
                         <AdminProduct
                             products={products}
                             dispatch={sendDataToRedux}
                             productService={productService}
-                            setForm={setForm}
+                            setEditForm={setEditForm}
                             goEdit={setIsEditing}
                         />
                 </div>

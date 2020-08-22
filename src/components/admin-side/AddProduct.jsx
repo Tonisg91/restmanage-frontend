@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyledAddProductForm } from '../styled-components/admin-side'
+import productService from '../../tools/productService'
 
-function AddProduct({updateList, form, setForm, initialState, productService}) {
+function AddProduct({updateList, form, setForm, initialState}) {
 
     const handleChange = ({target}) => {
         setForm({
@@ -44,7 +45,11 @@ function AddProduct({updateList, form, setForm, initialState, productService}) {
                 <label htmlFor="price">Precio</label>
                 <input type="number" min="0" step="0.01" name="price" value={price} onChange={handleChange}/>
                 <label htmlFor="image">Imagen</label>
-                <input type="file" name="image" onChange={handleImageUrl}/>
+                <input 
+                    type="file" 
+                    name="image" 
+                    id="image"
+                    onChange={handleImageUrl}/>
                 <input 
                     type="submit" 
                     value="GUARDAR PRODUCTO" 
