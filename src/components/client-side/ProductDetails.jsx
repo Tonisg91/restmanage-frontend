@@ -10,10 +10,11 @@ function ProductDetails({match}) {
     const { products }  = useSelector(state => state.products) || null
 
     const getDataFromRedux = (id = productIdFromParams) => [...products].find(product => product._id === id)
+    
     const getDataFromAxios = async (id = productIdFromParams) => await productService.getSingleProduct(id)
 
     const singleProduct = !products.length ?  getDataFromAxios() : getDataFromRedux()
-    console.log(singleProduct)
+
     return (
         <StyledClientSingleProduct>
             <ClientProduct product={singleProduct}/>

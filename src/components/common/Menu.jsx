@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientMenu } from '../styled-components/client-side'
 import { StyledAdminMenu } from '../styled-components/admin-side'
 import CategoryList from '../admin-side/CategoryList'
+import Category from '../client-side/Category'
 import AdminProduct  from '../admin-side/AdminProduct'
 import ClientProduct from '../client-side/ClientProduct'
 import productService from '../../tools/productService'
@@ -16,7 +17,7 @@ function Menu(props) {
         description: '',
         category: '',
         price: 0,
-        image: '',
+        image: undefined,
     }
 
     const editFormInitialState = {
@@ -25,7 +26,7 @@ function Menu(props) {
         description: '',
         category: '',
         price: 0,
-        image: '',
+        image: undefined,
     }
 
     const [addForm, setAddForm] = useState(addForminitialState)
@@ -41,16 +42,27 @@ function Menu(props) {
     })
 
     const getProductsAndDispatch = (cb = sendDataToRedux) => {
-        productService.getAllProducts(cb)
+        //TODO: Si ya hay productos, no repetir la llamada.
+        if (!products.length) productService.getAllProducts(cb)
+        return
     }
-
+    
     useEffect(getProductsAndDispatch, [])
 
+    const uniqueCategories = [...new Set(products.map(e => e.category))]
+    
     const renderProductsClientSide = products.length ? 
-    products.map(product => (
-        <ClientProduct product={product} key={product._id}/>
-    )) : 
-    null
+        products.map(product => (
+            <ClientProduct product={product} key={product._id}/>
+        )) : 
+        null
+
+    const renderCategoriesClientSide = products.length ?
+        uniqueCategories.map(category => (
+            <Category category={category} key={category}/>
+        )) : 
+        null
+
 
     const actionForm = !isEditing ? 
             <AddProduct
@@ -58,6 +70,7 @@ function Menu(props) {
                 setForm={setAddForm}
                 form={addForm}
                 initialState={addForminitialState}
+                categoryList={uniqueCategories}
             /> :
             <EditProduct 
                 updateList={getProductsAndDispatch}
@@ -67,7 +80,6 @@ function Menu(props) {
                 setIsEditing={setIsEditing}
             />
 
-    const uniqueCategories = [...new Set(products.map(e => e.category))]
 
     if (isAdminRoute(props.match.path)) {
         return (
@@ -98,7 +110,7 @@ function Menu(props) {
 
     return (
         <StyledClientMenu>
-            {renderProductsClientSide}
+            {renderCategoriesClientSide}
         </StyledClientMenu>
     )
 }

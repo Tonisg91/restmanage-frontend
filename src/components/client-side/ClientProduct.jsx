@@ -6,9 +6,8 @@ function ClientProduct({product}) {
     const location = useLocation()
 
     const { image, name, description, _id, price } = product
-    const redirectToDetails = () => {
-        history.push(`/menu/product/${_id}`)
-    }
+
+    const redirectToDetails = () => history.push(`/menu/product/${_id}`)
 
     const showPrice = location.pathname.includes('product') ? <p>{price} €</p> : null
 

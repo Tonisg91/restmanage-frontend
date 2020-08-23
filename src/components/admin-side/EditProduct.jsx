@@ -47,7 +47,13 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
                 <label htmlFor="description">Descripción</label>
                 <textarea name="description" value={description} cols="30" rows="5" onChange={handleChange}></textarea>
                 <label htmlFor="category">Categoría</label>
-                <input type="text" name="category" value={category} onChange={handleChange} />
+                <input 
+                    type="text" 
+                    name="category" 
+                    value={category} 
+                    onKeyDown={() => productService.autocomplete()}
+                    onChange={handleChange} 
+                    />
                 <label htmlFor="price">Precio</label>
                 <input type="number" min="0" step="0.01" name="price" value={price} onChange={handleChange} />
                 <label htmlFor="image">Imagen</label>

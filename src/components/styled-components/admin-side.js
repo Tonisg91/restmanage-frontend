@@ -55,6 +55,9 @@ const StyledAdminMenu = styled.div`
         text-align: center;
         margin: .4em 0;
     }
+    .MuiInput-underline:before {
+        border: none;
+    }
     @media (min-width: 768px) {
         display: grid;
         grid-template-areas: 
@@ -97,6 +100,9 @@ const StyledAddProductForm = styled.div`
     label {
         font-weight: bold;
         margin-top: .5em;
+    }
+    input {
+        padding: .5em 0;
     }
     input, textarea {
         border: 1.5px solid lightgray;

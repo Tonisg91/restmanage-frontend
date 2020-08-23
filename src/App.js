@@ -8,6 +8,7 @@ import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
 import ProductDetails from './components/client-side/ProductDetails'
 import './App.css'
+import ProductList from './components/client-side/ProductList';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           />
         <Route exact path="/menu" component={Menu}/>
         <Route path="/menu/product/:id" component={ProductDetails}/>
+        <Route path="/menu/:category" component={ProductList}/>
         <Route 
           path="/admin/menu" 
           render={(props) => <FlowControl children={<Menu {...props} />}/>}

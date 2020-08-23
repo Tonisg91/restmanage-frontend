@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledAddProductForm } from '../styled-components/admin-side'
 import productService from '../../tools/productService'
 
-function AddProduct({updateList, form, setForm, initialState}) {
+function AddProduct({updateList, form, setForm, initialState, categoryList}) {
 
     const handleChange = ({target}) => {
         setForm({
@@ -37,11 +37,21 @@ function AddProduct({updateList, form, setForm, initialState}) {
         <StyledAddProductForm>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Nombre</label>
-                <input type="text" name="name" value={name} onChange={handleChange}/>
+                <input 
+                    type="text" 
+                    name="name" 
+                    value={name} 
+                    onChange={handleChange}
+                />
                 <label htmlFor="description">Descripción</label>
                 <textarea name="description" value={description} cols="30" rows="5" onChange={handleChange}></textarea>
                 <label htmlFor="category">Categoría</label>
-                <input type="text" name="category" value={category} onChange={handleChange}/>
+                <input 
+                    type="text" 
+                    name="category" 
+                    value={category}
+                    onChange={handleChange}
+                />
                 <label htmlFor="price">Precio</label>
                 <input type="number" min="0" step="0.01" name="price" value={price} onChange={handleChange}/>
                 <label htmlFor="image">Imagen</label>
