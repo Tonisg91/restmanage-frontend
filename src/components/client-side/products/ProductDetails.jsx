@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import productService from  '../../tools/productService'
+import productService from  '../../../tools/productService'
 import ClientProduct from './ClientProduct'
-import { StyledClientSingleProduct } from '../styled-components/client-side'
+import { StyledClientSingleProduct } from '../../styled-components/client-side'
 
 function ProductDetails({match}) {
 

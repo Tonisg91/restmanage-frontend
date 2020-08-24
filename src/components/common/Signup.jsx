@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { isAdminRoute } from '../../tools/pathFunctions'
 import userAuth from '../../tools/userAuth'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { StyledLoginSignup } from '../styled-components/common-side'
 
-function Signup(props) {
-    const path = props.match.path
-
+function Signup({match}) {
+    const { path } = match
+    const history = useHistory()
     const initialState = {
         email: '',
         password: '',
@@ -14,7 +14,6 @@ function Signup(props) {
     }
 
     const [form, setForm] = useState(initialState)
-    const [user, setUser] = useState({})
 
     const handleChange = ({target}) => {
         setForm({
@@ -23,10 +22,11 @@ function Signup(props) {
         })
     }
 
-    const handleSubmit = (e, data = form) => {
+    const handleSubmit = async (e, data = form) => {
         e.preventDefault()
-        userAuth.signup(data, setUser, isAdminRoute(path))
-        setForm(initialState)
+        await userAuth.signup(data, isAdminRoute(path))
+        history.push('/menu')
+        history.go(0)
     }
 
     const {email, password, rootPassword} = form

@@ -1,7 +1,7 @@
 import React from 'react'
 import ClientProduct from './ClientProduct'
 import { useSelector } from 'react-redux'
-import { StyledClientMenu } from '../styled-components/client-side'
+import { StyledClientMenu } from '../../styled-components/client-side'
 
 function ProductList({match}) {
 

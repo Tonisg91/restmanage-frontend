@@ -9,10 +9,10 @@ function Category({category}) {
     const productMatchWithCategory = products.find(product => product.category === category)
     const { image } = productMatchWithCategory
 
-    const redirectToCategoryProducts = () => history.push(`/menu/${category}`)
+    const redirectToProductList = () => history.push(`/menu/${category}`)
 
     return (
-        <div className="food-container border" onClick={redirectToCategoryProducts}>
+        <div className="food-container border" onClick={redirectToProductList}>
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
             </div>
             <div className="text-container">

@@ -20,17 +20,31 @@ class UserAuth {
         localStorage.removeItem('currentUser')
     }
 
-    signup(data, cb, isAdminRoute) {
+    async signup(data, isAdminRoute) {
         const body = {
             ...data,
             isAdmin: isAdminRoute
         }
-            axios.post(this.URL + "/signup", body).then(res => {
-                this.toLocalStorage(res.data)
-                cb(res.data)
-                return
-            }).catch(err => console.error('Error al hacer signup.', err))
+        try {
+            const { data } = await axios.post(this.URL + "/signup", body)
+            this.toLocalStorage(data)
+        } catch (err) {
+            console.error('Error al hacer signup.', err)
+        }
     }
+
+    async updateUser(userData) {
+        axios.post(`${this.URL}/updateuser`, userData)
+            .then(res => {
+                this.toLocalStorage(res.data)
+                return
+            })
+            .catch(err => 
+                console.error('Error al actualizar el usuario.', err)
+            )
+    }
+
+    
 }
 
 export default new UserAuth()
