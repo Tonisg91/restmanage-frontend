@@ -41,7 +41,7 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
 
     return (
         <StyledAddProductForm>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id="edit-form">
                 <label htmlFor="name">Nombre</label>
                 <input type="text" name="name" value={name} onChange={handleChange} />
                 <label htmlFor="description">Descripción</label>
@@ -63,13 +63,16 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
                     id="image"
                     onChange={handleImageUrl} />
                 <div className="button-container">
-                    <input
+                    <button
                         type="submit"
-                        value="EDITAR PRODUCTO"
+                        form="edit-form"
                         className="btn btn-blue"
                         id="submit"
-                    />
+                        >
+                        EDITAR PRODUCTO
+                    </button>
                     <button 
+                        id="cancel-btn"
                         className="btn btn-red"
                         onClick={cancelEdit}
                     >

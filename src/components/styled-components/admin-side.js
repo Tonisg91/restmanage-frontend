@@ -115,6 +115,9 @@ const StyledAddProductForm = styled.div`
     #submit {
         margin-top: 1em;
     }
+    #cancel-btn {
+        margin-left: 1em;
+    }
 `
 const StyledAdminProduct = styled.li`
     list-style: none;

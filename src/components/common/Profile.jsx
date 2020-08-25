@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import userAuth from '../../tools/userAuth.js'
+import { StyledProfile } from '../styled-components/common-side'
 
 function Profile() {
     const history = useHistory()
@@ -36,65 +37,68 @@ function Profile() {
 
     const {name, email, city, street, number, door} = userData
 
-    return (
-        <div>
-            <h1>profile</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Nombre</label>
-                <input 
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleChange}
-                />
-                <label htmlFor="email">Email</label>
-                <input 
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                />
-                <label htmlFor="city">Ciudad</label>
-                <input 
-                    type="text"
-                    name="city"
-                    value={city}
-                    onChange={handleChange}
-                />
-                <label htmlFor="street">Calle</label>
-                <input
-                    type="text"
-                    name="street"
-                    value={street}
-                    onChange={handleChange}
-                />
-                <label htmlFor="number">Numero</label>
-                <input 
-                    type="number"
-                    name="number"
-                    value={number}
-                    onChange={handleChange}
-                />
-                <label htmlFor="door">Puerta</label>
-                <input 
-                    type="text"
-                    name="door"
-                    value={door}
-                    onChange={handleChange}
-                />
-                <input 
-                    type="submit" 
-                    value="GUARDAR PERFIL"
-                    className="btn btn-blue"    
-                />
-            </form>
 
-            <button 
-                className="btn btn-red"
-                onClick={logoutAndRedirectToHome}>
-                    CERRAR SESIÓN
-            </button>
-        </div>
+
+    return (
+        <StyledProfile>
+            <h1 className="title">Mi cuenta</h1>
+            <div className="inside-container">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Nombre</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="city">Ciudad</label>
+                    <input
+                        type="text"
+                        name="city"
+                        value={city}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="street">Calle</label>
+                    <input
+                        type="text"
+                        name="street"
+                        value={street}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="number">Numero</label>
+                    <input
+                        type="number"
+                        name="number"
+                        value={number}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="door">Puerta</label>
+                    <input
+                        type="text"
+                        name="door"
+                        value={door}
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="submit"
+                        value="GUARDAR PERFIL"
+                        className="btn btn-blue"
+                    />
+                    <button
+                        className="btn btn-red"
+                        onClick={logoutAndRedirectToHome}>
+                        CERRAR SESIÓN
+                    </button>
+                </form>
+            </div>
+        </StyledProfile>
     )
 }
 
