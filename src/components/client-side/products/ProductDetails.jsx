@@ -7,7 +7,7 @@ import { StyledClientSingleProduct } from '../../styled-components/client-side'
 function ProductDetails({match}) {
 
     const productIdFromParams = match.params.id
-    const { products }  = useSelector(state => state.products) || null
+    const products  = useSelector(state => state.products) || null
 
     const getDataFromRedux = (id = productIdFromParams) => [...products].find(product => product._id === id)
     

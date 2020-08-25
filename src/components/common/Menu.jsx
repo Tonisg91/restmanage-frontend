@@ -33,36 +33,29 @@ function Menu(props) {
     const [editForm, setEditForm] = useState(editFormInitialState)
     const [isEditing, setIsEditing] = useState(false)
 
-    const {products} = useSelector(state => state.products)
+    const products = useSelector(state => state.products)
     const dispatch = useDispatch()
 
     const sendDataToRedux = data => dispatch({
         type: 'SET_PRODUCTS',
         payload: data
     })
-
-    const getProductsAndDispatch = (cb = sendDataToRedux) => {
+    const getProductsAndDispatch = (cb = sendDataToRedux, forceWhenEdit = false) => {
         //TODO: Si ya hay productos, no repetir la llamada.
         if (!products.length) productService.getAllProducts(cb)
+        if (forceWhenEdit) productService.getAllProducts(cb)
         return
     }
     
     useEffect(getProductsAndDispatch, [])
 
     const uniqueCategories = [...new Set(products.map(e => e.category))]
-    
-    const renderProductsClientSide = products.length ? 
-        products.map(product => (
-            <ClientProduct product={product} key={product._id}/>
-        )) : 
-        null
 
     const renderCategoriesClientSide = products.length ?
         uniqueCategories.map(category => (
             <Category category={category} key={category}/>
         )) : 
         null
-
 
     const actionForm = !isEditing ? 
             <AddProduct
@@ -73,13 +66,12 @@ function Menu(props) {
                 categoryList={uniqueCategories}
             /> :
             <EditProduct 
-                updateList={getProductsAndDispatch}
+                updateList={() => getProductsAndDispatch(sendDataToRedux, true)}
                 setForm={setEditForm}
                 form={editForm}
                 initialState={editFormInitialState}
                 setIsEditing={setIsEditing}
             />
-
 
     if (isAdminRoute(props.match.path)) {
         return (

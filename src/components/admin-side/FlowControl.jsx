@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function FlowControl(props) {
-    const {user} = useSelector(state => state.user)
+    const user = useSelector(state => state.user)
 
     if (!user) {
         return <Redirect to="/login"/>

@@ -8,27 +8,23 @@ import { createStore, combineReducers } from 'redux'
 import './index.css'
 
 
-  const initialUser = {
-    user: JSON.parse(localStorage.getItem('currentUser')) || null
-  }
+  const initialUser = JSON.parse(localStorage.getItem('currentUser')) || null
 
-  const initialProducts = {
-    products: []
-  }
+  const initialProducts = []
 
-  const userHandler = (state = initialUser, action) => {
+  const userReducer = (state = initialUser, action) => {
     switch (action.type) {
       case 'LOG_USER':
-          return {...state, user: action.payload}
+          return action.payload
       default:
           return state
     }
   }
 
-  const productsHandler = (state = initialProducts, action) => {
+  const productsReducer = (state = initialProducts, action) => {
     switch (action.type) {
       case 'SET_PRODUCTS':
-        return {...state, products: action.payload}
+        return  action.payload
       default:
         return state
     }
@@ -36,8 +32,8 @@ import './index.css'
 
 
   const allReducers = combineReducers({
-    user: userHandler,
-    products: productsHandler
+    user: userReducer,
+    products: productsReducer
   })
 
   const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

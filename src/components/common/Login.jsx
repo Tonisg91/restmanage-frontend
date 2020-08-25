@@ -7,8 +7,6 @@ import  { StyledLoginSignup } from '../styled-components/common-side'
 function Login(props) {
     const dispatch = useDispatch()
     const history = useHistory()
-    const { user } = useSelector(state => state.user)
-    
     const initialState = {
         email: '',
         password: ''

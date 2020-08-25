@@ -5,7 +5,7 @@ import { StyledClientMenu } from '../../styled-components/client-side'
 
 function ProductList({match}) {
 
-    const { products } = useSelector(state => state.products)
+    const products = useSelector(state => state.products)
     const categoryFinded = match.params.category
 
     const productsMatchWithCategory = products.filter(product => product.category === categoryFinded)

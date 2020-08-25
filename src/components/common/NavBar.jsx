@@ -7,7 +7,7 @@ import { StyledAdminNav } from  '../styled-components/admin-side'
 
 function NavBar() {
     const {pathname} = useLocation()
-    const {user} = useSelector(state => state.user)
+    const user = useSelector(state => state.user)
     const [showSidenav, setShowSidenav] = useState(false)
 
     const isClientHome = pathname === '/'

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import userAuth from '../../tools/userAuth.js'
 
 function Profile() {
     const history = useHistory()
-    const { user } = useSelector(state => state.user)
+    const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
 
     const [ userData, setUserData ] = useState(user)
     
@@ -20,7 +21,11 @@ function Profile() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        userAuth.updateUser(userData)
+        const authCB = data => dispatch({
+            type: 'LOG_USER',
+            payload: data
+        })
+        userAuth.updateUser(userData, authCB)
     }
 
     const logoutAndRedirectToHome = () => {
@@ -85,8 +90,9 @@ function Profile() {
             </form>
 
             <button 
+                className="btn btn-red"
                 onClick={logoutAndRedirectToHome}>
-                    Cerrar sesion
+                    CERRAR SESIÓN
             </button>
         </div>
     )

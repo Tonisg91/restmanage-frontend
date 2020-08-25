@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 function Category({category}) {
     const history = useHistory()
-    const { products } = useSelector(state => state.products)
+    const products = useSelector(state => state.products)
 
     const productMatchWithCategory = products.find(product => product.category === category)
     const { image } = productMatchWithCategory

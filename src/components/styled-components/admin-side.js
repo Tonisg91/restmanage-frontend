@@ -55,9 +55,6 @@ const StyledAdminMenu = styled.div`
         text-align: center;
         margin: .4em 0;
     }
-    .MuiInput-underline:before {
-        border: none;
-    }
     @media (min-width: 768px) {
         display: grid;
         grid-template-areas: 
