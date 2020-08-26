@@ -12,6 +12,8 @@ import './index.css'
 
   const initialProducts = []
 
+  const initialCart = []
+
   const userReducer = (state = initialUser, action) => {
     switch (action.type) {
       case 'LOG_USER':
@@ -30,10 +32,20 @@ import './index.css'
     }
   }
 
+  const cartReducers = (state = initialCart, action) => {
+    switch (action.type) {
+      case 'ADD_PRODUCT':
+        return action.payload
+      default:
+        return state
+    }
+  }
+
 
   const allReducers = combineReducers({
     user: userReducer,
-    products: productsReducer
+    products: productsReducer,
+    cart: cartReducers
   })
 
   const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

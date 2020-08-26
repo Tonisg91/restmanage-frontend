@@ -37,8 +37,6 @@ function Profile() {
 
     const {name, email, city, street, number, door} = userData
 
-
-
     return (
         <StyledProfile>
             <h1 className="title">Mi cuenta</h1>
