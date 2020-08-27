@@ -10,6 +10,7 @@ import ProductDetails from './components/client-side/products/ProductDetails'
 import './App.css'
 import ProductList from './components/client-side/products/ProductList';
 import Profile from './components/common/Profile';
+import Cart from './components/client-side/cart/Cart';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             path="/admin"
             render={(props) => <FlowControl children={<Home {...props} />} />}
           />
+        <Route exact path="/cart" component={Cart}/>
         <Route exact path="/menu" component={Menu} />
         <Route path="/menu/product/:id" component={ProductDetails} />
         <Route path="/menu/:category" component={ProductList} />

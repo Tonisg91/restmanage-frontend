@@ -12,7 +12,7 @@ import './index.css'
 
   const initialProducts = []
 
-  const initialCart = []
+  const initialCart = JSON.parse(localStorage.getItem('currentCart')) || []
 
   const userReducer = (state = initialUser, action) => {
     switch (action.type) {
@@ -35,7 +35,7 @@ import './index.css'
   const cartReducers = (state = initialCart, action) => {
     switch (action.type) {
       case 'ADD_PRODUCT':
-        return action.payload
+        return [...state, action.payload]
       default:
         return state
     }

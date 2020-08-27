@@ -63,6 +63,23 @@ const StyledClientMenu = styled.div`
             border-radius: 0 0 25px 0;
             padding: .8em 0;
         }
+        .text-container p {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: .25em 0;
+        }
+        .text-container div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 1.4em;
+        }
+        .text-container i {
+            font-size: 1.6em;
+        }
+        a {
+            color: black;
+        }
     `
 
 const StyledClientNav = styled.nav`
@@ -124,13 +141,16 @@ const StyledClientSingleProduct = styled.div`
 const StyledClientProductDetails = styled.div`
     min-height: 100vh;
 `
-
+const StyledClientCart = styled.div`
+    min-height: 100vh;
+`
 
 
 export  {
     StyledClientHome,
     StyledClientMenu,
     StyledClientNav,
+    StyledClientCart,
     StyledClientProductList,
     StyledClientProductDetails,
     StyledClientSingleProduct

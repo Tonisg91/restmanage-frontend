@@ -15,7 +15,7 @@ function Category({category}) {
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
             </div>
             <div className="text-container">
-                <h4>{category}</h4>
+                <h2>{category}</h2>
             </div>
         </div>
     )

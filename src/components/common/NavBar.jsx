@@ -80,6 +80,12 @@ function NavBar() {
                     <p>Menu</p>
                 </div>
             </NavLink>
+            <NavLink to="/cart">
+                <div className="nav-element">
+                    <i className="fas fa-shopping-cart"></i>
+                    <p>Carrito</p>
+                </div>
+            </NavLink>
             {userLogged}
         </StyledClientNav>
     )
