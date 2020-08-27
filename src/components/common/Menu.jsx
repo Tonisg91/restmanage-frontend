@@ -7,7 +7,6 @@ import { StyledAdminMenu } from '../styled-components/admin-side'
 import CategoryList from '../admin-side/CategoryList'
 import Category from '../client-side/products/Category'
 import AdminProduct  from '../admin-side/AdminProduct'
-import ClientProduct from '../client-side/products/ClientProduct'
 import productService from '../../tools/productService'
 import EditProduct from '../admin-side/EditProduct'
 

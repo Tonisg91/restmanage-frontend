@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import userAuth from '../../tools/userAuth'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory, Link } from 'react-router-dom'
 import  { StyledLoginSignup } from '../styled-components/common-side'
 
-function Login(props) {
+function Login() {
     const dispatch = useDispatch()
     const history = useHistory()
     const initialState = {

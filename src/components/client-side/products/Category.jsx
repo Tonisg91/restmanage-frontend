@@ -4,10 +4,9 @@ import { useHistory } from 'react-router-dom'
 
 function Category({category}) {
     const history = useHistory()
-    const products = useSelector(state => state.products)
+    const currentCategories = useSelector(state => state.products).find(product => product.category === category)
 
-    const productMatchWithCategory = products.find(product => product.category === category)
-    const { image } = productMatchWithCategory
+    const { image } = currentCategories
 
     const redirectToProductList = () => history.push(`/menu/${category}`)
 

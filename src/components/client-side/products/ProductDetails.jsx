@@ -1,24 +1,33 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import productService from  '../../../tools/productService'
-import ClientProduct from './ClientProduct'
-import { StyledClientSingleProduct } from '../../styled-components/client-side'
+import { StyledClientProductDetails } from '../../styled-components/client-side'
+import { useState, useEffect } from 'react'
 
 function ProductDetails({match}) {
+    const {id: currentProductId} = match.params
 
-    const productIdFromParams = match.params.id
-    const products  = useSelector(state => state.products) || null
+    const useSelectedProduct = (productId = currentProductId) => {
+        const products = useSelector(state => state.products)
+        const productSelected = products.length ? products.find(({ _id }) => _id === productId) : []
+        const [currentProduct, setCurrentProduct] = useState(productSelected)
+        const hasStoredProduct = currentProduct.length
 
-    const getDataFromRedux = (id = productIdFromParams) => [...products].find(product => product._id === id)
-    
-    const getDataFromAxios = async (id = productIdFromParams) => await productService.getSingleProduct(id)
+        useEffect(() => {
+            if (!hasStoredProduct) {
+                productService.getSingleProduct(productId).then(setCurrentProduct)
+            }
+        }, [hasStoredProduct])
 
-    const singleProduct = !products.length ?  getDataFromAxios() : getDataFromRedux()
+        return currentProduct
+    }
+
+    const {name} = useSelectedProduct()
 
     return (
-        <StyledClientSingleProduct>
-            <ClientProduct product={singleProduct}/>
-        </StyledClientSingleProduct>
+        <StyledClientProductDetails>
+            <h1>{name}</h1>
+        </StyledClientProductDetails>
     )
 }
 

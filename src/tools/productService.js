@@ -11,6 +11,11 @@ class ProductService {
                 cb(res.data)
             })
     }
+    
+    async getCategory(currentCategory) {
+        const { data } = await axios.get(`${this.URL}/category/${currentCategory}`)
+        return data
+    }
 
     async addProduct(data) {
         await axios.post(`${this.URL}/admin/addproduct`, data)
@@ -24,6 +29,7 @@ class ProductService {
         const { data } = await axios.get(`${this.URL}/product/${id}`) 
         return data
     }
+
 
     async deleteProduct(id, cb) {
         await axios.delete(`${this.URL}/deleteproduct/${id}`)

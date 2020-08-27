@@ -74,7 +74,7 @@ const StyledClientNav = styled.nav`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: var(--navbar);  /* fallback for old browsers */
+        background: var(--navbar);  
         border-radius: 10px 10px 0 0;
         .nav-element {
             text-align: center;
@@ -94,10 +94,13 @@ const StyledClientNav = styled.nav`
         }
     `
 
-const StyledClientSingleProduct = styled.div`
-    height: 100vh;
+const StyledClientProductList = styled.div`
+    min-height: 100vh;
     display: flex;
     justify-content: center;
+`
+
+const StyledClientSingleProduct = styled.div`
     .food-container {
         height: 100%;
         margin-top: 2em;
@@ -118,11 +121,17 @@ const StyledClientSingleProduct = styled.div`
     }
 `
 
+const StyledClientProductDetails = styled.div`
+    min-height: 100vh;
+`
+
 
 
 export  {
     StyledClientHome,
     StyledClientMenu,
     StyledClientNav,
+    StyledClientProductList,
+    StyledClientProductDetails,
     StyledClientSingleProduct
 }
