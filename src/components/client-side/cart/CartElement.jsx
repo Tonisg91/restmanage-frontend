@@ -1,0 +1,41 @@
+import React, {useState, useEffect} from 'react'
+import { StyledClientCartElement } from '../../styled-components/client-side'
+import { useSelector } from 'react-redux'
+import productService from '../../../tools/productService'
+
+function CartElement({element}) {
+  
+  const useCurrentCartElement = (productId = element) => {
+    const products = useSelector(state => state.products)
+    const productToShow = products.length ? products.find(({_id}) => (
+      _id === productId
+    )) : []
+    const [currentProduct, setCurrentProduct] = useState(productToShow)
+    const hasStoredProduct = productToShow.length
+
+    useEffect(() => {
+      if (!hasStoredProduct) {
+          productService.getSingleProduct(productId).then(setCurrentProduct)
+      }
+    }, [hasStoredProduct])
+
+    return currentProduct
+  }
+
+  const {name, price, image} = useCurrentCartElement()
+
+  return (
+    <StyledClientCartElement>
+      <div 
+        id="image-container"
+        style={{ backgroundImage: `url(${image})` }}/>
+      <div>
+        <p>{name}</p>
+        <p>{price} €</p>
+        <button className="btn btn-red">X</button>
+      </div>
+    </StyledClientCartElement>
+  )
+}
+
+export default CartElement

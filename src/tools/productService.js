@@ -8,7 +8,9 @@ class ProductService {
     getAllProducts(cb) {
         axios.get('http://localhost:3000/menu')
             .then(res => {
-                cb(res.data)
+                if (cb) return cb(res.data)
+
+                return res.data
             })
     }
     

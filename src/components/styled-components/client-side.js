@@ -145,6 +145,23 @@ const StyledClientCart = styled.div`
     min-height: 100vh;
 `
 
+const StyledClientCartElement = styled.div`
+    width: 100%;
+    display: flex;
+    #image-container {
+        width: 80px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+`
+
 
 export  {
     StyledClientHome,
@@ -153,5 +170,6 @@ export  {
     StyledClientCart,
     StyledClientProductList,
     StyledClientProductDetails,
-    StyledClientSingleProduct
+    StyledClientSingleProduct,
+    StyledClientCartElement
 }
