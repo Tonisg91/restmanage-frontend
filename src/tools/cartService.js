@@ -6,19 +6,17 @@ class CartService {
         this.localStoragePath = 'currentCart'
     }
 
-    toLocalStorage(productId) {
+    toLocalStorage(product) {
         const hasCurrentCart = localStorage.currentCart
-
-        if (!hasCurrentCart) return localStorage.setItem(this.localStoragePath, JSON.stringify([{id: productId, qty: 1}]))
+        if (!hasCurrentCart) return localStorage.setItem(this.localStoragePath, JSON.stringify([{product: product, qty: 1}]))
 
         const productList = JSON.parse(localStorage.currentCart)
-
-        const existentProduct = productList.find(e => e.id === productId)
+        const existentProduct = productList.find(e => e.product._id === product._id)
 
         if (existentProduct) {
-            productList.find(e => {
-                if (e.id === productId) {
-                    e.qty += 1
+            productList.map(e => {
+                if (e.product._id === product._id) {
+                    ++e.qty
                 }
                 return e
             })
@@ -26,11 +24,20 @@ class CartService {
             return
         }
 
-        localStorage.setItem(this.localStoragePath, JSON.stringify([...productList, { id: productId, qty: 1 }]))    
+        localStorage.setItem(this.localStoragePath, JSON.stringify([...productList, { product: product, qty: 1 }]))    
     }
 
     removeCartFromLocalStorage() {
         localStorage.removeItem(this.localStoragePath)
+    }
+
+    async sendCart(cart, clientId) {
+        const body = {
+            client: clientId || null,
+            products: cart
+        }
+        console.log(body)
+        await axios.post(`${this.URL}/generateorder`, body)
     }
 }
 

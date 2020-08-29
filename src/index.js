@@ -35,10 +35,10 @@ import './index.css'
   const cartReducers = (state = initialCart, action) => {
     switch (action.type) {
       case 'ADD_PRODUCT':
-        return [...state, { id: action.payload, qty: 1}]
+        return [...state, { product: action.payload, qty: 1}]
       case 'QTY_UP': 
         return Object.assign([], state.map(item => {
-          if (item.id === action.payload) {
+          if (item.product._id === action.payload._id) {
             item.qty += 1
           }
           return item;

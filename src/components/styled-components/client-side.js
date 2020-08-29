@@ -145,7 +145,7 @@ const StyledClientCart = styled.div`
     min-height: 100vh;
 `
 
-const StyledClientCartElement = styled.div`
+const StyledClientCartElement = styled.li`
     width: 100%;
     display: flex;
     #image-container {

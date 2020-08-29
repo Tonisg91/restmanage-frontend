@@ -25,10 +25,10 @@ function ClientProduct({product}) {
         })
     }
 
-    const action = (prodId) => currentCart.find(e => e.id === prodId) ? increaseQty(prodId) : addToCart(prodId)
+    const cartAction = (prod) => currentCart.find(e => e.product._id === prod._id) ? increaseQty(prod) : addToCart(prod)
 
 
-    window.scrollTo(0,0)
+    
     return (
         <div className="food-container border">
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
@@ -38,7 +38,7 @@ function ClientProduct({product}) {
                 <p>{price}€</p>
                 <div >
                     <Link to={`/menu/product/${_id}`}>Ver detalles</Link>
-                    <i className="fas fa-cart-arrow-down" onClick={() => action(_id)}/>
+                    <i className="fas fa-cart-arrow-down" onClick={() => cartAction(product)}/>
                 </div>
             </div>
         </div>
