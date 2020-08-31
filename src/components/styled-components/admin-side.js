@@ -128,14 +128,49 @@ const StyledAdminProduct = styled.li`
     .btn-container button:first-child {
         margin-right: .5em;
     }
-    @media (min-width: 768px) {
+`
 
+const StyledAdminOrders = styled.div`
+    margin: 0 1.5em;
+    padding-bottom: 1.5em;
+    h1, h2 {
+        text-align: center;
+        margin: .4em 0;
     }
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "top top"
+            "mid mid"
+            "bottom bottom";
+        grid-auto-rows: minmax(min-content, max-content);
+        gap: 12px 12px;
+        }
+        #header {
+            grid-area: header;
+        }
+        #pending-orders {
+            grid-area: top | 1 / 1 / 2 / 2;
+        }
+        #completed-orders {
+            grid-area: top | 1 / 2 / 2 / 3;
+        }
+        #list-title {
+            grid-area: mid;
+        }
+        #order-list {
+            grid-area: bottom;
+            max-height: 37vh;
+            overflow: scroll;
+        }
 `
 
 export {
     StyledAdminNav,
     StyledAdminMenu,
     StyledAddProductForm,
-    StyledAdminProduct
+    StyledAdminProduct,
+    StyledAdminOrders
+
 }

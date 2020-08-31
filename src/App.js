@@ -8,9 +8,12 @@ import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
 import ProductDetails from './components/client-side/products/ProductDetails'
 import './App.css'
-import ProductList from './components/client-side/products/ProductList';
-import Profile from './components/common/Profile';
-import Cart from './components/client-side/cart/Cart';
+import ProductList from './components/client-side/products/ProductList'
+import Profile from './components/common/Profile'
+import Cart from './components/client-side/cart/Cart'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import Orders from './components/admin-side/Orders/Orders';
 
 
 function App() {
@@ -34,16 +37,24 @@ function App() {
               <FlowControl children={<Menu {...props} />  }/>
             }
         />
+        <Route
+          path="/admin/orders"
+          render={(props) =>
+            <FlowControl children={<Orders {...props} />} />
+          }
+        />
+        <Route
+          path="/admin/signup"
+          render={(props) => 
+            <FlowControl children={<Signup {...props} /> }/>
+          }
+        />
+
         <Route path="/signup" component={Signup} />
-          <Route
-            path="/admin/signup"
-            render={(props) => 
-                <FlowControl children={<Signup {...props} /> }/>
-            }
-          />
         <Route path="/login" component={Login} /> 
         <Route path="/profile" component={Profile} />
       </Switch>
+        <ToastContainer/>
     </main>
   );
 }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 class CartService {
     constructor() {
@@ -31,13 +32,21 @@ class CartService {
         localStorage.removeItem(this.localStoragePath)
     }
 
-    async sendCart(cart, clientId) {
+    async sendCart(cart, clientId, totalAmount) {
         const body = {
             client: clientId || null,
-            products: cart
+            products: cart,
+            amount: totalAmount
         }
-        console.log(body)
-        await axios.post(`${this.URL}/generateorder`, body)
+        const response = await axios.post(`${this.URL}/generateorder`, body)
+        this.removeCartFromLocalStorage()
+        switch (response.status) {
+            case 200:
+                return alert('Pedido realizado con éxito.')
+            default:
+                alert('Error al realizar el pedido')
+                break;
+        }
     }
 }
 

@@ -34,9 +34,9 @@ function NavBar() {
 
     const openNav = (isOpen = showSidenav) =>  document.getElementById("sidenav").style.width = isOpen ? "0" : "250px"
 
-    const rotateIcon = ({target}) => {
+    const rotateIcon = () => {
         setShowSidenav(state => !state)
-        const action = (degrees) => target.style.transform = `rotate(${degrees}deg)`
+        const action = (degrees) => document.getElementById('button-sidenav').style.transform = `rotate(${degrees}deg)`
         !showSidenav ? action(90) : action(0)
         openNav()
     }
@@ -54,9 +54,10 @@ function NavBar() {
                     <Link to="/">Vista Cliente</Link>
                 </div>
                 <div id="sidenav">
-                    <NavLink  exact to="/admin">Home Administrador</NavLink>
-                    <NavLink to="/admin/menu">Carta</NavLink>
-                    <NavLink to="/admin/profile">Mi Cuenta</NavLink>
+                    <NavLink  exact to="/admin" onClick={rotateIcon}>Home Administrador</NavLink>
+                    <NavLink to="/admin/menu" onClick={rotateIcon}>Carta</NavLink>
+                    <NavLink to="/admin/orders" onClick={rotateIcon}>Pedidos</NavLink>
+                    <NavLink to="/admin/profile" onClick={rotateIcon}>Mi Cuenta</NavLink>
                 </div>
             </StyledAdminNav>
         )

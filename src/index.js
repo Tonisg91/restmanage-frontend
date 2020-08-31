@@ -43,8 +43,15 @@ import './index.css'
           }
           return item;
         }))
-
-
+      case 'QTY_DWN':
+        return Object.assign([], state.map(item => {
+          if (item.product._id === action.payload._id) {
+            item.qty -= 1
+          }
+          return item;
+        }))
+      case 'EMPTY_CART':
+        return []
       default:
         return state
     }
