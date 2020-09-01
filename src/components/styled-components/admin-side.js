@@ -51,6 +51,9 @@ const StyledAdminNav = styled.nav`
 const StyledAdminMenu = styled.div`
     margin: 0 1.5em;
     padding-bottom: 1.5em;
+    .field {
+        padding: .5em 0;
+    }
     h1, h2 {
         text-align: center;
         margin: .4em 0;
@@ -81,6 +84,9 @@ const StyledAdminMenu = styled.div`
             grid-area: bottom;
             max-height: 37vh;
             overflow: scroll;
+        }
+        .field {
+            padding: 0;
         }
     }
 `

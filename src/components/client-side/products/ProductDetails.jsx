@@ -14,19 +14,28 @@ function ProductDetails({match}) {
         const hasStoredProduct = currentProduct.length
 
         useEffect(() => {
-            if (!hasStoredProduct) {
-                productService.getSingleProduct(productId).then(setCurrentProduct)
-            }
+            if (!hasStoredProduct) productService.getSingleProduct(productId).then(setCurrentProduct)
         }, [hasStoredProduct])
 
         return currentProduct
     }
 
-    const {name} = useSelectedProduct()
+    const {name, description, image, price} = useSelectedProduct()
 
     return (
         <StyledClientProductDetails>
-            <h1>{name}</h1>
+            <div
+                id="image-container"
+                style={{ backgroundImage: `url(${image})` }} 
+            />
+            <div id="product-info">
+                <h1>{name}</h1>
+                <p>{description}</p>
+                <div id="action-container">
+                    <p id="price">{price} €</p>
+                    <button className="btn btn-blue">AÑADIR AL CARRITO</button>
+                </div>
+            </div>
         </StyledClientProductDetails>
     )
 }

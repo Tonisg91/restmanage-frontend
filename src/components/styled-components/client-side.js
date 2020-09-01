@@ -137,17 +137,119 @@ const StyledClientSingleProduct = styled.div`
         font-size: 1.5em;
     }
 `
-
+//TODO: ESTILOS PARTE INFO PRODUCT-DETAILS
 const StyledClientProductDetails = styled.div`
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #image-container {
+        width: 90%;
+        height: 45vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 2.5em 0;
+    }
+
+    #product-info {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 25px;
+        
+        padding: 2em 0;
+        & p {
+            padding: .5em 0;
+        }
+        #price {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #image-container {
+            background-size: contain;
+        }
+    }
 `
 const StyledClientCart = styled.div`
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 90%;
+    grid-template-areas: 
+        "header"
+        "mid"
+        "bottom"
+    ;
+    justify-content: center;
+    grid-row-gap: 40px;
+    
+    #title {
+        grid-area: header;
+        display: flex;
+        justify-content: center;
+        & h1 {
+            padding-top: 1em;
+        }
+    }
+
+    #no-content {
+        grid-area: mid;
+        text-align: center;
+        & p {
+            margin: 1em 0;
+            font-size: 1.1em;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+    }
+
+    #cart-container {
+        grid-area: mid;
+        max-height: 100%;
+        overflow: scroll;
+    }
+
+    #action-container {
+        grid-area: bottom;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    #amount-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5em;
+        & p {
+            padding-left: 1em;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+    }
+    #action-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    #action-buttons button {
+        padding: 1.2em;
+    }
 `
 
 const StyledClientCartElement = styled.li`
     width: 100%;
     display: flex;
+    justify-content: space-between;
     #image-container {
         width: 80px;
         background-size: cover;
@@ -159,6 +261,15 @@ const StyledClientCartElement = styled.li`
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-right: .5em;
+    }
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+    i {
+        background: transparent;
+        color: blue;
     }
 `
 

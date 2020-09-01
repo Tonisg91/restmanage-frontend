@@ -7,13 +7,13 @@ import productService from '../../../tools/productService'
 function ProductList({match}) {
     const {category: currentCategory} = match.params
 
-    const useSelectedProductList = currentCategory  => {
-        const storedProducts = useSelector(state => state.products.filter(({ category }) => category === currentCategory))
+    const useSelectedProductList = (category = currentCategory) => {
+        const storedProducts = useSelector(state => state.products.filter(({ cat }) => cat === category))
         const [currentProducts, setCurrentProducts] = useState(storedProducts)
         const hasStoredProducts = storedProducts.length
+
         useEffect(() => {
-            if (!hasStoredProducts) productService.getCategory(currentCategory)
-                                                    .then(setCurrentProducts)
+            if (!hasStoredProducts) productService.getCategory(category).then(setCurrentProducts)
         }, [hasStoredProducts])
         return currentProducts
     }

@@ -14,9 +14,7 @@ function CartElement({element, qty}) {
       const hasStoredProduct = productToShow.length
 
       useEffect(() => {
-        if (!hasStoredProduct) {
-            productService.getSingleProduct(productId).then(setCurrentProduct)
-        }
+        if (!hasStoredProduct) productService.getSingleProduct(productId).then(setCurrentProduct)
       }, [hasStoredProduct])
 
       return currentProduct
@@ -28,12 +26,13 @@ function CartElement({element, qty}) {
       <StyledClientCartElement>
         <div 
           id="image-container"
-          style={{ backgroundImage: `url(${image})` }}/>
+          style={{ backgroundImage: `url(${image})` }}
+        />
         <div>
           <p>{name}</p>
-          <p>Cantidad {qty} x {price} €</p>
-          <button className="btn btn-red">X</button>
+          <p>{qty} x {price} €</p>
         </div>
+          <button className="btn btn-red">X</button>
       </StyledClientCartElement>
     )
 }

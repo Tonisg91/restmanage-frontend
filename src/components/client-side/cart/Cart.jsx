@@ -4,7 +4,7 @@ import CartElement from './CartElement'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientCart } from '../../styled-components/client-side'
 import cartService from '../../../tools/cartService'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 function Cart() { 
     const currentCart = useSelector(state => state.cart)
@@ -44,28 +44,36 @@ function Cart() {
         <CartElement element={e.product} qty={e.qty} key={e.product._id}/>
         ))
         
-    const hasCartContent = currentCart.length ? <GenericTable content={renderCartElement} /> : <p>No tienes ningun producto en tu carrito</p>
+    const hasCartContent = currentCart.length ? <GenericTable content={renderCartElement} /> : <div id="no-content"><p>No tienes ningun producto en tu carrito</p> <button className="btn btn-blue"><Link to="/menu">Vamos a ver la carta!</Link></button></div>
 
 
 
     return (
         <StyledClientCart>
-            <h1>Cart</h1>
-            {hasCartContent}
-            <div>
-                <h3>Total</h3>
-                <p>{totalAmount} €</p>
-                <button 
-                    className="btn btn-blue"
-                    onClick={() => sendOrder(currentCart, user._id || null)}
+            <div id="title">
+                <h1>Tu pedido</h1>
+            </div>
+            <div id="cart-container">
+                {hasCartContent}
+            </div>
+            <div id="action-container">
+                <div id="amount-container">
+                    <h2>Total</h2>
+                    <p>{totalAmount} €</p>
+                </div>
+                <div id="action-buttons">
+                    <button
+                        className="btn btn-red"
+                        onClick={emptyCart}
+                    >
+                        VACIAR CARRITO
+                </button>
+                    <button
+                        className="btn btn-blue"
+                        onClick={() => sendOrder(currentCart, user._id || null)}
                     >REALIZAR PEDIDO
                 </button>
-                <button
-                    className="btn btn-red"
-                    onClick={emptyCart}
-                >
-                    VACIAR CARRITO
-                </button>
+                </div>
             </div>
         </StyledClientCart>
     )
