@@ -52,12 +52,17 @@ const StyledAdminMenu = styled.div`
     margin: 0 1.5em;
     padding-bottom: 1.5em;
     .field {
-        padding: .5em 0;
+        margin: 1.5em 0;
     }
     h1, h2 {
         text-align: center;
         margin: .4em 0;
     }
+    #product-list {
+        max-height: 350px;
+        overflow: scroll;
+    }
+
     @media (min-width: 768px) {
         display: grid;
         grid-template-areas: 
@@ -67,7 +72,6 @@ const StyledAdminMenu = styled.div`
             "bottom bottom";
         grid-auto-rows: minmax(min-content, max-content);
         gap: 12px 12px;
-        }
         #header {
             grid-area: header;
         }
@@ -82,11 +86,11 @@ const StyledAdminMenu = styled.div`
         }
         #product-list {
             grid-area: bottom;
-            max-height: 37vh;
+            max-height: 37vh ;
             overflow: scroll;
         }
         .field {
-            padding: 0;
+            margin: 0;
         }
     }
 `
@@ -131,28 +135,65 @@ const StyledAdminProduct = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .btn-container button:first-child {
+    .btn-container button {
         margin-right: .5em;
     }
 `
 
 const StyledAdminOrders = styled.div`
-    margin: 0 1.5em;
-    padding-bottom: 1.5em;
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "top"
+        "mid"
+        "bottom"
+    ;
+    grid-template-rows: minmax(min-content, max-content);
+    padding: 0 1em;
     h1, h2 {
         text-align: center;
-        margin: .4em 0;
+    }
+    .field {
+        margin: .8em 0;
+        & h2 {
+            margin-bottom: .4em;
+        }
+        table {
+            width: 100%;
+        }
+        div {
+            max-height: 250px;
+            overflow: scroll;
+        }
+    }
+    table {
+            border-collapse: collapse;
+        }
+    tr {
+        border-bottom: solid transparent .5em;
+        text-align: center;
+        &:nth-child(even) {
+        background-color: lightgray;
+    }
+    }
+    #header {
+        grid-area: header;
+        margin-top: 1em;
     }
     @media (min-width: 768px) {
         display: grid;
+        min-height: 93.8vh;
         grid-template-areas: 
             "header header"
             "top top"
-            "mid mid"
-            "bottom bottom";
+            "bottom bottom"
+            ;
         grid-auto-rows: minmax(min-content, max-content);
         gap: 12px 12px;
+        .field div {
+            max-height: 400px;
         }
+        
         #header {
             grid-area: header;
         }
@@ -162,14 +203,15 @@ const StyledAdminOrders = styled.div`
         #completed-orders {
             grid-area: top | 1 / 2 / 2 / 3;
         }
-        #list-title {
-            grid-area: mid;
-        }
         #order-list {
             grid-area: bottom;
             max-height: 37vh;
             overflow: scroll;
+            & tbody td {
+                text-align: center;
+            }
         }
+    }
 `
 
 export {

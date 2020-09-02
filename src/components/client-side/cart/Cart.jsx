@@ -4,7 +4,7 @@ import CartElement from './CartElement'
 import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientCart } from '../../styled-components/client-side'
 import cartService from '../../../tools/cartService'
-import { useHistory, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Cart() { 
     const currentCart = useSelector(state => state.cart)

@@ -14,6 +14,7 @@ import Cart from './components/client-side/cart/Cart'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Orders from './components/admin-side/Orders/Orders';
+import OrderDetails from './components/admin-side/Orders/OrderDetails';
 
 
 function App() {
@@ -38,9 +39,16 @@ function App() {
             }
         />
         <Route
+          exact
           path="/admin/orders"
           render={(props) =>
             <FlowControl children={<Orders {...props} />} />
+          }
+        />
+        <Route
+          path="/admin/orders/:id"
+          render={(props) =>
+            <FlowControl children={<OrderDetails {...props} />} />
           }
         />
         <Route

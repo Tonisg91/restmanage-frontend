@@ -10,13 +10,13 @@ class OrdersService {
         return orders.data
     }
 
-    async getFinishedOrders() {
-        const orders = await axios.get(`${this.URL}/getfinishedorders`)
+    async getOrdersInProgress() {
+        const orders = await axios.get(`${this.URL}/getordersinprogress`)
         return orders.data
     }
 
-    async getActiveOrders() {
-        const orders = await axios.get(`${this.URL}/getactiveorders`)
+    async getIncomingOrders() {
+        const orders = await axios.get(`${this.URL}/getincomingorders`)
         return orders.data
     }
 

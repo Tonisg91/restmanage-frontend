@@ -1,35 +1,46 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 function OrdersTable({orders, orderState}) {
+    const history = useHistory()
 
-    const currentOrders = orders.map(({easyId, createdAt}) => (
+    const redirectToDetails = (orderId) => history.push(`/admin/orders/${orderId}`)
+    const getDate = (orderTimestamp) => new Date(orderTimestamp).toLocaleDateString()
+
+    const currentOrders = orders.map(({easyId, createdAt, _id}) => (
         <tr key={easyId}>
             <th>{easyId}</th>
             <td>Pendiente</td>
-            <td>{new Date(createdAt).toLocaleDateString()}</td>
-            <td><button className="btn btn-red">Finalizar</button></td>
+            <td>{getDate(createdAt)}</td>
+            <td>
+                <button 
+                    className="btn btn-blue" 
+                    onClick={() => redirectToDetails(_id)}
+                    >Ver Detalles
+                </button>
+            </td>
         </tr>
     ))
 
-    const finishedOrders = orders.map(({ easyId, createdAt }) => (
+    const finishedOrders = orders.map(({ easyId, createdAt, _id }) => (
         <tr key={easyId}>
             <th>{easyId}</th>
             <td>Finalizado</td>
-            <td>{new Date(createdAt).toLocaleDateString()}</td>
-            <td><button className="btn btn-blue">Ver Detalles</button></td>
+            <td>{getDate(createdAt)}</td>
+            <td><button className="btn btn-blue" onClick={() => redirectToDetails(_id)}>Ver Detalles</button></td>
         </tr>
     ))
 
-    const allOrders = orders.map(({ easyId, isFinished, createdAt }) => (
+    const allOrders = orders.map(({ easyId, isFinished, createdAt, _id }) => (
         <tr key={easyId}>
             <th>{easyId}</th>
-            <td>{isFinished ? 'Finalizada' : 'Pendiente'}</td>
-            <td>{new Date(createdAt).toLocaleDateString()}</td>
-            <td><button className="btn btn-blue">Ver Detalles</button></td>
+            <td>{isFinished ? 'Finalizado' : 'Pendiente'}</td>
+            <td>{getDate(createdAt)}</td>
+            <td><button className="btn btn-blue" onClick={() => redirectToDetails(_id)}>Ver Detalles</button></td>
         </tr>
     ))
 
-    const determineOrderKindToShow = (stateFromProps = orderState) => {
+    const determineOrderKindToDisplay = (stateFromProps = orderState) => {
         switch (stateFromProps) {
             case 'pending':
                 return currentOrders
@@ -51,7 +62,7 @@ function OrdersTable({orders, orderState}) {
                 </tr>
             </thead>
             <tbody>
-                {determineOrderKindToShow()}
+                {determineOrderKindToDisplay()}
             </tbody>
         </table>
     )
