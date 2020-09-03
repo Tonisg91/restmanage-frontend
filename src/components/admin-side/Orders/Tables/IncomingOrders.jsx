@@ -1,41 +1,26 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import OrdersTable from './OrdersTable'
 
-function IncomingOrders({orders}) {
-    const history = useHistory()
-
-    const redirectToDetails = (orderId) => history.push(`/admin/orders/${orderId}`)
-    const getTime = (orderTimestamp) => new Date(orderTimestamp).toLocaleTimeString()
+function IncomingOrders({orders, cb}) {
+    const tableHeads = ['Pedido', 'H.Entrada']
 
     const currentOrders = orders.map(({easyId, createdAt, _id}) => (
         <tr key={easyId}>
             <th>{easyId}</th>
-            <td>{getTime(createdAt)}</td>
+            <td>{cb.getTime(createdAt)}</td>
             <td>
                 <button
                     className="btn btn-blue"
-                    onClick={() => redirectToDetails(_id)}
+                    onClick={() => cb.redirectToDetails(_id)}
                 >Ver Detalles
                 </button>
             </td>
         </tr>
     ))
 
-
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Pedido</th>
-                    <th>H.Entrada</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {currentOrders}
-            </tbody>
-        </table>
-    )
+        return (
+            <OrdersTable tableheads={tableHeads} tbody={currentOrders}/>
+        )
 }
 
 export default IncomingOrders
