@@ -20,6 +20,15 @@ class OrdersService {
         return orders.data
     }
 
+    async getSingleOrder(id) {
+        const singleOrder = await axios.get(`${this.URL}/getsingleorder/${id}`)
+        return singleOrder.data
+    }
+
+    startOrder(id) {
+        axios.post(`${this.URL}/startorder/${id}`)
+    }
+
     finishOrder(id) {
         axios.post(`${this.URL}/finishorder/${id}`)
     }

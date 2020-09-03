@@ -214,11 +214,80 @@ const StyledAdminOrders = styled.div`
     }
 `
 
+const StyledAdminSingleOrder = styled.div`
+    min-height: 93.5vh;
+    text-align: center;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .container {
+        width: 100%;
+        padding: 1em 2em;
+    }
+    .list-element {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn {
+        margin: .2em 0;
+        font-size: 2em;
+    }
+    #ticket {
+        background-color: white;
+        width: 430px;
+        padding: 2em 0;
+    }
+    #restaurant-logo {
+        margin: .75em 0;
+    }
+    i {
+        font-size: 3em;
+    }
+    #order-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #product-list {
+        border: none;
+        min-height: 75px;   
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+    & li:nth-child(even) {
+        background-color: white;
+        }
+        li {
+            width: 100%;
+            margin: .5em 0;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+    }
+    #amount-container {
+        text-align: right;
+    }
+    #action-container {
+        margin-top: 2em;
+        & div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    
+`
+
 export {
     StyledAdminNav,
     StyledAdminMenu,
     StyledAddProductForm,
     StyledAdminProduct,
-    StyledAdminOrders
-
+    StyledAdminOrders,
+    StyledAdminSingleOrder
 }

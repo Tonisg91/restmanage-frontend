@@ -5,6 +5,7 @@ import { StyledAdminOrders } from '../../styled-components/admin-side'
 import InProgress from './Tables/InProgress'
 import IncomingOrders from './Tables/IncomingOrders'
 import AllOrders from './Tables/AllOrders'
+import dateService from '../../../tools/dateService'
 
 function Orders() {
     const history = useHistory()
@@ -14,8 +15,8 @@ function Orders() {
 
     const ordersCb = {
         redirectToDetails: (orderId) => history.push(`/admin/orders/${orderId}`),
-        getTime: (timestamp) => new Date(timestamp).toLocaleTimeString(),
-        getDate: (timestamp) => new Date(timestamp).toLocaleDateString()
+        getTime: (timestamp) => dateService.getTime(timestamp),
+        getDate: (timestamp) => dateService.getDate(timestamp)
     }
 
     const getAllOrders = () => {
