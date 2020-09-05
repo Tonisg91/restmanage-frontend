@@ -37,7 +37,7 @@ function Cart() {
 
 
     
-    const sendOrder = async (cart, id ) => {
+    const sendOrder = async (cart, id) => {
         if (cart.length) {
             await cartService.sendCart(cart, id, totalAmount)
             return emptyCart()
@@ -64,8 +64,6 @@ function Cart() {
         
     const hasCartContent = currentCart.length ? <GenericTable content={renderCartElement} /> : <div id="no-content"><p>No tienes ningun producto en tu carrito</p> <button className="btn btn-blue"><Link to="/menu">Vamos a ver la carta!</Link></button></div>
 
-
-
     return (
         <StyledClientCart>
             <div id="title">
@@ -86,10 +84,11 @@ function Cart() {
                     >
                         VACIAR CARRITO
                 </button>
-                    <button
-                        className="btn btn-blue"
-                        onClick={() => sendOrder(currentCart, user._id || null)}
-                    >REALIZAR PEDIDO
+                    
+                <button
+                    className="btn btn-blue"
+                    onClick={() => sendOrder(currentCart,  user ? user._id : null)}
+                >REALIZAR PEDIDO
                 </button>
                 </div>
             </div>

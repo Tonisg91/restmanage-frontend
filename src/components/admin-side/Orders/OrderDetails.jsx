@@ -12,7 +12,7 @@ function OrderDetails({match}) {
 
     const useOrderStored = (orderId = id) => {
         const [currentOrder, setCurrentOrder] = useState({})
-        const getOrderData = (orderId = id) => {ordersService.getSingleOrder(id).then(setCurrentOrder)}
+        const getOrderData = () => {ordersService.getSingleOrder(orderId).then(setCurrentOrder)}
         useEffect(getOrderData, [])
         return currentOrder
     }
@@ -93,7 +93,6 @@ function OrderDetails({match}) {
                     <h2>Estado actual: {displayStatus()}</h2>
                     <div>
                         {displayActionButton()}
-                        <button className="btn btn-blue">Imprimir Ticket</button>
                     </div>
 
                 </div>

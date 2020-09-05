@@ -1,7 +1,7 @@
 import React from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { isAdminRoute } from '../../tools/pathFunctions'
-import { StyledClientHome } from '../styled-components/client-side'
+import ClientHome from '../client-side/home/ClientHome'
 
 function Home() {
     const {pathname} = useLocation()
@@ -15,14 +15,7 @@ function Home() {
     }
 
     return (
-        <StyledClientHome>
-            <div className="title-container border">
-                <h1 className="title">Hamburguesería Random</h1>
-            </div>
-            <div className="button-container">
-                <Link to="/menu" className="border">Entrar</Link>
-            </div>
-        </StyledClientHome>
+        <ClientHome />
     )
 
 }

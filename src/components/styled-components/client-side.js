@@ -1,37 +1,64 @@
 import styled from 'styled-components'
 
+// const StyledClientHome = styled.div`
+//         height: 100vh;
+//         width: 100%;
+//         position: fixed;
+//         background-image: url('https://res.cloudinary.com/dkejgwlha/image/upload/v1597396527/RestManager/BeFunky-collage_3_fy8w03.jpg');
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: space-around;
+//         .title-container {
+//             width: 80%;
+//         }
+//         .title {
+//             color: white;
+//             text-align: center;
+//         }
+//         .button-container {
+//             padding-bottom: 2em;
+//         }
+//         .border {
+//             border: 2px dotted white;
+//             border-radius: 5px;
+//         }
+//         a {
+//             text-decoration: none;
+//             background: transparent;
+//             color: white;
+//             padding: .4em 3em;
+//             font-size: 1.2em;
+//             font-weight: bold;
+//         }
+//     `
+
 const StyledClientHome = styled.div`
-        height: 100vh;
-        width: 100%;
-        position: fixed;
-        background-image: url('https://res.cloudinary.com/dkejgwlha/image/upload/v1597396527/RestManager/BeFunky-collage_3_fy8w03.jpg');
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        .title-container {
-            width: 80%;
+        #logo-box {
+            height: 100px;
+            width: 100px;
+            background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599309212/RestManager/Logo_qmgumf.png");
+            background-repeat: no-repeat;
+            background-size: contain;
         }
-        .title {
-            color: white;
-            text-align: center;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            padding-top: 1em;
         }
-        .button-container {
-            padding-bottom: 2em;
+        nav i {
+            font-size: 30px;
+            margin-right: 1em;
         }
-        .border {
-            border: 2px dotted white;
-            border-radius: 5px;
-        }
-        a {
-            text-decoration: none;
-            background: transparent;
-            color: white;
-            padding: .4em 3em;
-            font-size: 1.2em;
-            font-weight: bold;
+        main {
+            
         }
     `
+
+
 
 const StyledClientMenu = styled.div`
         display: grid;
