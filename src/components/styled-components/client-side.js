@@ -53,8 +53,11 @@ const StyledClientHome = styled.div`
             font-size: 30px;
             margin-right: 1em;
         }
-        main {
-            
+        #sec-1-img {
+            height: 300px;
+            background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599309212/RestManager/Logo_qmgumf.png");
+            background-repeat: no-repeat;
+            background-size: contain;
         }
     `
 
