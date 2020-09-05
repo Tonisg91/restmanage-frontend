@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { toast } from 'react-toastify'
 
 class CartService {
     constructor() {
@@ -30,6 +29,11 @@ class CartService {
 
     removeCartFromLocalStorage() {
         localStorage.removeItem(this.localStoragePath)
+    }
+
+    removeElementFromCart(productIndex) {
+        const productListUpdated = JSON.parse(localStorage.currentCart).filter((elem, idx) => idx !== productIndex)
+        localStorage.setItem(this.localStoragePath, JSON.stringify([...productListUpdated]))
     }
 
     async sendCart(cart, clientId, totalAmount) {

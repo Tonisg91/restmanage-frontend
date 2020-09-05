@@ -2,7 +2,7 @@ import React from 'react'
 import { StyledAddProductForm } from '../styled-components/admin-side'
 import productService from '../../tools/productService'
 
-function AddProduct({updateList, form, setForm, initialState, categoryList}) {
+function AddProduct({updateList, form, setForm, initialState}) {
 
     const handleChange = ({target}) => {
         setForm({

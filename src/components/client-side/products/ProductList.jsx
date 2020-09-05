@@ -13,7 +13,7 @@ function ProductList({match}) {
         const hasStoredProducts = storedProducts.length
 
         useEffect(() => {
-            if (!hasStoredProducts) productService.getCategory(category).then(setCurrentProducts)
+            if (!hasStoredProducts) productService.getCategory(currentCategory).then(setCurrentProducts)
         }, [hasStoredProducts])
         return currentProducts
     }

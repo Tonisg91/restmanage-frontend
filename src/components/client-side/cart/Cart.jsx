@@ -22,10 +22,20 @@ function Cart() {
     }
 
     function emptyCart() {
+        cartService.removeCartFromLocalStorage()
         dispatch({
             type: 'EMPTY_CART'
         })
     }
+
+    function removeProductFromCart(idx) {
+        dispatch({
+            type: 'REMOVE_PRODUCT',
+            payload: idx
+        })
+    }
+
+
     
     const sendOrder = async (cart, id ) => {
         if (cart.length) {
@@ -39,9 +49,17 @@ function Cart() {
         setTotalAmount(getTotalAmount)
     }, [sendOrder])
 
-    
+
+    const removeElement = productToRemove => {
+        const productIndex = currentCart.findIndex(elem => elem.product === productToRemove)
+        removeProductFromCart(productIndex)
+        cartService.removeElementFromCart(productIndex)
+    }
+
+
+
     const renderCartElement = currentCart.map(e => (
-        <CartElement element={e.product} qty={e.qty} key={e.product._id}/>
+        <CartElement element={e.product} qty={e.qty} key={e.product._id} removeElement={removeElement}/>
         ))
         
     const hasCartContent = currentCart.length ? <GenericTable content={renderCartElement} /> : <div id="no-content"><p>No tienes ningun producto en tu carrito</p> <button className="btn btn-blue"><Link to="/menu">Vamos a ver la carta!</Link></button></div>

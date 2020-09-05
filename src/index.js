@@ -37,7 +37,7 @@ import './index.css'
       case 'ADD_PRODUCT':
         return [...state, { product: action.payload, qty: 1}]
       case 'QTY_UP': 
-        return Object.assign([], state.map(item => {
+        return Object.assign([], state.map(item => { 
           if (item.product._id === action.payload._id) {
             item.qty += 1
           }
@@ -50,6 +50,8 @@ import './index.css'
           }
           return item;
         }))
+      case 'REMOVE_PRODUCT':
+        return state.filter((elem, idx) => idx !== action.payload)
       case 'EMPTY_CART':
         return []
       default:

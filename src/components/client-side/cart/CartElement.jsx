@@ -3,7 +3,7 @@ import { StyledClientCartElement } from '../../styled-components/client-side'
 import { useSelector } from 'react-redux'
 import productService from '../../../tools/productService'
 
-function CartElement({element, qty}) {
+function CartElement({element, qty, removeElement}) {
   
     const useCurrentCartElement = (productId = element._id) => {
       const products = useSelector(state => state.products)
@@ -14,7 +14,7 @@ function CartElement({element, qty}) {
       const hasStoredProduct = productToShow.length
 
       useEffect(() => {
-        if (!hasStoredProduct) productService.getSingleProduct(productId).then(setCurrentProduct)
+        if (!hasStoredProduct) productService.getSingleProduct(element._id).then(setCurrentProduct)
       }, [hasStoredProduct])
 
       return currentProduct
@@ -32,7 +32,12 @@ function CartElement({element, qty}) {
           <p>{name}</p>
           <p>{qty} x {price} €</p>
         </div>
-          <button className="btn btn-red">X</button>
+          <button 
+            onClick={() => removeElement(element)}
+            className="btn btn-red"
+            >
+            X
+          </button>
       </StyledClientCartElement>
     )
 }

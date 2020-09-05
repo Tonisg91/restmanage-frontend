@@ -39,10 +39,10 @@ function Menu(props) {
         type: 'SET_PRODUCTS',
         payload: data
     })
-    const getProductsAndDispatch = (cb = sendDataToRedux, forceWhenEdit = false) => {
+    const getProductsAndDispatch = (cb = sendDataToRedux, forceUpdate = false) => {
         //TODO: Si ya hay productos, no repetir la llamada.
         if (!products.length) productService.getAllProducts(cb)
-        if (forceWhenEdit) productService.getAllProducts(cb)
+        if (forceUpdate) productService.getAllProducts(cb)
         return
     }
     
@@ -58,7 +58,7 @@ function Menu(props) {
 
     const actionForm = !isEditing ? 
             <AddProduct
-                updateList={getProductsAndDispatch}
+                updateList={() => getProductsAndDispatch(sendDataToRedux, true)}
                 setForm={setAddForm}
                 form={addForm}
                 initialState={addForminitialState}

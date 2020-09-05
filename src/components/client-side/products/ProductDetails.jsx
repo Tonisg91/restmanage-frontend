@@ -14,7 +14,7 @@ function ProductDetails({match}) {
         const hasStoredProduct = currentProduct.length
 
         useEffect(() => {
-            if (!hasStoredProduct) productService.getSingleProduct(productId).then(setCurrentProduct)
+            if (!hasStoredProduct) productService.getSingleProduct(currentProductId).then(setCurrentProduct)
         }, [hasStoredProduct])
 
         return currentProduct
