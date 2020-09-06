@@ -11,11 +11,13 @@ function Category({category}) {
     const redirectToProductList = () => history.push(`/menu/${category}`)
 
     return (
-        <div className="food-container border" onClick={redirectToProductList}>
+        <div 
+            className="food-container border" 
+            onClick={redirectToProductList}>
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
             </div>
             <div className="text-container">
-                <h2>{category}</h2>
+                <h3>{category}</h3>
             </div>
         </div>
     )

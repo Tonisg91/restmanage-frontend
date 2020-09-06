@@ -32,9 +32,9 @@ function ClientProduct({product}) {
     return (
         <div className="food-container border">
             <div className="food-image" style={{ backgroundImage: `url(${image})` }}>
+                <h2>{name}</h2>
             </div>
             <div className="text-container">
-                <h2>{name}</h2>
                 <p>{price}€</p>
                 <div >
                     <Link to={`/menu/product/${_id}`}>Ver detalles</Link>

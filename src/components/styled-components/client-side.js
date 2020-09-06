@@ -59,21 +59,19 @@ const StyledClientHome = styled.div`
         }
     `
 
-
-
 const StyledClientMenu = styled.div`
         display: grid;
         grid-auto-flow: columns;
-        grid-template-columns: repeat(auto-fill, 300px);
+        grid-template-columns: repeat(auto-fill, 150px);
         gap: 25px;
         justify-content: center;
         padding: 2em 0 5em;
         .food-container {
             justify-content:center;
             text-align: center;
-            background-color: var(--red);
+            background-color: var(--red2);
             padding: 1em 0 0 0;
-            box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.10);
+            box-shadow: 8px 8px 7px 0px rgba(0,0,0,0.10);
         }
         .food-image {
             width: 100%;
@@ -82,6 +80,76 @@ const StyledClientMenu = styled.div`
             background-repeat: no-repeat;
             background-position: center;
             border-radius: 25px 0 0 0;
+        }
+        .border {
+            border-radius: 25px 0 25px 0;
+        }
+        .text-container {
+            background-color: #fafbfc;
+            border-radius: 0 0 25px 0;
+            padding: .8em 0;
+        }
+        .text-container p {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: .25em 0;
+        }
+        .text-container div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 1.4em;
+        }
+        .text-container i {
+            font-size: 1.6em;
+        }
+        a {
+            color: black;
+        }
+    `
+
+const StyledClientProductList = styled.div`
+        header {
+            width: 100%;
+            display: flex;
+            padding: .8em 1em;
+            & i {
+                font-size: 32px;
+            }
+            h1 {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        #main-content {
+            padding: 2em 0 5em;
+            display: grid;
+            grid-auto-flow: columns;
+            grid-template-columns: repeat(auto-fill, 300px);
+            gap: 25px;
+            justify-content: center;
+        }
+        .food-container {
+            justify-content:center;
+            text-align: center;
+            background-color: var(--red2);
+            padding: 1em 0 0 0;
+            box-shadow: 8px 8px 7px 0px rgba(0,0,0,0.10);
+        }
+        .food-image {
+            width: 100%;
+            height: 28vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 25px 0 0 0;
+            color: white;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            & h2 {
+                padding-bottom: 1em;
+            }
         }
         .border {
             border-radius: 25px 0 25px 0;
@@ -138,12 +206,6 @@ const StyledClientNav = styled.nav`
             color: var(--selected);
         }
     `
-
-const StyledClientProductList = styled.div`
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-`
 
 const StyledClientSingleProduct = styled.div`
     .food-container {

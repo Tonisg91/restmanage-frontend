@@ -1,14 +1,13 @@
 import React, { useState, useEffect} from 'react'
 import AddProduct from '../admin-side/AddProduct'
-import {isAdminRoute} from '../../tools/pathFunctions'
+import { isAdminRoute } from '../../tools/pathFunctions'
 import { useSelector, useDispatch } from 'react-redux'
-import { StyledClientMenu } from '../styled-components/client-side'
 import { StyledAdminMenu } from '../styled-components/admin-side'
 import CategoryList from '../admin-side/CategoryList'
-import Category from '../client-side/products/Category'
 import AdminProduct  from '../admin-side/AdminProduct'
 import productService from '../../tools/productService'
 import EditProduct from '../admin-side/EditProduct'
+import ClientMenu from '../client-side/menu/ClientMenu'
 
 function Menu(props) {
     const addForminitialState = {
@@ -49,12 +48,6 @@ function Menu(props) {
     useEffect(getProductsAndDispatch, [])
 
     const uniqueCategories = [...new Set(products.map(e => e.category))]
-
-    const renderCategoriesClientSide = products.length ?
-        uniqueCategories.map(category => (
-            <Category category={category} key={category}/>
-        )) : 
-        null
 
     const actionForm = !isEditing ? 
             <AddProduct
@@ -100,9 +93,10 @@ function Menu(props) {
     }
 
     return (
-        <StyledClientMenu>
-            {renderCategoriesClientSide}
-        </StyledClientMenu>
+        <ClientMenu 
+            products={products} 
+            categories={uniqueCategories}
+        />
     )
 }
 

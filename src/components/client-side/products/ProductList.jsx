@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import ClientProduct from './ClientProduct'
 import { useSelector } from 'react-redux'
-import { StyledClientMenu } from '../../styled-components/client-side'
+import { StyledClientProductList } from '../../styled-components/client-side'
 import productService from '../../../tools/productService'
 
 function ProductList({match}) {
     const {category: currentCategory} = match.params
+    const history = useHistory()
 
     const useSelectedProductList = (category = currentCategory) => {
         const storedProducts = useSelector(state => state.products.filter(({ cat }) => cat === category))
@@ -22,10 +24,18 @@ function ProductList({match}) {
 
     const renderProducts = currentProducts.map(product => <ClientProduct product={product} key={product._id} />)
 
+    const goBack = () => history.goBack()
+
     return (
-        <StyledClientMenu>
-            {renderProducts}
-        </StyledClientMenu>
+        <StyledClientProductList>
+            <header id="header">
+                <i class="fas fa-arrow-left" onClick={goBack}></i>
+                <h1>{currentCategory}</h1>
+            </header>
+            <div id="main-content">
+                {renderProducts}
+            </div>
+        </StyledClientProductList>
     )
 }
 

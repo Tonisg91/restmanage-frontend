@@ -51,7 +51,6 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
                     type="text" 
                     name="category" 
                     value={category} 
-                    onKeyDown={() => productService.autocomplete()}
                     onChange={handleChange} 
                     />
                 <label htmlFor="price">Precio</label>
