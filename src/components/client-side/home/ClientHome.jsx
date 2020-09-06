@@ -4,27 +4,31 @@ import { StyledClientHome } from '../../styled-components/client-side'
 
 function ClientHome() {
     return (
-        // <StyledClientHome>
-        //     <div className="title-container border">
-        //         <h1 className="title">Hamburguesería Random</h1>
-        //     </div>
-        //     <div className="button-container">
-        //         <Link to="/menu" className="border">Entrar</Link>
-        //     </div>
-        // </StyledClientHome>
-
         //TODO: SACAR NAV EN OTRO COMPONENTE
         <StyledClientHome>
-            <nav>
-                <div id="logo-box">
+            <header >
+                <div id="head-img">
+                    <div id="header-locations">
+                        <Link >
+                            <i class="fas fa-map-marker-alt"></i>
+                        LOCALIZACIONES
+                        </Link>
+                    </div>
+                    <div id="head-logo">
+                        <img src="https://res.cloudinary.com/dkejgwlha/image/upload/v1599414338/RestManager/image_glu29s.png" alt="Restaurant logo" />
+                    </div>
+                    <nav>
+                        <div>
+                            <Link to="/menu">Carta</Link>
+                            <Link to="#">Reservas</Link>
+                            <Link to="#">Localizaciones</Link>
+                        </div>
+                        <div>
+                            <Link to="#">Sobre Nosotros</Link>
+                        </div>
+                    </nav>
                 </div>
-                <i class="fas fa-bars"></i>
-            </nav>
-            <section id="section-1">
-                <div id="sec-1-img">
-
-                </div>
-            </section>
+            </header>
         </StyledClientHome>
     )
 }

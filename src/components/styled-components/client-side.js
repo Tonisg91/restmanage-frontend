@@ -1,63 +1,61 @@
 import styled from 'styled-components'
 
-// const StyledClientHome = styled.div`
-//         height: 100vh;
-//         width: 100%;
-//         position: fixed;
-//         background-image: url('https://res.cloudinary.com/dkejgwlha/image/upload/v1597396527/RestManager/BeFunky-collage_3_fy8w03.jpg');
-//         display: flex;
-//         flex-direction: column;
-//         align-items: center;
-//         justify-content: space-around;
-//         .title-container {
-//             width: 80%;
-//         }
-//         .title {
-//             color: white;
-//             text-align: center;
-//         }
-//         .button-container {
-//             padding-bottom: 2em;
-//         }
-//         .border {
-//             border: 2px dotted white;
-//             border-radius: 5px;
-//         }
-//         a {
-//             text-decoration: none;
-//             background: transparent;
-//             color: white;
-//             padding: .4em 3em;
-//             font-size: 1.2em;
-//             font-weight: bold;
-//         }
-//     `
-
 const StyledClientHome = styled.div`
-        #logo-box {
-            height: 100px;
-            width: 100px;
-            background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599309212/RestManager/Logo_qmgumf.png");
+        #header-locations {
+            text-align: center;
+            width: 100%;
+            padding: .3em 0;
+            background-color: black;
+            & i {
+                padding-right: .35em;
+            }
+            a {
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+            }
+        }
+        header {
+            height: 100vh;
+        }
+        #head-logo {
+            width: 100%;
+            & img {
+                width: 100%;
+            }
+        }
+        #head-img {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(
+                                rgba(0, 0, 0, 0.5),
+                                rgba(0, 0, 0, 0.5)
+                                ),
+                                url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599412829/RestManager/BeFunky-collage_4_ldhbxe.jpg");
             background-repeat: no-repeat;
             background-size: contain;
+            & ::before {
+                background-color: 
+            }
         }
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             width: 100%;
-            height: 50px;
-            padding-top: 1em;
-        }
-        nav i {
-            font-size: 30px;
-            margin-right: 1em;
-        }
-        #sec-1-img {
-            height: 300px;
-            background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599309212/RestManager/Logo_qmgumf.png");
-            background-repeat: no-repeat;
-            background-size: contain;
+            display: flex;
+            flex-direction: column;
+            margin-top: 8em;
+            & a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            div {
+                display: flex;
+                justify-content: space-evenly;
+                margin: .5em 0;
+            }
         }
     `
 
