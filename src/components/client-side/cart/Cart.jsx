@@ -34,8 +34,6 @@ function Cart() {
             payload: idx
         })
     }
-
-
     
     const sendOrder = async (cart, id) => {
         if (cart.length) {
@@ -62,7 +60,38 @@ function Cart() {
         <CartElement element={e.product} qty={e.qty} key={e.product._id} removeElement={removeElement}/>
         ))
         
-    const hasCartContent = currentCart.length ? <GenericTable content={renderCartElement} /> : <div id="no-content"><p>No tienes ningun producto en tu carrito</p> <button className="btn btn-blue"><Link to="/menu">Vamos a ver la carta!</Link></button></div>
+    const hasCartContent = currentCart.length ? (
+        <>
+        <GenericTable content={renderCartElement} />
+        <div id="action-container">
+            <div id="amount-container">
+                <h2>Total</h2>
+                <p>{totalAmount} €</p>
+            </div>
+            <div id="action-button">
+                <button
+                    className="btn btn-blue"
+                    onClick={() => sendOrder(currentCart, user ? user._id : null)}
+                >REALIZAR PEDIDO
+                        </button>
+            </div>
+            <p
+                id="empty-cart"
+                onClick={emptyCart}
+            >
+                Vaciar carrito
+                        </p>
+        </div>
+        </>
+        ) : 
+        (
+            <div id="no-content">
+                <p>No tienes ningun producto en tu carrito</p>
+                <Link to="/menu">
+                    Vamos a ver la carta!
+                </Link>
+            </div>
+        )
 
     return (
         <StyledClientCart>
@@ -71,25 +100,6 @@ function Cart() {
             </div>
             <div id="cart-container" className="blackboard-bg">
                 {hasCartContent}
-                <div id="action-container">
-                    <div id="amount-container">
-                        <h2>Total</h2>
-                        <p>{totalAmount} €</p>
-                    </div>
-                    <div id="action-button">
-                        <button
-                            className="btn btn-blue"
-                            onClick={() => sendOrder(currentCart,  user ? user._id : null)}
-                        >REALIZAR PEDIDO
-                        </button>
-                    </div>
-                        <p 
-                            id="empty-cart"
-                            onClick={emptyCart}
-                            >
-                                Vaciar carrito
-                        </p>
-                </div>
             </div>
         </StyledClientCart>
     )

@@ -32,9 +32,9 @@ const StyledClientHome = styled.div`
                                 rgba(0, 0, 0, 0.5),
                                 rgba(0, 0, 0, 0.5)
                                 ),
-                                url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599412829/RestManager/BeFunky-collage_4_ldhbxe.jpg");
+                                url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599485327/RestManager/BeFunky-photo_eyucrz.jpg");
             background-repeat: no-repeat;
-            background-size: contain;
+            background-size: cover;
             & ::before {
                 background-color: 
             }
@@ -55,6 +55,16 @@ const StyledClientHome = styled.div`
                 display: flex;
                 justify-content: space-evenly;
                 margin: .5em 0;
+            }
+        }
+        @media (min-width: 768px) {
+            #head-logo {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            #head-logo img {
+                width: 50%;
             }
         }
     `
@@ -323,6 +333,16 @@ const StyledClientCart = styled.div`
         text-decoration: underline;
         font-size: .75em;
     }
+    #no-content {
+        text-align: center;
+        margin: 1em 0;
+        & a {
+            color: white;
+        }
+        p {
+            margin: 1em 0;
+        }
+    }
 `
 
 const StyledClientCartElement = styled.li`
@@ -352,6 +372,60 @@ const StyledClientCartElement = styled.li`
     }
 `
 
+const StyledClientProfile = styled.div`
+        height: 92vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    h1 {
+        margin: 1em 0;
+        color: white;
+    }
+    .inside-container {
+        width: 80vw;
+        padding: 2em 0;
+        
+        border-radius: 25px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    input {
+        width: 85%;
+        margin-bottom: 1em;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5em 0 .5em 1em;
+        font-size: 16px;
+        font-style: italic;
+    }
+    .submit {
+        margin-top: 1em;
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        font-weight: bold;
+    }
+    .have-account {
+        text-align: center;
+        color: white;
+    }
+    .have-account a {
+        color: white;
+    }
+    p {
+        font-size: .5em;
+        margin-top: 1em;
+        text-decoration: underline;
+    }
+`
+
 
 export  {
     StyledClientHome,
@@ -361,5 +435,6 @@ export  {
     StyledClientProductList,
     StyledClientProductDetails,
     StyledClientSingleProduct,
-    StyledClientCartElement
+    StyledClientCartElement,
+    StyledClientProfile
 }

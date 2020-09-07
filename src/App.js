@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login'
 import Signup from './components/common/Signup'
@@ -9,15 +9,20 @@ import Home from './components/common/Home'
 import ProductDetails from './components/client-side/products/ProductDetails'
 import './App.css'
 import ProductList from './components/client-side/products/ProductList'
-import Profile from './components/common/Profile'
+import Profile from './components/client-side/profile/Profile'
 import Cart from './components/client-side/cart/Cart'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Orders from './components/admin-side/Orders/Orders';
 import OrderDetails from './components/admin-side/Orders/OrderDetails';
+import { useSelector } from 'react-redux';
+import NoMatch from './components/common/NoMatch'
 
 
 function App() {
+  const user = useSelector(state => state.user)
+
+
   return (
     <main className="default-colors">
       <NavBar />
@@ -60,7 +65,12 @@ function App() {
 
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} /> 
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/profile">
+          {!user ? <Redirect to="/login"/> : <Profile />}
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
         <ToastContainer/>
     </main>
