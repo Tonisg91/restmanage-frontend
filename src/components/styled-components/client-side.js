@@ -105,20 +105,6 @@ const StyledClientMenu = styled.div`
     `
 
 const StyledClientProductList = styled.div`
-        #header {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            padding: .8em 1em;
-            color: white;
-            & i {
-                font-size: 32px;
-            }
-            h1 {
-                width: 100%;
-                text-align: center;
-            }
-        }
         #main-content {
             padding: 2em 0 5em;
             display: grid;
@@ -193,7 +179,7 @@ const StyledClientNav = styled.nav`
             color: var(--background-color)
         }
         p {
-            font-size: 0.8em;
+            font-size: 16px;
         }
         i {
             font-size: 1.4em;
@@ -232,16 +218,17 @@ const StyledClientProductDetails = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    #image-container {
-        width: 90%;
-        height: 45vh;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: 2.5em 0;
+    li {
+            list-style: none;
+        }
+    #product-container {
+        width: 100%;
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-
     #product-info {
         width: 90%;
         display: flex;
@@ -251,21 +238,21 @@ const StyledClientProductDetails = styled.div`
         text-align: center;
         border: 1px solid black;
         border-radius: 25px;
-        
         padding: 2em 0;
         & p {
             padding: .5em 0;
         }
         #price {
-            font-size: 1.2em;
+            font-size: 2em;
             font-weight: 600;
+            padding: .5em 0;
         }
     }
 
     @media (min-width: 768px) {
-        #image-container {
+        /* #image-container {
             background-size: contain;
-        }
+        } */
     }
 `
 const StyledClientCart = styled.div`

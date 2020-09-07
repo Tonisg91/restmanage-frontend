@@ -39,7 +39,7 @@ function ClientProduct({product}) {
             <div className="text-container blackboard-bg">
                 <p>{price}€</p>
                 <div >
-                    <Link to={`/menu/product/${_id}`}>Ver detalles</Link>
+                    <Link to={`/menu/product/${_id}`}>Ingredientes</Link>
                     <button
                         className="btn btn-blue"
                         onClick={() => cartAction(product)}

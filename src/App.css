@@ -38,6 +38,24 @@ main {
       -1px 1px 0 black,
       1px 1px 0 black;
 }
+
+#header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: .8em 1em;
+  color: white;
+}
+#header i {
+  color: white;
+}
+#header i {
+    font-size: 32px;
+}
+#header h1 {
+  width: 100%;
+  text-align: center;
+}
 .btn {
   border-radius: 5px;
   padding: .5em;

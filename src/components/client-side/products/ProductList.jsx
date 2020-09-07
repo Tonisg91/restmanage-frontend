@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from 'react-router-dom'
 import ClientProduct from './ClientProduct'
 import { useSelector } from 'react-redux'
 import { StyledClientProductList } from '../../styled-components/client-side'
@@ -8,7 +7,6 @@ import Header from '../../common/Header'
 
 function ProductList({match}) {
     const {category: currentCategory} = match.params
-    const history = useHistory()
 
     const useSelectedProductList = (category = currentCategory) => {
         const storedProducts = useSelector(state => state.products.filter(({ cat }) => cat === category))
@@ -27,9 +25,7 @@ function ProductList({match}) {
 
     return (
         <StyledClientProductList>
-            <div id="header" className="blackboard-bg">
-                <Header text={currentCategory}/>
-            </div>
+            <Header text={currentCategory}/>
             <div id="main-content">
                 {renderProducts}
             </div>
