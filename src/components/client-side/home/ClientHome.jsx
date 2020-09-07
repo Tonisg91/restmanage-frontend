@@ -11,7 +11,7 @@ function ClientHome() {
                     <div id="header-locations">
                         <Link >
                             <i class="fas fa-map-marker-alt"></i>
-                        LOCALIZACIONES
+                            LOCALIZACIONES
                         </Link>
                     </div>
                     <div id="head-logo">

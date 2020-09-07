@@ -12,8 +12,32 @@
 main {
   min-height: 100vh;
   background-color: #f7f7f7;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15)
+    ),
+      url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599466840/RestManager/set-3045129_1920_g7a1y1.jpg");
+  background-size: contain;
+  background-position: center;
+}
+.blackboard-bg {
+  background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599467533/RestManager/black-1072366_1920_ief4wl.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
 }
 
+.super-text {
+  -webkit-text-stroke: 1px black;
+  text-shadow:
+      3px 3px 0 black,
+      -1px -1px 0 black,  
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+}
 .btn {
   border-radius: 5px;
   padding: .5em;

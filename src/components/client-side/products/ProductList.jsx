@@ -4,6 +4,7 @@ import ClientProduct from './ClientProduct'
 import { useSelector } from 'react-redux'
 import { StyledClientProductList } from '../../styled-components/client-side'
 import productService from '../../../tools/productService'
+import Header from '../../common/Header'
 
 function ProductList({match}) {
     const {category: currentCategory} = match.params
@@ -28,10 +29,11 @@ function ProductList({match}) {
 
     return (
         <StyledClientProductList>
-            <header id="header">
-                <i class="fas fa-arrow-left" onClick={goBack}></i>
-                <h1>{currentCategory}</h1>
-            </header>
+            <div id="header" className="blackboard-bg">
+                {/* <i className="fas fa-arrow-left" onClick={goBack}></i>
+                <h1>{currentCategory}</h1> */}
+                <Header text={currentCategory}/>
+            </div>
             <div id="main-content">
                 {renderProducts}
             </div>

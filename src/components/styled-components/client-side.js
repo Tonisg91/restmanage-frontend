@@ -69,7 +69,6 @@ const StyledClientMenu = styled.div`
         .food-container {
             justify-content:center;
             text-align: center;
-            background-color: var(--red2);
             padding: 1em 0 0 0;
             box-shadow: 8px 8px 7px 0px rgba(0,0,0,0.10);
         }
@@ -85,9 +84,9 @@ const StyledClientMenu = styled.div`
             border-radius: 25px 0 25px 0;
         }
         .text-container {
-            background-color: #fafbfc;
             border-radius: 0 0 25px 0;
             padding: .8em 0;
+            color: white;
         }
         .text-container p {
             font-size: 1.5em;
@@ -103,16 +102,15 @@ const StyledClientMenu = styled.div`
         .text-container i {
             font-size: 1.6em;
         }
-        a {
-            color: black;
-        }
     `
 
 const StyledClientProductList = styled.div`
-        header {
+        #header {
             width: 100%;
             display: flex;
+            align-items: center;
             padding: .8em 1em;
+            color: white;
             & i {
                 font-size: 32px;
             }
@@ -132,7 +130,7 @@ const StyledClientProductList = styled.div`
         .food-container {
             justify-content:center;
             text-align: center;
-            background-color: var(--red2);
+            background-color: var(--blue-btn);
             padding: 1em 0 0 0;
             box-shadow: 8px 8px 7px 0px rgba(0,0,0,0.10);
         }
@@ -148,7 +146,15 @@ const StyledClientProductList = styled.div`
             align-items: flex-end;
             justify-content: center;
             & h2 {
-                padding-bottom: 1em;
+                padding-bottom: .8em;
+                font-size: 1.9em;
+                /* -webkit-text-stroke: 1px black;
+                text-shadow:
+                    3px 3px 0 black,
+                    -1px -1px 0 black,  
+                    1px -1px 0 black,
+                    -1px 1px 0 black,
+                    1px 1px 0 black; */
             }
         }
         .border {
@@ -169,12 +175,13 @@ const StyledClientProductList = styled.div`
             justify-content: space-around;
             align-items: center;
             font-size: 1.4em;
+            
         }
         .text-container i {
             font-size: 1.6em;
         }
         a {
-            color: black;
+            color: white;
         }
     `
 
@@ -187,7 +194,10 @@ const StyledClientNav = styled.nav`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background: var(--navbar);  
+        background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599467533/RestManager/black-1072366_1920_ief4wl.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         border-radius: 10px 10px 0 0;
         .nav-element {
             text-align: center;
@@ -203,7 +213,7 @@ const StyledClientNav = styled.nav`
             text-align: center;
         }
         .active i , .active p{
-            color: var(--selected);
+            color: var(--blue-btn);
         }
     `
 
