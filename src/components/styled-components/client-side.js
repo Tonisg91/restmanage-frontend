@@ -148,13 +148,6 @@ const StyledClientProductList = styled.div`
             & h2 {
                 padding-bottom: .8em;
                 font-size: 1.9em;
-                /* -webkit-text-stroke: 1px black;
-                text-shadow:
-                    3px 3px 0 black,
-                    -1px -1px 0 black,  
-                    1px -1px 0 black,
-                    -1px 1px 0 black,
-                    1px 1px 0 black; */
             }
         }
         .border {
@@ -194,10 +187,6 @@ const StyledClientNav = styled.nav`
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599467533/RestManager/black-1072366_1920_ief4wl.jpg");
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
         border-radius: 10px 10px 0 0;
         .nav-element {
             text-align: center;

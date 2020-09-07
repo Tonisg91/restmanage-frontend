@@ -68,7 +68,7 @@ function NavBar() {
     }
 
     return (
-        <StyledClientNav>
+        <StyledClientNav className="blackboard-bg">
             <NavLink exact to="/">
                 <div className="nav-element">
                     <i className="fas fa-home"></i>

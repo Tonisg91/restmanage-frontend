@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import cartService from '../../../tools/cartService'
+import { toast } from 'react-toastify'
 
 function ClientProduct({product}) {
     const dispatch = useDispatch()
@@ -25,9 +26,10 @@ function ClientProduct({product}) {
         })
     }
 
-    const cartAction = (prod) => currentCart.find(e => e.product._id === prod._id) ? increaseQty(prod) : addToCart(prod)
-
-
+    const cartAction = (prod) => {
+        currentCart.find(e => e.product._id === prod._id) ? increaseQty(prod) : addToCart(prod)
+        toast.info(`Has añadido ${prod.name} al carrito.`, {autoClose: 1500})
+    }
     
     return (
         <div className="food-container border blackboard-bg">
@@ -38,7 +40,12 @@ function ClientProduct({product}) {
                 <p>{price}€</p>
                 <div >
                     <Link to={`/menu/product/${_id}`}>Ver detalles</Link>
-                    <i className="fas fa-cart-arrow-down" onClick={() => cartAction(product)}/>
+                    <button
+                        className="btn btn-blue"
+                        onClick={() => cartAction(product)}
+                    >
+                        Añadir al carrito
+                    </button>
                 </div>
             </div>
         </div>

@@ -25,13 +25,9 @@ function ProductList({match}) {
 
     const renderProducts = currentProducts.map(product => <ClientProduct product={product} key={product._id} />)
 
-    const goBack = () => history.goBack()
-
     return (
         <StyledClientProductList>
             <div id="header" className="blackboard-bg">
-                {/* <i className="fas fa-arrow-left" onClick={goBack}></i>
-                <h1>{currentCategory}</h1> */}
                 <Header text={currentCategory}/>
             </div>
             <div id="main-content">
