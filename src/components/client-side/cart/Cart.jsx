@@ -66,30 +66,29 @@ function Cart() {
 
     return (
         <StyledClientCart>
-            <div id="title">
+            <div id="title" className="super-text">
                 <h1>Tu pedido</h1>
             </div>
-            <div id="cart-container">
+            <div id="cart-container" className="blackboard-bg">
                 {hasCartContent}
-            </div>
-            <div id="action-container">
-                <div id="amount-container">
-                    <h2>Total</h2>
-                    <p>{totalAmount} €</p>
-                </div>
-                <div id="action-buttons">
-                    <button
-                        className="btn btn-red"
-                        onClick={emptyCart}
-                    >
-                        VACIAR CARRITO
-                </button>
-                    
-                <button
-                    className="btn btn-blue"
-                    onClick={() => sendOrder(currentCart,  user ? user._id : null)}
-                >REALIZAR PEDIDO
-                </button>
+                <div id="action-container">
+                    <div id="amount-container">
+                        <h2>Total</h2>
+                        <p>{totalAmount} €</p>
+                    </div>
+                    <div id="action-button">
+                        <button
+                            className="btn btn-blue"
+                            onClick={() => sendOrder(currentCart,  user ? user._id : null)}
+                        >REALIZAR PEDIDO
+                        </button>
+                    </div>
+                        <p 
+                            id="empty-cart"
+                            onClick={emptyCart}
+                            >
+                                Vaciar carrito
+                        </p>
                 </div>
             </div>
         </StyledClientCart>

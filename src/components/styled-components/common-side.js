@@ -65,7 +65,7 @@ const StyledProfile = styled.div`
     .inside-container {
         width: 80vw;
         padding: 2em 0;
-        background-color: var(--navbar);
+        
         border-radius: 25px;
     }
     form {
@@ -82,7 +82,7 @@ const StyledProfile = styled.div`
         margin-bottom: 1em;
         border: none;
         border-radius: 5px;
-        padding: 0.5em 0;
+        padding: 0.5em 0 .5em 1em;
     }
     .submit {
         margin-top: 1em;
@@ -97,6 +97,11 @@ const StyledProfile = styled.div`
     }
     .have-account a {
         color: white;
+    }
+    p {
+        font-size: .5em;
+        margin-top: 1em;
+        text-decoration: underline;
     }
 `
 

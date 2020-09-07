@@ -20,14 +20,10 @@ function CartElement({element, qty, removeElement}) {
       return currentProduct
     }
     
-    const {name, price, image} = useCurrentCartElement()
+    const {name, price} = useCurrentCartElement()
   
     return (
       <StyledClientCartElement>
-        <div 
-          id="image-container"
-          style={{ backgroundImage: `url(${image})` }}
-        />
         <div>
           <p>{name}</p>
           <p>{qty} x {price} €</p>

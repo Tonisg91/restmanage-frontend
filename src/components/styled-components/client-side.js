@@ -248,12 +248,6 @@ const StyledClientProductDetails = styled.div`
             padding: .5em 0;
         }
     }
-
-    @media (min-width: 768px) {
-        /* #image-container {
-            background-size: contain;
-        } */
-    }
 `
 const StyledClientCart = styled.div`
     min-height: 100vh;
@@ -264,40 +258,44 @@ const StyledClientCart = styled.div`
         "mid"
         "bottom"
     ;
+    grid-auto-rows: minmax(min-content, max-content);
+    gap: 50px;
     justify-content: center;
-    grid-row-gap: 40px;
-    
     #title {
         grid-area: header;
         display: flex;
         justify-content: center;
         & h1 {
             padding-top: 1em;
-        }
-    }
-
-    #no-content {
-        grid-area: mid;
-        text-align: center;
-        & p {
-            margin: 1em 0;
-            font-size: 1.1em;
-        }
-        a {
-            text-decoration: none;
             color: white;
+            font-size: 3em;
         }
-
     }
 
     #cart-container {
         grid-area: mid;
         max-height: 100%;
+        min-height: 150px;
         overflow: scroll;
+        border-radius: 6px;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        outline-offset: -10px;
+        border: 7px solid #e2b05a;
+        & li {
+            background: none;
+            font-size: 16px;
+            font-weight: 600;
+            margin: .3em 0;
+        }
+        ul {
+            border: none;
+        }
     }
 
     #action-container {
-        grid-area: bottom;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -312,13 +310,18 @@ const StyledClientCart = styled.div`
             font-weight: 600;
         }
     }
-    #action-buttons {
+    #action-button {
         width: 100%;
         display: flex;
         justify-content: space-around;
     }
-    #action-buttons button {
+    #action-button button {
         padding: 1.2em;
+        margin-bottom: 1.5em;
+    }
+    #empty-cart {
+        text-decoration: underline;
+        font-size: .75em;
     }
 `
 

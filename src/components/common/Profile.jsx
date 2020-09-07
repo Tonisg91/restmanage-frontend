@@ -40,12 +40,13 @@ function Profile() {
     return (
         <StyledProfile>
             <h1 className="title">Mi cuenta</h1>
-            <div className="inside-container">
+            <div className="inside-container blackboard-bg">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name">Nombre</label>
                     <input
                         type="text"
                         name="name"
+                        placeholder="Escribe tu nombre..."
                         value={name}
                         onChange={handleChange}
                     />
@@ -53,6 +54,7 @@ function Profile() {
                     <input
                         type="email"
                         name="email"
+                        placeholder="Escribe tu email..."
                         value={email}
                         onChange={handleChange}
                     />
@@ -61,12 +63,14 @@ function Profile() {
                         type="text"
                         name="city"
                         value={city}
+                        placeholder="Escribe tu ciudad..."
                         onChange={handleChange}
                     />
                     <label htmlFor="street">Calle</label>
                     <input
                         type="text"
                         name="street"
+                        placeholder="Escribe tu calle..."
                         value={street}
                         onChange={handleChange}
                     />
@@ -75,12 +79,14 @@ function Profile() {
                         type="number"
                         name="number"
                         value={number}
+                        placeholder="Escribe el número de tu vivienda..."
                         onChange={handleChange}
                     />
                     <label htmlFor="door">Puerta</label>
                     <input
                         type="text"
                         name="door"
+                        placeholder="Escribe tu puerta..."
                         value={door}
                         onChange={handleChange}
                     />
@@ -89,11 +95,10 @@ function Profile() {
                         value="GUARDAR PERFIL"
                         className="btn btn-blue"
                     />
-                    <button
-                        className="btn btn-red"
+                    <p
                         onClick={logoutAndRedirectToHome}>
-                        CERRAR SESIÓN
-                    </button>
+                        Cerrar sesión
+                    </p>
                 </form>
             </div>
         </StyledProfile>
