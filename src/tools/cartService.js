@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 class CartService {
     constructor() {
@@ -43,14 +44,19 @@ class CartService {
             amount: totalAmount,
             email: email || null
         }
-        console.log(body)
         const response = await axios.post(`${this.URL}/generateorder`, body)
         this.removeCartFromLocalStorage()
         switch (response.status) {
             case 200:
-                return alert('Pedido realizado con éxito.')
+                return toast.success(
+                        'Pedido realizado con éxito.',
+                        {autoClose: 2000}
+                        )
             default:
-                alert('Error al realizar el pedido')
+                toast.error(
+                    'Error al realizar el pedido',
+                    {autoClose: 1500}
+                    )
                 break;
         }
     }

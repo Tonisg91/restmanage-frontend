@@ -35,12 +35,13 @@ function Signup({match}) {
     if (isAdminRoute(path)) {
         return (
             <StyledLoginSignup>
-            <div className="inside-container">
+            <div className="inside-container blackboard-bg">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input 
                         type="email" 
-                        name="email" 
+                        name="email"
+                        placeholder="ejemplo@ejemplo.com"
                         onChange={handleChange} 
                         value={email}
                     />
@@ -76,12 +77,13 @@ function Signup({match}) {
 
     return (
         <StyledLoginSignup>
-            <div className="inside-container">
+            <div className="inside-container blackboard-bg">
                 <form onSubmit={(e) => handleSubmit(e, {email: form.email, password: form.password})}>
                     <label htmlFor="email">Email</label>
                     <input 
                         type="email" 
                         name="email" 
+                        placeholder="ejemplo@ejemplo.com"
                         onChange={handleChange} 
                         value={email}
                     />

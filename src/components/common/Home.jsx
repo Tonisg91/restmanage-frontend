@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { isAdminRoute } from '../../tools/pathFunctions'
 import ClientHome from '../client-side/home/ClientHome'
+import AdminHome from '../admin-side/home/AdminHome'
 
 function Home() {
     const {pathname} = useLocation()
@@ -9,7 +10,7 @@ function Home() {
     if (isAdminRoute(pathname)) {
         return (
             <div>
-                <h1>Home administrador</h1>
+                <AdminHome />
             </div>
         )
     }

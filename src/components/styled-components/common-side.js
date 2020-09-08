@@ -26,7 +26,7 @@ const StyledLoginSignup = styled.div`
             margin-bottom: 1em;
             border: none;
             border-radius: 5px;
-            padding: 0.5em 0;
+            padding: .5em;
         }
         .submit {
             margin-top: 1em;

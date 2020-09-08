@@ -11,6 +11,7 @@ function AdminMenu({cb, uniqueCategories, products, dispatch}) {
         name: '',
         description: '',
         category: '',
+        ingredients: '',
         price: 0,
         image: undefined,
     }
@@ -20,6 +21,7 @@ function AdminMenu({cb, uniqueCategories, products, dispatch}) {
         name: '',
         description: '',
         category: '',
+        ingredients: '',
         price: 0,
         image: undefined,
     }

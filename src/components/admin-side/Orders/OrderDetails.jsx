@@ -6,6 +6,7 @@ import dateService from '../../../tools/dateService'
 import { useEffect } from 'react'
 import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
 import Header from '../../common/Header'
+import { toast } from 'react-toastify'
 
 function OrderDetails({match}) {
     const {params: { id}} = match
@@ -40,15 +41,37 @@ function OrderDetails({match}) {
     }
 
     const actionFunctions = {
-        startOrder: (id) => (ordersService.startOrder(id), history.push('/admin/orders')),
-        finishOrder: (id) => (ordersService.finishOrder(id), history.push('/admin/orders'))
+        startOrder: (id, easyId) => {
+            ordersService.startOrder(id) 
+            history.push('/admin/orders')
+            toast.info(
+                `El pedido ${easyId} se ha pasado a cocina.`,
+                {
+                    autoClose: 2200,
+                    position: "top-center",
+                    draggable: true
+                }
+            )
+        },
+        finishOrder: (id, easyId) => {
+            ordersService.finishOrder(id) 
+            history.push('/admin/orders')
+            toast.success(
+                `El pedido ${easyId} se ha finalizado.`,
+                { 
+                    autoClose: 2200,
+                    position: "top-center",
+                    draggable: true
+                }
+            )
+        }
     }
 
     const displayActionButton = (st1 = isFinished, st2 = inProgress) => {        
         if (!st1 && !st2) return (
             <button 
                 className="btn btn-blue" 
-                onClick={() => actionFunctions.startOrder(_id)}
+                onClick={() => actionFunctions.startOrder(_id, easyId)}
                 >
                 Pasar a Cocina
                 </button>
@@ -56,7 +79,7 @@ function OrderDetails({match}) {
         if (!st1 && st2) return (
             <button 
                 className="btn btn-red" 
-                onClick={() => actionFunctions.finishOrder(_id)}
+                onClick={() => actionFunctions.finishOrder(_id, easyId)}
                 >
                 Finalizar pedido
                 </button>

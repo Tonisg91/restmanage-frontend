@@ -46,6 +46,11 @@
       1px 1px 0 black;
 }
 
+.disabled {
+  font-size: .8em;
+  color: gray;
+}
+
 #header {
   width: 100%;
   display: flex;

@@ -30,11 +30,11 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/admin"
-            render={(props) => <FlowControl children={<Home {...props} />} />}
-          />
+        <Route
+          exact
+          path="/admin"
+          render={(props) => <FlowControl children={<Home {...props} />} />}
+        />
         <Route exact path="/cart" component={Cart}/>
         <Route exact path="/menu" component={Menu} />
         <Route path="/menu/product/:id" component={ProductDetails} />
@@ -64,15 +64,12 @@ function App() {
             <FlowControl children={<Signup {...props} /> }/>
           }
         />
-
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} /> 
         <Route exact path="/profile">
           {!user ? <Redirect to="/login"/> : <Profile />}
         </Route>
-        <Route path="*">
-          <NoMatch />
-        </Route>
+        <Route path="*" component={NoMatch} />
       </Switch>
         <ToastContainer/>
     </main>

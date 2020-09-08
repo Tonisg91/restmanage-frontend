@@ -44,7 +44,7 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
         setForm(initialState)
     }
 
-    const { name, description, category, price } = form
+    const { name, description, category, price, ingredients } = form
 
     return (
         <StyledAddProductForm>
@@ -53,6 +53,16 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
                 <input type="text" name="name" value={name} onChange={handleChange} />
                 <label htmlFor="description">Descripción</label>
                 <textarea name="description" value={description} cols="30" rows="5" onChange={handleChange}></textarea>
+                <label htmlFor="ingredients">Ingredientes</label>
+                <p className="disabled">
+                    Separa los ingredientes con una coma ","
+                </p>
+                <input
+                    type="text"
+                    name="ingredients"
+                    value={ingredients}
+                    onChange={handleChange}
+                />
                 <label htmlFor="category">Categoría</label>
                 <input 
                     type="text" 

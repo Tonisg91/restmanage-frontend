@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import userAuth from '../../../tools/userAuth'
 
-function ProfileForm() {
+function ProfileForm({user}) {
     const history = useHistory()
-    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
-
     const [userData, setUserData] = useState(user)
 
     const handleChange = ({ target }) => {
@@ -31,8 +29,6 @@ function ProfileForm() {
         history.push('/')
         history.go(0)
     }
-
-
 
     const { name, email, city, street, number, door } = userData
 

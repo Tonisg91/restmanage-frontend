@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { StyledClientCart } from '../../styled-components/client-side'
 import cartService from '../../../tools/cartService'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function Cart() { 
     const currentCart = useSelector(state => state.cart)
@@ -46,7 +47,7 @@ function Cart() {
             return emptyCart()
         }
         
-        return alert('No tienes productos en el carrito.')
+        return toast.error('No tienes productos en el carrito.', {autoClose: 1500})
     }
 
     useEffect(() => {

@@ -36,21 +36,22 @@ function Login() {
 
     return (
         <StyledLoginSignup>
-            <div className="inside-container">
+            <div className="inside-container blackboard-bg">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input 
                         type="email" 
                         name="email"
+                        placeholder="ejemplo@ejemplo.com"
                         value={email} 
                         onChange={handleChange} />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Contraseña</label>
                     <input 
                         type="password" 
                         name="password" 
                         value={password} 
                         onChange={handleChange}/>
-                    <input className="submit" type="submit" value="LOGIN"/>
+                    <input className="submit" type="submit" value="INICIAR SESIÓN"/>
                 </form>
                 <div className="have-account">
                         <p>No tienes cuenta?

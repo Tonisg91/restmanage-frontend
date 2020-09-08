@@ -16,7 +16,7 @@ function NavBar() {
             <NavLink to="/login">
                 <div className="nav-element">
                     <i className="fas fa-sign-in-alt"></i>
-                    <p>Login</p>
+                    <p>Iniciar Sesión</p>
                 </div>
             </NavLink>
     )

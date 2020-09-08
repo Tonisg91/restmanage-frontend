@@ -25,7 +25,14 @@ function ProductDetails({match}) {
 
     const goBack = () => history.goBack()
 
-    const {name, description, price} = useSelectedProduct()
+    const {name, description, price, ingredients} = useSelectedProduct()
+
+    const displayIngredients = () => {
+        if (ingredients) return ingredients.map(elem => <li key={elem}>{elem}</li>)
+        return null
+    }
+
+
     //TODO: CAMBIAR DATOS POR LOS QUE VIENEN DE LA BBDD
     return (
         <StyledClientProductDetails>
@@ -35,11 +42,7 @@ function ProductDetails({match}) {
                     <h1>{name}</h1>
                     <p id="description">{description}</p>
                     <ul>
-                        <li>Carne de ternera</li>
-                        <li>Tomate</li>
-                        <li>Lechuga</li>
-                        <li>Queso</li>
-                        <li>Mahonesa</li>
+                        {displayIngredients()}
                     </ul>
                     <div id="action-container" >
                         <h2 id="price">{price} €</h2>
