@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 function Cart() { 
     const currentCart = useSelector(state => state.cart)
     const user = useSelector(state => state.user)
+    const [clientEmail, setClientEmail] = useState('')
     const [totalAmount, setTotalAmount] = useState(0)
     const dispatch = useDispatch()
 
@@ -35,11 +36,16 @@ function Cart() {
         })
     }
     
-    const sendOrder = async (cart, id) => {
+    const sendOrder = async (cart, id, email) => {
+        if (!user) {
+            await cartService.sendCart(cart, id, totalAmount, clientEmail)
+            return emptyCart()
+        }
         if (cart.length) {
             await cartService.sendCart(cart, id, totalAmount)
             return emptyCart()
         }
+        
         return alert('No tienes productos en el carrito.')
     }
 
@@ -54,12 +60,30 @@ function Cart() {
         cartService.removeElementFromCart(productIndex)
     }
 
-
-
     const renderCartElement = currentCart.map(e => (
         <CartElement element={e.product} qty={e.qty} key={e.product._id} removeElement={removeElement}/>
         ))
         
+
+    const userEmail = () => {
+        if (!user) {
+            return (
+                <div id="email-container">
+                    <label htmlFor="email">Escribe tu email para recibir el ticket</label>
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="example@example.com"
+                        value={clientEmail}
+                        onChange={({ target }) => setClientEmail(target.value)}
+                    />
+                </div>
+            )
+        }
+        return null
+    }
+
+
     const hasCartContent = currentCart.length ? (
         <>
         <GenericTable content={renderCartElement} />
@@ -68,6 +92,7 @@ function Cart() {
                 <h2>Total</h2>
                 <p>{totalAmount} €</p>
             </div>
+                {userEmail()}
             <div id="action-button">
                 <button
                     className="btn btn-blue"
@@ -92,6 +117,8 @@ function Cart() {
                 </Link>
             </div>
         )
+
+    
 
     return (
         <StyledClientCart>

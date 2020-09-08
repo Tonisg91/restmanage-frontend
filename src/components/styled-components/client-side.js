@@ -295,7 +295,20 @@ const StyledClientCart = styled.div`
             font-size: 3em;
         }
     }
-
+    #email-container {
+        font-size: .9em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #email {
+        margin: 1em 0;
+        padding: 1em;
+        font-size: .8em;
+        border-radius: 5px; 
+        border: none;
+    }
     #cart-container {
         grid-area: mid;
         max-height: 100%;

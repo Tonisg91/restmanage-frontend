@@ -36,12 +36,14 @@ class CartService {
         localStorage.setItem(this.localStoragePath, JSON.stringify([...productListUpdated]))
     }
 
-    async sendCart(cart, clientId, totalAmount) {
+    async sendCart(cart, clientId, totalAmount, email) {
         const body = {
             client: clientId || null,
             products: cart,
-            amount: totalAmount
+            amount: totalAmount,
+            email: email || null
         }
+        console.log(body)
         const response = await axios.post(`${this.URL}/generateorder`, body)
         this.removeCartFromLocalStorage()
         switch (response.status) {
