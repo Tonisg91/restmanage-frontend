@@ -1,5 +1,5 @@
 import React from 'react'
-import GenericTable from '../common/GenericTable'
+import GenericTable from '../../common/GenericTable'
 
 function CategoryList({categories}) {
 

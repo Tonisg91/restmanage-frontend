@@ -1,5 +1,5 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login'
 import Signup from './components/common/Signup'
@@ -17,14 +17,16 @@ import Orders from './components/admin-side/Orders/Orders';
 import OrderDetails from './components/admin-side/Orders/OrderDetails';
 import { useSelector } from 'react-redux';
 import NoMatch from './components/common/NoMatch'
+import { isAdminRoute } from './tools/pathFunctions';
 
 
 function App() {
   const user = useSelector(state => state.user)
-
+  const { pathname } = useLocation()
+  const mainViewSelector = isAdminRoute(pathname) ? 'admin-main' : 'client-main'
 
   return (
-    <main className="default-colors">
+    <main className="default-colors" id={mainViewSelector}>
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />

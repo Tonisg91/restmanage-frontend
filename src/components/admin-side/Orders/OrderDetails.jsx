@@ -5,6 +5,7 @@ import ordersService from '../../../tools/ordersService'
 import dateService from '../../../tools/dateService'
 import { useEffect } from 'react'
 import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
+import Header from '../../common/Header'
 
 function OrderDetails({match}) {
     const {params: { id}} = match
@@ -65,6 +66,7 @@ function OrderDetails({match}) {
 
     return (
         <StyledAdminSingleOrder>
+            <Header text={`Pedido ${easyId}`}/>
             <div id="ticket">
                 <div id="restaurant-logo">
                     <i className="fas fa-utensils"></i>

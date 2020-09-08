@@ -9,7 +9,7 @@
   --green: #2a9d8f;
   --blue-btn: #0077b6;
 }
-main {
+#client-main {
   min-height: 100vh;
   background-color: #f7f7f7;
   background-image: 
@@ -21,6 +21,13 @@ main {
   background-size: contain;
   background-position: center;
 }
+
+#admin-main {
+  min-height: 100vh;
+  background-color: #dcdde1;
+}
+
+
 .blackboard-bg {
   background-image: url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599467533/RestManager/black-1072366_1920_ief4wl.jpg");
   background-size: cover;

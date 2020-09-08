@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyledAddProductForm } from '../styled-components/admin-side'
-import productService from '../../tools/productService'
+import { StyledAddProductForm } from '../../styled-components/admin-side'
+import productService from '../../../tools/productService'
+import { toast } from 'react-toastify'
 
 function AddProduct({updateList, form, setForm, initialState}) {
 
@@ -11,24 +12,34 @@ function AddProduct({updateList, form, setForm, initialState}) {
         })
     }
 
-    const handleImageUrl = async ({target}) => {
-        //TODO: Cambiar alerts por algo mas bonito.
-        alert('Cargando imagen, por favor espere.')
+    const handleImageUrl = ({target}) => {
+        toast.info('Cargando imagen, por favor espere la confirmación.', { autoClose: 1500 })
         const imageToUpload = new FormData()
         imageToUpload.append('image', target.files[0])
-        const imageUrl = await productService.upload(imageToUpload)
-        setForm({
-            ...form,
-            [target.name]: imageUrl
-        })
-        alert('Imagen Cargada')
+        productService.upload(imageToUpload)
+            .then(res => {
+                setForm({
+                    ...form,
+                    [target.name]: res
+                })
+                toast.success('Imagen Cargada', { autoClose: 1500 })
+            })
+            .catch(() => toast.error('Error al cargar la imagen.', {autoClose: 1500}))
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        await productService.addProduct({...form})
-        updateList()
-        setForm(initialState)
+        productService.addProduct({...form})
+            .then(() => {
+                updateList()
+                setForm(initialState)
+                toast.success("Producto guardado con éxito.", {autoClose: 1500})
+            })
+            .catch(() => 
+                toast.error(
+                    "Error al guardar el producto.", 
+                    {autoClose: 1500}
+                ))
     }
 
     const { name, description, category, price } = form 

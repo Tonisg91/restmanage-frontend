@@ -53,6 +53,8 @@ const StyledAdminMenu = styled.div`
     padding-bottom: 1.5em;
     .field {
         margin: 1.5em 0;
+        background-color: white;
+        border-radius: 5px;
     }
     h1, h2 {
         text-align: center;
@@ -61,6 +63,13 @@ const StyledAdminMenu = styled.div`
     #product-list {
         max-height: 350px;
         overflow: scroll;
+    }
+    #categories ul {
+        border: none;
+        & li {
+            padding: 0 .5em;
+            font-size: 24px;
+        }
     }
 
     @media (min-width: 768px) {
@@ -101,8 +110,6 @@ const StyledAddProductForm = styled.div`
         flex-direction: column;
         background-color: white;
         padding: 1em;
-        border-radius: 5px;
-        border: 2px solid lightgray;
     }
     label {
         font-weight: bold;
@@ -154,7 +161,9 @@ const StyledAdminOrders = styled.div`
         text-align: center;
     }
     .field {
+        background-color: white;
         margin: .8em 0;
+        padding: .8em 0;
         & h2 {
             margin-bottom: .4em;
         }
@@ -220,8 +229,21 @@ const StyledAdminSingleOrder = styled.div`
     background-color: lightgray;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    #header {
+        background: none;
+        padding: 1.5em;
+        & h1, i {
+            -webkit-text-stroke: 1px black;
+            text-shadow:
+                3px 3px 0 black,
+                -1px -1px 0 black,  
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
+        }
+    }
     .container {
         width: 100%;
         padding: 1em 2em;
@@ -238,6 +260,7 @@ const StyledAdminSingleOrder = styled.div`
         background-color: white;
         width: 430px;
         padding: 2em 0;
+        font-family: 'Courier New', Courier, monospace;
     }
     #restaurant-logo {
         margin: .75em 0;

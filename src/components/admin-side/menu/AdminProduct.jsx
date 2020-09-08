@@ -1,15 +1,22 @@
 import React from 'react'
-import GenericTable from '../common/GenericTable'
-import { StyledAdminProduct } from '../styled-components/admin-side'
+import GenericTable from '../../common/GenericTable'
+import { StyledAdminProduct } from '../../styled-components/admin-side'
 import { useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function AdminProduct({products, dispatch, productService, setEditForm, goEdit}) {
     const history = useHistory()
-    const editProduct = (product) => setEditForm(product)
+    const editProduct = (productToEdit) => {
+        goEdit(true)
+        setEditForm(productToEdit)
+        toast.info("Editando Producto.", {autoClose: 1500})
+    }
 
     const deleteProduct = (id, cb = dispatch) => {
         productService.deleteProduct(id, cb)
+        toast.error('Producto eliminado.', {autoClose: 1500})
     }
+    
 
     const redirectToDetails = (productId) => history.push(`/menu/product/${productId}`)
 
@@ -28,7 +35,6 @@ function AdminProduct({products, dispatch, productService, setEditForm, goEdit})
                     id="edit-button"
                     className="btn btn-blue"
                     onClick={() => {
-                    goEdit(true)
                     editProduct(product)
                     }}
                 >Editar

@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyledAddProductForm } from '../styled-components/admin-side'
-import productService from '../../tools/productService'
+import { StyledAddProductForm } from '../../styled-components/admin-side'
+import productService from '../../../tools/productService'
+import { toast } from 'react-toastify'
 
 function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
 
@@ -12,24 +13,30 @@ function EditProduct({updateList, setForm, form, initialState, setIsEditing}) {
     }
 
     const handleImageUrl = async ({ target }) => {
-        //TODO: Cambiar alerts por algo mas bonito.
-        alert('Cargando imagen, por favor espere.')
+        toast.info('Cargando imagen, por favor espere la confirmación.', {autoClose: 1500})
+
         const imageToUpload = new FormData()
         imageToUpload.append('image', target.files[0])
-        const imageUrl = await productService.upload(imageToUpload)
-        setForm({
-            ...form,
-            [target.name]: imageUrl
-        })
-        alert('Imagen Cargada')
+        productService.upload(imageToUpload)
+            .then(res => {
+                setForm({
+                    ...form,
+                    [target.name]: res
+                })
+                toast.success('Imagen Cargada', { autoClose: 1500 })
+            })
+            .catch(() => toast.error('Error al cargar la imagen.', { autoClose: 1500 }))
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        await productService.editProduct({...form }, )
-        updateList()
-        setForm(initialState)
-        cancelEdit()
+        productService.editProduct({...form }).then(() => {
+            updateList()
+            setForm(initialState)
+            cancelEdit()
+            toast.success('Producto actualizado con exito', {autoClose: 1500})
+        }).catch(() => toast.error('Error al editar el producto.', {autoClose: 1500}))
+        
     }
 
     const cancelEdit = () => {

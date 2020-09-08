@@ -53,7 +53,7 @@ const StyledClientHome = styled.div`
             }
             div {
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: space-around;
                 margin: .5em 0;
             }
         }
@@ -66,6 +66,17 @@ const StyledClientHome = styled.div`
             #head-logo img {
                 width: 50%;
             }
+            nav a, #header-locations a {
+                font-size: 24px;
+            }
+        }
+        @media (min-width: 1024px) {
+            #head-logo img {
+                width: 25%;
+            }
+            nav a, #header-locations a {
+                font-size: 32px;
+            }
         }
     `
 
@@ -73,6 +84,9 @@ const StyledClientMenu = styled.div`
         display: grid;
         grid-auto-flow: columns;
         grid-template-columns: repeat(auto-fill, 150px);
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(auto-fill, 300px);
+        }
         gap: 25px;
         justify-content: center;
         padding: 2em 0 5em;

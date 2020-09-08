@@ -32,7 +32,7 @@ function Orders() {
     return (
         <StyledAdminOrders>
             <div id="header">
-                <h1>Pedidos</h1>
+                <h1 className="super-text">Pedidos</h1>
             </div>
             <div className="field" id="pending-orders">
                 <h2>Pedidos Entrantes</h2>
@@ -40,7 +40,7 @@ function Orders() {
                     <IncomingOrders orders={incomingOrders} cb={ordersCb}/>
                 </div>
             </div>
-            <div id="completed-orders" className="field">
+            <div className="field" id="completed-orders">
                 <h2>Pedidos En Curso</h2>
                 <div>
                     <InProgress orders={ordersInProgress} cb={ordersCb}/>
