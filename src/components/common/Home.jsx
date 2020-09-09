@@ -6,6 +6,7 @@ import AdminHome from '../admin-side/home/AdminHome'
 
 function Home() {
     const {pathname} = useLocation()
+    
 
     if (isAdminRoute(pathname)) {
         return (

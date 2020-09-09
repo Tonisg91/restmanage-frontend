@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login'
@@ -15,15 +16,29 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import Orders from './components/admin-side/Orders/Orders';
 import OrderDetails from './components/admin-side/Orders/OrderDetails';
-import { useSelector } from 'react-redux';
 import NoMatch from './components/common/NoMatch'
 import { isAdminRoute } from './tools/pathFunctions';
+import Config from './components/admin-side/config/Config'
+import configService from './tools/configService'
 
 
 function App() {
   const user = useSelector(state => state.user)
+  const config = useSelector(state => state.config)
+  const dispatch = useDispatch()
   const { pathname } = useLocation()
   const mainViewSelector = isAdminRoute(pathname) ? 'admin-main' : 'client-main'
+
+  const sendConfigToRedux = data => dispatch({
+    type: "SET_CONFIG",
+    payload: data
+  })
+
+  const getConfigAndDispatch = (cb = sendConfigToRedux, forceUpdate = false) => {
+    if (!config) configService.getConfig(cb)
+  }
+
+  useEffect(getConfigAndDispatch, [])
 
   return (
     <main className="default-colors" id={mainViewSelector}>
@@ -58,6 +73,7 @@ function App() {
             <FlowControl children={<OrderDetails {...props} />} />
           }
         />
+        <Route path="/admin/config" component={Config} />
         <Route
           path="/admin/signup"
           render={(props) => 

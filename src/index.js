@@ -14,12 +14,23 @@ import './index.css'
 
   const initialCart = JSON.parse(localStorage.getItem('currentCart')) || []
 
+  const initialConfig = null
+
   const userReducer = (state = initialUser, action) => {
     switch (action.type) {
       case 'LOG_USER':
           return action.payload
       default:
           return state
+    }
+  }
+
+  const configReducer = (state = initialConfig, action) => {
+    switch (action.type) {
+      case 'SET_CONFIG':
+        return action.payload
+      default:
+        return state
     }
   }
 
@@ -63,7 +74,8 @@ import './index.css'
   const allReducers = combineReducers({
     user: userReducer,
     products: productsReducer,
-    cart: cartReducers
+    cart: cartReducers,
+    config: configReducer
   })
 
   const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())

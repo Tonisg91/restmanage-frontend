@@ -57,7 +57,7 @@ function NavBar() {
                     <NavLink  exact to="/admin" onClick={rotateIcon}>Home Administrador</NavLink>
                     <NavLink to="/admin/menu" onClick={rotateIcon}>Carta</NavLink>
                     <NavLink to="/admin/orders" onClick={rotateIcon}>Pedidos</NavLink>
-                    <NavLink to="/admin/profile" onClick={rotateIcon}>Mi Cuenta</NavLink>
+                    <NavLink to="/admin/config" onClick={rotateIcon}>Configuración</NavLink>
                 </div>
             </StyledAdminNav>
         )
