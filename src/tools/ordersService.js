@@ -33,6 +33,38 @@ class OrdersService {
         axios.post(`${this.URL}/finishorder/${id}`)
     }
 
+    async mostSelledProducts(cb1, cb2) {
+        const dataFromDB = await this.getAllOrders()
+        
+        const normalizedData = dataFromDB.flatMap(order => {
+            const product = order.productList.map(({ product, qty }) => {
+                return {
+                    name: product.name,
+                    qty: qty
+                }
+            })
+            return product
+        })
+
+        const getQuantities = (data = normalizedData) => {
+            const dataReduced = []
+            if (data.length) {
+                data.forEach(product => {
+                    if (!dataReduced.find(prod => prod.name === product.name)) {
+                        return dataReduced.push({ name: product.name, qty: product.qty })
+                    }
+                    const existentProduct = dataReduced.find(prod => prod.name === product.name)
+
+                    existentProduct.qty += product.qty
+                })
+            }
+            return dataReduced
+        }
+
+        return getQuantities()
+
+    }
+
 }
 
 export default new OrdersService()

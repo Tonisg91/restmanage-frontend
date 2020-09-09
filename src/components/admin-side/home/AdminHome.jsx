@@ -1,42 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import Chart from './Chart'
 import orderService from '../../../tools/ordersService'
 
 function AdminHome() {
-    const [orders, setOrders] = useState([])
+    const [mostSelled, setMostSelled] = useState([])
 
     useEffect(() => {
-        if (!orders.length) orderService.getAllOrders().then(setOrders)
+        if (!mostSelled.length) orderService.mostSelledProducts().then(setMostSelled)
     }, [])
 
-    const normalizedData = orders.flatMap(order => {
-        const product = order.productList.map(({ product, qty }) => {
-            return {
-                name: product.name,
-                qty: qty
-            }
-        })
-        return product
-    })
 
-    const quantities = (data = normalizedData) => {
-        const dataReduced = []
-        if (data.length) {
-            data.forEach(product => {
-                if (!dataReduced.find(prod => prod.name === product.name)) {
-                    return dataReduced.push({name: product.name, qty: product.qty})
-                }
-                const existentProduct = dataReduced.find(prod => prod.name === product.name)
-
-                existentProduct.qty += product.qty
-            })
-        }
-        return dataReduced
+    if (mostSelled.length) {
+        return (
+            <div>
+                <Chart data={mostSelled} chartName="Productos más vendidos"/>
+            </div>
+        )
     }
 
-    console.log(quantities())
     return (
         <div>
-            <h1>admin home</h1>
+            <h1>Cargando datos</h1>
         </div>
     )
 }
