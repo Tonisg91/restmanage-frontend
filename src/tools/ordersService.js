@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 
 class OrdersService {
     constructor() {
@@ -33,7 +34,7 @@ class OrdersService {
         axios.post(`${this.URL}/finishorder/${id}`)
     }
 
-    async mostSelledProducts(cb1, cb2) {
+    async mostSelledProducts() {
         const dataFromDB = await this.getAllOrders()
         
         const normalizedData = dataFromDB.flatMap(order => {
@@ -62,8 +63,41 @@ class OrdersService {
         }
 
         return getQuantities()
-
     }
+
+    async getLast30Days() {
+        const dataFromDB = await this.getAllOrders()
+
+        const ordersFilteredByDate = dataFromDB.filter(order => {
+            const orderDate = moment(order.createdAt)
+            const diff = moment().diff(orderDate, 'days')
+            if (diff <= 5) return order
+            }
+        )
+
+
+        const normalizedData = ordersFilteredByDate.map(order => {
+            return {
+                amount: order.amount,
+                date: moment(order.createdAt).format('DD, MMM, YYYY')
+            }
+        }).sort((a,b) => b.date - a.date)
+
+
+        const dataReduced = () => {
+            const ordersArr = []
+            normalizedData.forEach(order => {
+                if (!ordersArr.find(el => el.date === order.date)) {
+                    return ordersArr.push(order)
+                }
+                const existentDate = ordersArr.find(el => el.date === order.date)
+                existentDate.amount += order.amount
+            })
+            return ordersArr
+        }
+        return dataReduced()
+    }
+
 
 }
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef} from 'react'
-import ordersService from '../../../tools/ordersService'
 import Chartjs from 'chart.js'
 
-function DisplayChart({data, chartName}) {
+function MostSelledChart({data, chartName}) {
     const chartContainer = useRef(null)
     const [chartInstance, setChartInstance] = useState(null)
 
@@ -68,4 +67,4 @@ function DisplayChart({data, chartName}) {
     )
 }
 
-export default DisplayChart
+export default MostSelledChart
