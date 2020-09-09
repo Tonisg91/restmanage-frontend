@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Chart from './Chart'
 import orderService from '../../../tools/ordersService'
+import { StyledAdminHome } from '../../styled-components/admin-side'
 
 function AdminHome() {
     const [mostSelled, setMostSelled] = useState([])
@@ -12,16 +13,21 @@ function AdminHome() {
 
     if (mostSelled.length) {
         return (
-            <div>
-                <Chart data={mostSelled} chartName="Productos más vendidos"/>
-            </div>
+            <StyledAdminHome>
+                <h1 className="super-text">Estadísticas</h1>
+                <div className="field">
+                    <h2>Productos más vendidos</h2>
+                    <Chart data={mostSelled}/>
+                </div>
+            </StyledAdminHome>
         )
     }
 
     return (
-        <div>
-            <h1>Cargando datos</h1>
-        </div>
+        <StyledAdminHome>
+            <>
+            </>
+        </StyledAdminHome>
     )
 }
 

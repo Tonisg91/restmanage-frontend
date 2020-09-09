@@ -306,11 +306,29 @@ const StyledAdminSingleOrder = styled.div`
     
 `
 
+const StyledAdminHome = styled.div`
+    min-height: 92vh;
+    text-align: center;
+    padding-top: 2em;
+    h1 {
+        color: white;
+    }
+    .field {
+        margin: 1em 1.5em;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+        background: none;
+    }
+`
+
 export {
     StyledAdminNav,
     StyledAdminMenu,
     StyledAddProductForm,
     StyledAdminProduct,
     StyledAdminOrders,
-    StyledAdminSingleOrder
+    StyledAdminSingleOrder,
+    StyledAdminHome
 }

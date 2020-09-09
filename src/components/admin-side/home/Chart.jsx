@@ -40,13 +40,8 @@ function DisplayChart({data, chartName}) {
         ]
         },
         options: {
-            title: {
-                display: true,
-                text: chartName,
-                fontSize: 24
-            },
             legend: {
-                display: false
+                display: false,
             },
             scales: {
                 yAxes: [{
