@@ -73,7 +73,12 @@ function App() {
             <FlowControl children={<OrderDetails {...props} />} />
           }
         />
-        <Route path="/admin/config" component={Config} />
+        <Route 
+          path="/admin/config" component={Config}
+          render={(props) => 
+            <FlowControl children={<Config {...props} />} />
+          }  
+        />
         <Route
           path="/admin/signup"
           render={(props) => 

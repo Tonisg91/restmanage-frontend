@@ -264,6 +264,9 @@ const StyledAdminSingleOrder = styled.div`
     }
     #restaurant-logo {
         margin: .75em 0;
+        & img {
+            width: 50%;
+        }
     }
     i {
         font-size: 3em;
@@ -323,6 +326,38 @@ const StyledAdminHome = styled.div`
     }
 `
 
+const StyledAdminConfig = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const StyledConfigForm = styled.div`
+    background-color: var(--navbar);
+    border-radius: 10px;
+    margin: 1em;
+    form {
+        padding: .7em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    label {
+        text-align: center;
+        color: white;
+        margin-top: .5em;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    input {
+        padding: .8em;
+        margin: .5em;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+`
+
 export {
     StyledAdminNav,
     StyledAdminMenu,
@@ -330,5 +365,7 @@ export {
     StyledAdminProduct,
     StyledAdminOrders,
     StyledAdminSingleOrder,
-    StyledAdminHome
+    StyledAdminHome,
+    StyledAdminConfig,
+    StyledConfigForm
 }

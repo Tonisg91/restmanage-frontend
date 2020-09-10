@@ -1,25 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import GenericTable from '../../common/GenericTable'
 import ordersService from '../../../tools/ordersService'
 import dateService from '../../../tools/dateService'
-import { useEffect } from 'react'
 import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
 import Header from '../../common/Header'
 import { toast } from 'react-toastify'
+import configService from '../../../tools/configService'
 
 function OrderDetails({match}) {
     const {params: { id}} = match
     const history = useHistory()
+    const config = useSelector(state => state.config)
+
+    const useCurrentConfig = () => {
+        const [currentConfig, setCurrentConfig] = useState(null)
+        const getConfigData = () => { configService.getConfig(setCurrentConfig) }
+        useEffect(getConfigData, [])
+        return currentConfig
+    }
+
 
     const useOrderStored = (orderId = id) => {
         const [currentOrder, setCurrentOrder] = useState({})
-        const getOrderData = () => {ordersService.getSingleOrder(orderId).then(setCurrentOrder)}
+        const getOrderData = () => { ordersService.getSingleOrder(orderId).then(setCurrentOrder) }
         useEffect(getOrderData, [])
         return currentOrder
     }
 
-    const {amount, createdAt, easyId, inProgress, isFinished, productList, _id} = useOrderStored()
+    const { amount, createdAt, easyId, inProgress, isFinished, productList, _id } = useOrderStored()
+
 
     const displayProductList = !productList 
             ? null 
@@ -87,33 +98,36 @@ function OrderDetails({match}) {
             return null
     }
 
-    return (
-        <StyledAdminSingleOrder>
-            <Header text={`Pedido ${easyId}`}/>
-            <div id="ticket">
-                <div id="restaurant-logo">
-                    <i className="fas fa-utensils"></i>
-                    <h1>Hamburguesería Random</h1>
-                </div>
-                <div id="order-info">
-                    <div id="id-&-date">
-                        <h2>Pedido {easyId}</h2>
-                        <p>{dateService.getDate(createdAt)} {dateService.getTime(createdAt)}</p>
+    if (config) {
+        const { name, phone, email, street, city, ticketLogo, number } = config
+
+        return (
+            <StyledAdminSingleOrder>
+                <Header text={`Pedido ${easyId}`} />
+                <div id="ticket">
+                    <div id="restaurant-logo">
+                        <img src={ticketLogo} alt={`${name} logo`} id="ticket-logo"/>
+                        <h1>{name}</h1>
                     </div>
-                    <div id="product-list-container" className="container">
-                        <GenericTable content={displayProductList} id="product-list" />
+                    <div id="order-info">
+                        <div id="id-&-date">
+                            <h2>Pedido {easyId}</h2>
+                            <p>{dateService.getDate(createdAt)} {dateService.getTime(createdAt)}</p>
+                        </div>
+                        <div id="product-list-container" className="container">
+                            <GenericTable content={displayProductList} id="product-list" />
+                        </div>
+                        <div id="amount-container" className="container">
+                            <h3>Total {amount}€</h3>
+                        </div>
                     </div>
-                    <div id="amount-container" className="container">
-                        <h3>Total {amount}€</h3>
+                    <div id="restaurant-info">
+                        <p>{phone}</p>
+                        <p>{email}</p>
+                        <p>c/{street} {number}</p>
+                        <p>{city}</p>
                     </div>
                 </div>
-                <div id="restaurant-info">
-                    <p>93123123</p>
-                    <p>hamburgueseriarandom@gmail.com</p>
-                    <p>c/ Barcelona 123</p>
-                    <p>Barcelona</p>
-                </div>
-            </div>
                 <div id="action-container" className="container">
                     <h2>Estado actual: {displayStatus()}</h2>
                     <div>
@@ -121,8 +135,15 @@ function OrderDetails({match}) {
                     </div>
 
                 </div>
-        </StyledAdminSingleOrder>
+            </StyledAdminSingleOrder>
+        )
+    }
+
+    return (
+        <h1>Cargando</h1>
     )
+
+    
 }
 
 export default OrderDetails
