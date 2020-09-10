@@ -37,7 +37,12 @@ function Cart() {
         })
     }
 
-    //function addOrderToUser()
+    function addOrderToUser(data) {
+        dispatch({
+            type: 'ADD_ORDER',
+            payload: data
+        })
+    }
     
     const sendOrder = async (cart, id) => {
         if (!user) {
@@ -45,8 +50,8 @@ function Cart() {
             return emptyCart()
         }
         if (cart.length) {
-            await cartService.sendCart(cart, id, totalAmount)
-
+            const newOrder = await cartService.sendCart(cart, id, totalAmount)
+            addOrderToUser(newOrder)
             return emptyCart()
         }
         

@@ -36,6 +36,14 @@ const StyledAdminNav = styled.nav`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        & div {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            font-size: 16px;
+        }
     }
     #sidenav a {
         padding: 0 1em 1em;
@@ -95,7 +103,7 @@ const StyledAdminMenu = styled.div`
         }
         #product-list {
             grid-area: bottom;
-            max-height: 37vh ;
+            max-height: 32vh ;
             overflow: scroll;
         }
         .field {
@@ -214,7 +222,7 @@ const StyledAdminOrders = styled.div`
         }
         #order-list {
             grid-area: bottom;
-            max-height: 37vh;
+            max-height: 34vh;
             overflow: scroll;
             & tbody td {
                 text-align: center;

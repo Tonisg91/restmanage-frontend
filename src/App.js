@@ -4,22 +4,25 @@ import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import Menu from './components/common/Menu'
 import Login from './components/common/Login'
 import Signup from './components/common/Signup'
-import FlowControl from './components/admin-side/FlowControl'
 import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
+import NoMatch from './components/common/NoMatch'
+
 import ProductDetails from './components/client-side/products/ProductDetails'
-import './App.css'
 import ProductList from './components/client-side/products/ProductList'
 import Profile from './components/client-side/profile/Profile'
 import Cart from './components/client-side/cart/Cart'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import ClientOrderDetails from './components/client-side/order/ClientOrderDetails'
+
+import FlowControl from './components/admin-side/FlowControl'
 import Orders from './components/admin-side/Orders/Orders';
 import OrderDetails from './components/admin-side/Orders/OrderDetails';
-import NoMatch from './components/common/NoMatch'
-import { isAdminRoute } from './tools/pathFunctions';
 import Config from './components/admin-side/config/Config'
+import { isAdminRoute } from './tools/pathFunctions';
 import configService from './tools/configService'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 
 
 function App() {
@@ -54,6 +57,7 @@ function App() {
         <Route exact path="/menu" component={Menu} />
         <Route path="/menu/product/:id" component={ProductDetails} />
         <Route path="/menu/:category" component={ProductList} />
+        <Route path="/order/:id" component={ClientOrderDetails} />
         <Route 
           path="/admin/menu" 
           render={(props) => 

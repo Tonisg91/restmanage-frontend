@@ -20,6 +20,11 @@ import './index.css'
     switch (action.type) {
       case 'LOG_USER':
           return action.payload
+      case 'ADD_ORDER':
+          return {
+            ...state,
+            orders: [...state.orders, action.payload]
+          }
       default:
           return state
     }

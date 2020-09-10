@@ -48,10 +48,11 @@ class CartService {
         this.removeCartFromLocalStorage()
         switch (response.status) {
             case 200:
-                return toast.success(
-                        'Pedido realizado con éxito.',
-                        {autoClose: 2000}
-                        )
+                toast.success(
+                    'Pedido realizado con éxito.',
+                    {autoClose: 2000}
+                    )
+                return response.data
             default:
                 toast.error(
                     'Error al realizar el pedido',

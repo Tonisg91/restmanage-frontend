@@ -19,6 +19,7 @@
     ),
       url("https://res.cloudinary.com/dkejgwlha/image/upload/v1599466840/RestManager/set-3045129_1920_g7a1y1.jpg");
   background-size: contain;
+  background-repeat: repeat;
   background-position: center;
 }
 

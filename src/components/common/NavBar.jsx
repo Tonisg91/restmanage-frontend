@@ -15,12 +15,12 @@ function NavBar() {
     const isClientHome = pathname === '/'
 
     const loginButtonOnNav = (
-            <NavLink to="/login">
-                <div className="nav-element">
-                    <i className="fas fa-sign-in-alt"></i>
-                    <p>Iniciar Sesión</p>
-                </div>
-            </NavLink>
+        <NavLink to="/login">
+            <div className="nav-element">
+                <i className="fas fa-sign-in-alt"></i>
+                <p>Iniciar Sesión</p>
+            </div>
+        </NavLink>
     )
 
     const profileButtonOnNav = (
@@ -48,12 +48,6 @@ function NavBar() {
         }
         return loginButtonOnNav
     }
-
-    const userLogged = user ?
-        adminButtonOnNav :
-        user ?
-        profileButtonOnNav :
-        loginButtonOnNav
 
     const openNav = (isOpen = showSidenav) =>  document.getElementById("sidenav").style.width = isOpen ? "0" : "250px"
 
@@ -87,10 +81,13 @@ function NavBar() {
                     <NavLink to="/admin/menu" onClick={rotateIcon}>Carta</NavLink>
                     <NavLink to="/admin/orders" onClick={rotateIcon}>Pedidos</NavLink>
                     <NavLink to="/admin/config" onClick={rotateIcon}>Configuración</NavLink>
-                    <a
-                        onClick={logoutAndRedirectToHome}>
-                        Cerrar sesión
-                    </a>
+                    <div>
+                        <button
+                            className="btn btn-red"
+                            onClick={logoutAndRedirectToHome}>
+                            Cerrar sesión
+                        </button>
+                    </div>
                 </div>
             </StyledAdminNav>
         )

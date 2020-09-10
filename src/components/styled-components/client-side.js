@@ -408,10 +408,43 @@ const StyledClientProfile = styled.div`
         margin: 1em 0;
         color: white;
     }
+    #return-button {
+        margin-top: .5em;
+    }
+    #return-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #orders-container {
+        display: block;
+        overflow: auto;
+        white-space: nowrap;
+        & div {
+            display: inline-block;
+            margin: 0 .5em;
+            border-radius: 25px;
+        }
+    }
+    .order-element {
+        text-align: center;
+        & h4 {
+            margin: 3em 2.5em;
+        }
+        h2 {
+            margin-top: 1.5em;
+        }
+        button {
+            margin-bottom: 1em;
+        }
+    }
+    #pre-select-container {
+        display: flex;
+        justify-content: space-around;
+    }
     .inside-container {
         width: 80vw;
-        padding: 2em 0;
-        
+        padding: 1em 0;
         border-radius: 25px;
     }
     form {
@@ -452,6 +485,30 @@ const StyledClientProfile = styled.div`
         text-decoration: underline;
     }
 `
+const StyledClientOrderDetails = styled.div`
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 90%;
+    grid-template-areas: 
+        "header"
+        "mid"
+        "bottom"
+    ;
+    grid-auto-rows: minmax(min-content, max-content);
+    justify-content: center;
+    gap: 50px;
+    #header {
+        grid-area: header;
+    }
+    #content {
+        grid-area: bottom;
+        padding: 1em;
+        text-align: center;
+        & div {
+            margin: 1em 0;
+        }   
+    }
+`
 
 
 export  {
@@ -463,5 +520,6 @@ export  {
     StyledClientProductDetails,
     StyledClientSingleProduct,
     StyledClientCartElement,
-    StyledClientProfile
+    StyledClientProfile,
+    StyledClientOrderDetails
 }

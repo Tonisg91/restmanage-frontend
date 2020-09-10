@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import userAuth from '../../../tools/userAuth'
 
-function ProfileForm({user}) {
+function ProfileForm({user, cb}) {
     const history = useHistory()
     const dispatch = useDispatch()
     const [userData, setUserData] = useState(user)
@@ -87,6 +87,13 @@ function ProfileForm({user}) {
                 value="GUARDAR PERFIL"
                 className="btn btn-blue"
             />
+            <button 
+                id="return-button"
+                className="btn btn-red"
+                onClick={() => cb(false)}
+                >
+                Volver
+            </button>
             <p
                 onClick={logoutAndRedirectToHome}>
                 Cerrar sesión
