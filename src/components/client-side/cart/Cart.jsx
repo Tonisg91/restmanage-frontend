@@ -36,14 +36,17 @@ function Cart() {
             payload: idx
         })
     }
+
+    //function addOrderToUser()
     
-    const sendOrder = async (cart, id, email) => {
+    const sendOrder = async (cart, id) => {
         if (!user) {
             await cartService.sendCart(cart, id, totalAmount, clientEmail)
             return emptyCart()
         }
         if (cart.length) {
             await cartService.sendCart(cart, id, totalAmount)
+
             return emptyCart()
         }
         

@@ -90,7 +90,7 @@ function ProfileForm({user}) {
             <p
                 onClick={logoutAndRedirectToHome}>
                 Cerrar sesión
-                    </p>
+            </p>
         </form>
     )
 }

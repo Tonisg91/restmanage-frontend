@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
-import { NavLink, useLocation, Link } from 'react-router-dom'
+import { NavLink, useLocation, Link,useHistory } from 'react-router-dom'
 import { isAdminRoute } from  '../../tools/pathFunctions'
 import { useSelector } from 'react-redux'
 import { StyledClientNav } from '../styled-components/client-side'
 import { StyledAdminNav } from  '../styled-components/admin-side'
+import userAuth from '../../tools/userAuth'
 
 function NavBar() {
     const {pathname} = useLocation()
+    const history = useHistory()
     const user = useSelector(state => state.user)
     const [showSidenav, setShowSidenav] = useState(false)
 
@@ -30,7 +32,28 @@ function NavBar() {
         </NavLink>
     )
 
-    const userLogged = user ? profileButtonOnNav : loginButtonOnNav
+    const adminButtonOnNav = (
+        <NavLink to="/admin">
+            <div className="nav-element">
+                <i className="fas fa-user"></i>
+                <p>Zona Administrador</p>
+            </div>
+        </NavLink>
+    )
+
+    const displayLastNavButton = () => {
+        if (user) {
+            if (user.adminPermissions) return adminButtonOnNav
+            return profileButtonOnNav
+        }
+        return loginButtonOnNav
+    }
+
+    const userLogged = user ?
+        adminButtonOnNav :
+        user ?
+        profileButtonOnNav :
+        loginButtonOnNav
 
     const openNav = (isOpen = showSidenav) =>  document.getElementById("sidenav").style.width = isOpen ? "0" : "250px"
 
@@ -39,6 +62,12 @@ function NavBar() {
         const action = (degrees) => document.getElementById('button-sidenav').style.transform = `rotate(${degrees}deg)`
         !showSidenav ? action(90) : action(0)
         openNav()
+    }
+
+    const logoutAndRedirectToHome = () => {
+        userAuth.logout()
+        history.push('/')
+        history.go(0)
     }
 
     if (isAdminRoute(pathname)) {
@@ -58,6 +87,10 @@ function NavBar() {
                     <NavLink to="/admin/menu" onClick={rotateIcon}>Carta</NavLink>
                     <NavLink to="/admin/orders" onClick={rotateIcon}>Pedidos</NavLink>
                     <NavLink to="/admin/config" onClick={rotateIcon}>Configuración</NavLink>
+                    <a
+                        onClick={logoutAndRedirectToHome}>
+                        Cerrar sesión
+                    </a>
                 </div>
             </StyledAdminNav>
         )
@@ -87,7 +120,7 @@ function NavBar() {
                     <p>Carrito</p>
                 </div>
             </NavLink>
-            {userLogged}
+            {displayLastNavButton()}
         </StyledClientNav>
     )
 

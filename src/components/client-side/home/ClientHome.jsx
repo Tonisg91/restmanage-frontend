@@ -15,8 +15,8 @@ function ClientHome() {
                 <header >
                     <div id="head-img">
                         <div id="header-locations">
-                            <Link >
-                                <i class="fas fa-map-marker-alt"></i>
+                            <Link to="">
+                                <i className="fas fa-map-marker-alt"></i>
                             LOCALIZACIONES
                         </Link>
                         </div>
@@ -26,11 +26,11 @@ function ClientHome() {
                         <nav>
                             <div>
                                 <Link to="/menu">Carta</Link>
-                                <Link to="#">Reservas</Link>
-                                <Link to="#">Localizaciones</Link>
+                                <Link to="">Reservas</Link>
+                                <Link to="">Localizaciones</Link>
                             </div>
                             <div>
-                                <Link to="#">Sobre Nosotros</Link>
+                                <Link to="">Sobre Nosotros</Link>
                             </div>
                         </nav>
                     </div>

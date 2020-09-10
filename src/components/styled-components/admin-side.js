@@ -358,6 +358,23 @@ const StyledConfigForm = styled.div`
     }
 `
 
+const StyledFlowControl = styled.div`
+    width: 100%;
+    min-height: 92vh;
+    display: flex;
+    flex-direciton: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h2 {
+        color: white;
+        margin: 1em 0;
+    }
+    a {
+        font-size: 24px;
+    }
+`
+
 export {
     StyledAdminNav,
     StyledAdminMenu,
@@ -367,5 +384,6 @@ export {
     StyledAdminSingleOrder,
     StyledAdminHome,
     StyledAdminConfig,
-    StyledConfigForm
+    StyledConfigForm,
+    StyledFlowControl
 }
