@@ -72,10 +72,24 @@ const StyledNoMatch = styled.div`
     }
 `
 
+const StyledLoadingPage = styled.div`
+    position: absolute;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 100%
+    }
+`
+
 
 
 export {
     StyledLoginSignup,
     StyledGenericList,
-    StyledNoMatch
+    StyledNoMatch,
+    StyledLoadingPage
 }

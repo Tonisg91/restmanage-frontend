@@ -10,9 +10,7 @@ function Home() {
 
     if (isAdminRoute(pathname)) {
         return (
-            <div>
-                <AdminHome />
-            </div>
+            <AdminHome />
         )
     }
 

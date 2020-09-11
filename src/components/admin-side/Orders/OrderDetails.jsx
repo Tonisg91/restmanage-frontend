@@ -8,6 +8,7 @@ import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
 import Header from '../../common/Header'
 import { toast } from 'react-toastify'
 import configService from '../../../tools/configService'
+import LoadingPage from '../../common/LoadingPage'
 
 function OrderDetails({match}) {
     const {params: { id}} = match
@@ -140,7 +141,7 @@ function OrderDetails({match}) {
     }
 
     return (
-        <h1>Cargando</h1>
+        <LoadingPage />
     )
 
     

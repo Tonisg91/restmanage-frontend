@@ -5,6 +5,7 @@ import GenericTable from '../../common/GenericTable'
 import Header from '../../common/Header'
 import ordersService from '../../../tools/ordersService'
 import dateService from '../../../tools/dateService'
+import LoadingPage from '../../common/LoadingPage'
 
 function OrderDetails({match}) {
     const { params: { id } } = match
@@ -65,7 +66,7 @@ function OrderDetails({match}) {
     }
     
     return (
-        <h1>Cargando datos</h1>
+        <LoadingPage />
     )
 }
 

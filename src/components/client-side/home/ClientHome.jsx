@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { StyledClientHome } from '../../styled-components/client-side'
 import { useEffect } from 'react'
+import LoadingPage from '../../common/LoadingPage'
 
 function ClientHome() {
     const config = useSelector(state => state.config)
@@ -40,7 +41,7 @@ function ClientHome() {
     }
 
     return (
-        <h1>cargando</h1>
+        <LoadingPage />
     )
 }
 

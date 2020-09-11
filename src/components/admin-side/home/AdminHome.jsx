@@ -3,6 +3,7 @@ import orderService from '../../../tools/ordersService'
 import { StyledAdminHome } from '../../styled-components/admin-side'
 import MostSelledChart from './MostSelledChart'
 import Last30DaysChart from './Last30DaysChart'
+import LoadingPage from '../../common/LoadingPage'
 
 function AdminHome() {
     const [mostSelled, setMostSelled] = useState([])
@@ -32,11 +33,7 @@ function AdminHome() {
     }
 
     return (
-        <StyledAdminHome>
-            <div className="loading">
-                <h1>Cargando datos</h1>
-            </div>
-        </StyledAdminHome>
+        <LoadingPage />
     )
 }
 
