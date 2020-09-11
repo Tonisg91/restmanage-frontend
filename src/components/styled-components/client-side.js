@@ -236,7 +236,7 @@ const StyledClientSingleProduct = styled.div`
         font-size: 1.5em;
     }
 `
-//TODO: ESTILOS PARTE INFO PRODUCT-DETAILS
+
 const StyledClientProductDetails = styled.div`
     min-height: 100vh;
     display: flex;
@@ -485,31 +485,6 @@ const StyledClientProfile = styled.div`
         text-decoration: underline;
     }
 `
-// const StyledClientOrderDetails = styled.div`
-//     min-height: 92vh;
-//     display: grid;
-//     grid-template-columns: 90%;
-//     grid-template-areas: 
-//         "header"
-//         "mid"
-//         "bottom"
-//     ;
-//     grid-auto-rows: minmax(min-content, max-content);
-//     justify-content: center;
-//     gap: 50px;
-//     #header {
-//         grid-area: header;
-//     }
-//     #content {
-//         grid-area: bottom;
-//         padding: 1em;
-//         text-align: center;
-//         & div {
-//             margin: 1em 0;
-//         }   
-//     }
-// `
-
 
 export  {
     StyledClientHome,
@@ -521,5 +496,4 @@ export  {
     StyledClientSingleProduct,
     StyledClientCartElement,
     StyledClientProfile,
-    // StyledClientOrderDetails
 }

@@ -15,8 +15,6 @@ function OrderDetails({match}) {
 
     useEffect(getOrderData, [])
 
-    console.log(orderData)
-
     if (orderData && config) {
         const { easyId, createdAt, productList, amount } = orderData
         const {name, phone, email, street, number, city, ticketLogo} = config

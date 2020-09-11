@@ -34,10 +34,8 @@ class UserAuth {
     }
 
     async updateUser(userData, cb) {
-        console.log(userData)
         axios.post(`${this.URL}/updateuser`, userData)
             .then(res => {
-                console.log(res.data)
                 cb(res.data)
                 this.toLocalStorage(res.data)
             })

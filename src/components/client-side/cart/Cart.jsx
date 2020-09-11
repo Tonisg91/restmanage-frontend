@@ -107,14 +107,14 @@ function Cart() {
                     className="btn btn-blue"
                     onClick={() => sendOrder(currentCart, user ? user._id : null)}
                 >REALIZAR PEDIDO
-                        </button>
+                </button>
             </div>
             <p
                 id="empty-cart"
                 onClick={emptyCart}
             >
                 Vaciar carrito
-                        </p>
+            </p>
         </div>
         </>
         ) : 
