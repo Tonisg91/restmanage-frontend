@@ -33,7 +33,6 @@ function ProductDetails({match}) {
     }
 
 
-    //TODO: CAMBIAR DATOS POR LOS QUE VIENEN DE LA BBDD
     return (
         <StyledClientProductDetails>
             <Header text={"Detalles"}/>

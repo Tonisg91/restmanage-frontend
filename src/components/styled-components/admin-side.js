@@ -232,12 +232,12 @@ const StyledAdminOrders = styled.div`
 `
 
 const StyledAdminSingleOrder = styled.div`
-    min-height: 93.5vh;
+    min-height: 95vh;
     text-align: center;
     background-color: lightgray;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     #header {
         background: none;
@@ -254,7 +254,6 @@ const StyledAdminSingleOrder = styled.div`
     }
     .container {
         width: 100%;
-        padding: 1em 2em;
     }
     .list-element {
         display: flex;
@@ -266,12 +265,12 @@ const StyledAdminSingleOrder = styled.div`
     }
     #ticket {
         background-color: white;
-        width: 430px;
-        padding: 2em 0;
+        width: 335px;
+        padding: 1em 0;
         font-family: 'Courier New', Courier, monospace;
     }
     #restaurant-logo {
-        margin: .75em 0;
+        margin: .5em 0;
         & img {
             width: 50%;
         }
@@ -284,6 +283,7 @@ const StyledAdminSingleOrder = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 0 1em;
     }
     #product-list {
         border: none;
@@ -306,7 +306,7 @@ const StyledAdminSingleOrder = styled.div`
         text-align: right;
     }
     #action-container {
-        margin-top: 2em;
+        margin: 1em 0;
         & div {
             display: flex;
             flex-direction: column;
@@ -314,7 +314,15 @@ const StyledAdminSingleOrder = styled.div`
             align-items: center;
         }
     }
-    
+    @media (min-width: 768px) {
+        justify-content: space-between;
+        #ticket {
+        background-color: white;
+        width: 430px;
+        padding: 2em 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    }
 `
 
 const StyledAdminHome = styled.div`

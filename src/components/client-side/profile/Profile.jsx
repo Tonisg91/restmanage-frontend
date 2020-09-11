@@ -10,9 +10,6 @@ function Profile() {
     const [displayForm, setDisplayForm] = useState(false)
     const [displayOrders, setDisplayOrders] = useState(false)
 
-    const renderOrders = <CurrentOrders orders={user.orders} cb={setDisplayOrders}/>
-    const renderForm = <ProfileForm user={user} cb={setDisplayForm}/>
-
     const selectedField = () => {
         if (displayForm) {
             return (
@@ -33,15 +30,13 @@ function Profile() {
                         <CurrentOrders orders={user.orders} />
                     </div>
                     <div
-                        id="return-container"
-                        >
+                        id="return-container">
                         <button
                             id="return-button"
                             className="btn btn-red"
-                            onClick={() => setDisplayOrders(false)}
-                        >
+                            onClick={() => setDisplayOrders(false)}>
                             Volver
-            </button>
+                        </button>
                     </div>
                 </div>
                 
