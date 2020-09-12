@@ -15,14 +15,6 @@ function OrderDetails({match}) {
     const history = useHistory()
     const config = useSelector(state => state.config)
 
-    // const useCurrentConfig = () => {
-    //     const [currentConfig, setCurrentConfig] = useState(null)
-    //     const getConfigData = () => { configService.getConfig(setCurrentConfig) }
-    //     useEffect(getConfigData, [])
-    //     return currentConfig
-    // }
-
-
     const useOrderStored = (orderId = id) => {
         const [currentOrder, setCurrentOrder] = useState({})
         const getOrderData = () => { ordersService.getSingleOrder(orderId).then(setCurrentOrder) }

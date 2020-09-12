@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import userAuth from '../../../tools/userAuth'
+import { toast } from 'react-toastify'
 
 function ProfileForm({user, cb}) {
     const history = useHistory()
@@ -22,6 +23,8 @@ function ProfileForm({user, cb}) {
             payload: data
         })
         userAuth.updateUser(userData, authCB)
+        toast.success('Perfil actualizado con éxito', {autoClose: 1500})
+        history.push('/menu')
     }
 
     const logoutAndRedirectToHome = () => {
