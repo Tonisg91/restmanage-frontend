@@ -202,6 +202,9 @@ const StyledClientNav = styled.nav`
             text-align: center;
             color: var(--background-color)
         }
+        a:visited {
+            color: transparent;
+        }
         p {
             font-size: 16px;
         }

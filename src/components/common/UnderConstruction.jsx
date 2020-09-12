@@ -9,7 +9,7 @@ function NoMatch() {
     return (
         <StyledNoMatch>
             <h2 className="super-text">Ups!</h2>
-            <h2 className="super-text"> Esta ruta está en construcción.</h2>
+            <h3 className="super-text"> Esta ruta está en construcción.</h3>
             <button
                 className="btn btn-blue"
                 onClick={goHome}

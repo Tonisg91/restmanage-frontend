@@ -61,7 +61,7 @@ const StyledNoMatch = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h2 {
+    h2, h3 {
         color: white;
     }
     button {
