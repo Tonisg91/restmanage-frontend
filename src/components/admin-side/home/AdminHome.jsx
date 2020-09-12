@@ -25,7 +25,7 @@ function AdminHome() {
                     <MostSelledChart data={mostSelled}/>
                 </div>
                 <div className="field">
-                    <h2>Ventas de los últimos 5 días</h2>
+                    <h2>Ventas de los últimos 30 días</h2>
                     <Last30DaysChart data={last30Days} />
                 </div>
             </StyledAdminHome>

@@ -5,7 +5,7 @@ function LoadingPage() {
     return (
         <StyledLoadingPage>
             <div>
-                <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading image" />
+                <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Loading gif" />
             </div>
         </StyledLoadingPage>
     )

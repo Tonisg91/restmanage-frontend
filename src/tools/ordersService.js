@@ -71,7 +71,7 @@ class OrdersService {
         const ordersFilteredByDate = dataFromDB.filter(order => {
             const orderDate = moment(order.createdAt)
             const diff = moment().diff(orderDate, 'days')
-            if (diff <= 5) return order
+            if (diff <= 30) return order
             }
         )
 
