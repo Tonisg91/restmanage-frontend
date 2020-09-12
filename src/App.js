@@ -7,6 +7,7 @@ import Signup from './components/common/Signup'
 import NavBar from './components/common/NavBar'
 import Home from './components/common/Home'
 import NoMatch from './components/common/NoMatch'
+import UnderConstruction from './components/common/UnderConstruction'
 
 import ProductDetails from './components/client-side/products/ProductDetails'
 import ProductList from './components/client-side/products/ProductList'
@@ -57,6 +58,9 @@ function App() {
         <Route exact path="/menu" component={Menu} />
         <Route path="/menu/product/:id" component={ProductDetails} />
         <Route path="/menu/:category" component={ProductList} />
+        <Route path="/dailymenu" component={UnderConstruction} />
+        <Route path="/places" component={UnderConstruction} />
+        <Route path="/about" component={UnderConstruction} />
         <Route path="/order/:id" component={ClientOrderDetails} />
         <Route 
           path="/admin/menu" 
