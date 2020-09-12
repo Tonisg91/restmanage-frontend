@@ -3,7 +3,7 @@ import moment from 'moment'
 
 class OrdersService {
     constructor() {
-        this.URL = "http://localhost:3000"
+        this.URL = `${process.env.REACT_APP_API_URL}`
     }
 
     async getAllOrders() {
