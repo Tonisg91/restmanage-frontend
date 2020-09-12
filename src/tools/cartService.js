@@ -21,7 +21,7 @@ class CartService {
                 }
                 return e
             })
-            localStorage.setItem(this.localStoragePath, JSON.stringify([...productList,]))     
+            localStorage.setItem(this.localStoragePath, JSON.stringify([...productList]))     
             return
         }
 
