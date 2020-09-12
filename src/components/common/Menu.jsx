@@ -1,46 +1,45 @@
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-import { render } from '@testing-library/react'
+import React, { useEffect} from 'react'
+import { isAdminRoute } from '../../tools/pathFunctions'
+import { useSelector, useDispatch } from 'react-redux'
+import productService from '../../tools/productService'
+import ClientMenu from '../client-side/menu/ClientMenu'
+import AdminMenu from '../admin-side/menu/AdminMenu'
 
 function Menu(props) {
-    const isAdminRoute = props.location.pathname === '/admin/menu'
-    
-    const [products, setProducts] = useState([])
+    const products = useSelector(state => state.products)
+    const dispatch = useDispatch()
 
-    const getProducts = () => {
-        axios.get('http://localhost:3000/menu')
-            .then(res => {
-                setProducts(res.data)
-            })
+    const sendDataToRedux = data => dispatch({
+        type: 'SET_PRODUCTS',
+        payload: data
+    })
+    const getProductsAndDispatch = (cb = sendDataToRedux, forceUpdate = false) => {
+        if (!products.length) productService.getAllProducts(cb)
+        if (forceUpdate) productService.getAllProducts(cb)
+        return
     }
+    
+    useEffect(getProductsAndDispatch, [])
 
-    useEffect(getProducts, [])
+    const uniqueCategories = [...new Set(products.map(e => e.category))]
 
-    const renderProduct = products.map(product => (
-        <div>
-            <img src={product.image} alt={product.name}/>
-            <div>
-                <h4>{product.name}</h4>
-                <p>{product.description}</p>
-            </div>
-        </div>
-    ))
-
-    if (isAdminRoute) {
+    if (isAdminRoute(props.match.path)) {
         return (
-            <div>
-                <h1>menu vista administrador</h1>
-                {renderProduct}
-            </div>
+            <AdminMenu 
+                cb={getProductsAndDispatch} 
+                uniqueCategories={uniqueCategories} 
+                products={products} 
+                dispatch={sendDataToRedux}
+            />
         )    
     }
+
     return (
-        <div>
-            <h1>menu vista cliente</h1>
-            {renderProduct}
-        </div>
+        <ClientMenu 
+            products={products} 
+            categories={uniqueCategories}
+        />
     )
-    
 }
 
 export default Menu
