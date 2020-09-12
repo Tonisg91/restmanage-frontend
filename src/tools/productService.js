@@ -2,11 +2,11 @@ import axios from 'axios'
 
 class ProductService {
     constructor() {
-        this.URL = "http://localhost:3000"
+        this.URL = `${process.env.REACT_APP_API_URL}`
     }
 
     getAllProducts(cb) {
-        axios.get('http://localhost:3000/menu')
+        axios.get(`${this.URL}/menu`)
             .then(res => {
                 if (cb) return cb(res.data)
 

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 class ConfigService {
     constructor() {
-        this.URL = "http://localhost:3000/admin"
+        this.URL = `${process.env.REACT_APP_API_URL}/admin`
     }
 
     async getConfig(cb) {

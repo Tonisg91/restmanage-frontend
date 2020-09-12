@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import GenericTable from '../../common/GenericTable'
 import ordersService from '../../../tools/ordersService'
 import dateService from '../../../tools/dateService'
@@ -7,17 +8,20 @@ import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
 import Header from '../../common/Header'
 import { toast } from 'react-toastify'
 import configService from '../../../tools/configService'
+import LoadingPage from '../../common/LoadingPage'
 
 function OrderDetails({match}) {
     const {params: { id}} = match
     const history = useHistory()
+    const config = useSelector(state => state.config)
 
-    const useCurrentConfig = () => {
-        const [currentConfig, setCurrentConfig] = useState(null)
-        const getConfigData = () => { configService.getConfig(setCurrentConfig) }
-        useEffect(getConfigData, [])
-        return currentConfig
-    }
+    // const useCurrentConfig = () => {
+    //     const [currentConfig, setCurrentConfig] = useState(null)
+    //     const getConfigData = () => { configService.getConfig(setCurrentConfig) }
+    //     useEffect(getConfigData, [])
+    //     return currentConfig
+    // }
+
 
     const useOrderStored = (orderId = id) => {
         const [currentOrder, setCurrentOrder] = useState({})
@@ -26,7 +30,6 @@ function OrderDetails({match}) {
         return currentOrder
     }
 
-    const { name, phone, email, street, city, ticketLogo, number } = useCurrentConfig()
     const { amount, createdAt, easyId, inProgress, isFinished, productList, _id } = useOrderStored()
 
 
@@ -95,43 +98,52 @@ function OrderDetails({match}) {
             )
             return null
     }
-    
+
+    if (config) {
+        const { name, phone, email, street, city, ticketLogo, number } = config
+
+        return (
+            <StyledAdminSingleOrder>
+                <Header text={`Pedido ${easyId}`} />
+                <div id="ticket">
+                    <div id="restaurant-logo">
+                        <img src={ticketLogo} alt={`${name} logo`} id="ticket-logo"/>
+                        <h1>{name}</h1>
+                    </div>
+                    <div id="order-info">
+                        <div id="id-&-date">
+                            <h2>Pedido {easyId}</h2>
+                            <p>{dateService.getDate(createdAt)} {dateService.getTime(createdAt)}</p>
+                        </div>
+                        <div id="product-list-container" className="container">
+                            <GenericTable content={displayProductList} id="product-list" />
+                        </div>
+                        <div id="amount-container" className="container">
+                            <h3>Total {amount}€</h3>
+                        </div>
+                    </div>
+                    <div id="restaurant-info">
+                        <p>{phone}</p>
+                        <p>{email}</p>
+                        <p>c/{street} {number}</p>
+                        <p>{city}</p>
+                    </div>
+                </div>
+                <div id="action-container" className="container">
+                    <h2>Estado actual: {displayStatus()}</h2>
+                    <div>
+                        {displayActionButton()}
+                    </div>
+
+                </div>
+            </StyledAdminSingleOrder>
+        )
+    }
 
     return (
-        <StyledAdminSingleOrder>
-            <Header text={`Pedido ${easyId}`} />
-            <div id="ticket">
-                <div id="restaurant-logo">
-                    <img src={ticketLogo} alt={`${name} logo`} id="ticket-logo"/>
-                    <h1>{name}</h1>
-                </div>
-                <div id="order-info">
-                    <div id="id-&-date">
-                        <h2>Pedido {easyId}</h2>
-                        <p>{dateService.getDate(createdAt)} {dateService.getTime(createdAt)}</p>
-                    </div>
-                    <div id="product-list-container" className="container">
-                        <GenericTable content={displayProductList} id="product-list" />
-                    </div>
-                    <div id="amount-container" className="container">
-                        <h3>Total {amount}€</h3>
-                    </div>
-                </div>
-                <div id="restaurant-info">
-                    <p>{phone}</p>
-                    <p>{email}</p>
-                    <p>c/{street} {number}</p>
-                    <p>{city}</p>
-                </div>
-            </div>
-            <div id="action-container" className="container">
-                <h2>Estado actual: {displayStatus()}</h2>
-                <div>
-                    {displayActionButton()}
-                </div>
-            </div>
-        </StyledAdminSingleOrder>
+        <LoadingPage />
     )
+
     
 }
 

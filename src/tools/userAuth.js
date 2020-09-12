@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class UserAuth {
     constructor() {
-        this.URL = 'http://localhost:3000'
+        this.URL = `${process.env.REACT_APP_API_URL}`
     }
 
     async login(body, cb) {
