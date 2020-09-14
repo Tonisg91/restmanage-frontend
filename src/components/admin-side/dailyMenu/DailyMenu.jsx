@@ -1,8 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { StyledDailyMenu } from '../../styled-components/admin-side'
 import DailyMenuForm from './DailyMenuForm'
 
 function DailyMenu() {
+    const dailyMenu = useSelector(state => state.dailyMenu)
     return (
         <StyledDailyMenu>
             <div id="header">
@@ -11,7 +13,7 @@ function DailyMenu() {
             <div 
                 id="form-container"
                 className="blackboard-bg field">
-                <DailyMenuForm />
+                <DailyMenuForm dailyMenu={dailyMenu}/>
             </div>
         </StyledDailyMenu>
     )

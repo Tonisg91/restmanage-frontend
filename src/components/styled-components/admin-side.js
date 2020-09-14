@@ -395,7 +395,7 @@ const StyledFormDailyMenu = styled.form`
         padding: .7em;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        text-align: center;
     label {
         text-align: center;
         color: white;
@@ -409,6 +409,16 @@ const StyledFormDailyMenu = styled.form`
         border: none;
         border-radius: 5px;
         font-size: 18px;
+    }
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+    p {
+        color: white;
+    }
+    #price-container, #button-container {
+        align-items: center;
     }
 
 `

@@ -25,10 +25,12 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 import DailyMenu from './components/admin-side/dailyMenu/DailyMenu'
+import dailyMenuService from './tools/dailyMenuService'
 
 
 function App() {
   const user = useSelector(state => state.user)
+  const dailyMenu = useSelector(state => state.dailyMenu)
   const config = useSelector(state => state.config)
   const dispatch = useDispatch()
   const { pathname } = useLocation()
@@ -39,11 +41,22 @@ function App() {
     payload: data
   })
 
-  const getConfigAndDispatch = (cb = sendConfigToRedux, forceUpdate = false) => {
-    if (!config) configService.getConfig(cb)
+  const sendDailyMenuToRedux = data => dispatch({
+    type: "SET_DMENU",
+    payload: data
+  })
+
+  const getDataAndDispatch = (
+      configCb = sendConfigToRedux, 
+      dMenuCb = sendDailyMenuToRedux, 
+      forceUpdate = false
+      ) => {
+        if (!dailyMenu) dailyMenuService.getDailyMenu(dMenuCb)
+        if (!config) configService.getConfig(configCb)
+        if (forceUpdate) dailyMenuService.getDailyMenu(dMenuCb)
   }
 
-  useEffect(getConfigAndDispatch, [])
+  useEffect(getDataAndDispatch, [])
 
   return (
     <main className="default-colors" id={mainViewSelector}>
