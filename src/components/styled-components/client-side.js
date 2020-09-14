@@ -426,6 +426,10 @@ const StyledClientProfile = styled.div`
             border-radius: 25px;
         }
     }
+    .field {
+        outline-offset: -10px;
+        border: 7px solid #e2b05a;
+    }
     .order-element {
         text-align: center;
         & h4 {
@@ -440,7 +444,12 @@ const StyledClientProfile = styled.div`
     }
     #pre-select-container {
         display: flex;
+        align-items: center;
         justify-content: space-around;
+        & button {
+            margin: .5em 0;
+            padding: 1em;
+        }
     }
     .inside-container {
         width: 80vw;

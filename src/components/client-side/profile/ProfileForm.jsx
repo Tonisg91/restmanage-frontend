@@ -19,7 +19,6 @@ function ProfileForm({user, cb}) {
     const [formData, setFormData] = useState(user)
     const history = useHistory()
     const dispatch = useDispatch()
-    console.log(formData)
 
     const handleChange = ({ target }) => {
         setFormData({

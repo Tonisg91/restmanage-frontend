@@ -7,8 +7,6 @@ import { useState } from 'react'
 
 function Profile() {
     const user = useSelector(state => state.user)
-    console.log('user PROFILE.JSX', user)
-    console.log(user.orders)
     const [displayForm, setDisplayForm] = useState(false)
     const [displayOrders, setDisplayOrders] = useState(false)
 
@@ -46,19 +44,21 @@ function Profile() {
         }
 
         return (
-            <div
-                id="pre-select-container"
-                className="inside-container blackboard-bg field">
-                <button 
-                    className="btn btn-blue"
-                    onClick={() => setDisplayOrders(true)}
-                    >Mostrar Pedidos
-                </button>
-                <button
-                    className="btn btn-blue"
-                    onClick={() => setDisplayForm(true)}
-                    >Mostrar mi perfil
-                </button>
+            <div>
+                <div
+                    id="pre-select-container"
+                    className="inside-container blackboard-bg">
+                    <button
+                        className="btn btn-blue"
+                        onClick={() => setDisplayForm(true)}
+                        >Mostrar mi perfil
+                    </button>
+                </div>
+                <div
+                    id="orders-container"
+                    className="inside-container">
+                    <CurrentOrders orders={user.orders} />
+                </div>
             </div>
         )
     }
