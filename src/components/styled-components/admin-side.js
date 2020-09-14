@@ -433,6 +433,13 @@ const StyledDailyMenu = styled.div`
         outline-offset: -10px;
         border: 7px solid #e2b05a;
     }
+    #button-container {
+        display: flex;
+        justify-content: center;
+        & button {
+            padding: .8em;
+        }
+    }
 `
 
 export {

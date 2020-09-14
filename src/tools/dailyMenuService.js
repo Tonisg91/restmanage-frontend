@@ -26,7 +26,7 @@ class DailyMenuService {
         }
     }
 
-    async sendDailyMenu(data, cb, updateForm) {
+    async sendDailyMenu(data, cb) {
         try {
             const {_id, starters, mains, desserts, price, withBread, withCoffee } = data
 

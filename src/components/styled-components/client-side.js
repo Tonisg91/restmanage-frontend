@@ -500,6 +500,25 @@ const StyledClientProfile = styled.div`
     }
 `
 
+const StyledClientDailyMenu = styled.div`
+    min-height: 90vh;
+    #DM-container {
+        margin: 4em 1em;
+        padding: 1em 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        outline-offset: -10px;
+        border: 7px solid #e2b05a;
+        border-radius: 25px;
+        & div {
+            text-align: center;
+            margin: 1em 0;
+        }
+    }
+`
+
 export  {
     StyledClientHome,
     StyledClientMenu,
@@ -510,4 +529,5 @@ export  {
     StyledClientSingleProduct,
     StyledClientCartElement,
     StyledClientProfile,
+    StyledClientDailyMenu
 }

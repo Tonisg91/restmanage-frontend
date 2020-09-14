@@ -14,6 +14,7 @@ import ProductList from './components/client-side/products/ProductList'
 import Profile from './components/client-side/profile/Profile'
 import Cart from './components/client-side/cart/Cart'
 import ClientOrderDetails from './components/client-side/order/ClientOrderDetails'
+import ClientDailyMenu from './components/client-side/dailyMenu/ClientDailyMenu'
 
 import FlowControl from './components/admin-side/FlowControl'
 import Orders from './components/admin-side/Orders/Orders';
@@ -24,7 +25,7 @@ import configService from './tools/configService'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
-import DailyMenu from './components/admin-side/dailyMenu/DailyMenu'
+import AdminDailyMenu from './components/admin-side/dailyMenu/AdminDailyMenu'
 import dailyMenuService from './tools/dailyMenuService'
 
 
@@ -49,11 +50,9 @@ function App() {
   const getDataAndDispatch = (
       configCb = sendConfigToRedux, 
       dMenuCb = sendDailyMenuToRedux, 
-      forceUpdate = false
       ) => {
         if (!dailyMenu) dailyMenuService.getDailyMenu(dMenuCb)
         if (!config) configService.getConfig(configCb)
-        if (forceUpdate) dailyMenuService.getDailyMenu(dMenuCb)
   }
 
   useEffect(getDataAndDispatch, [])
@@ -72,7 +71,12 @@ function App() {
         <Route exact path="/menu" component={Menu} />
         <Route path="/menu/product/:id" component={ProductDetails} />
         <Route path="/menu/:category" component={ProductList} />
-        <Route path="/dailymenu" component={UnderConstruction} />
+        <Route path="/dailymenu" render={(props) => 
+          <ClientDailyMenu 
+            {...props} 
+            dailyMenu={dailyMenu}
+          />} 
+        />
         <Route path="/places" component={UnderConstruction} />
         <Route path="/about" component={UnderConstruction} />
         <Route path="/order/:id" component={ClientOrderDetails} />
@@ -85,7 +89,7 @@ function App() {
         <Route
           path="/admin/dailymenu"
           render={(props) =>
-            <FlowControl children={<DailyMenu {...props} />} />
+            <FlowControl children={<AdminDailyMenu {...props} />} />
           }
         />
         <Route

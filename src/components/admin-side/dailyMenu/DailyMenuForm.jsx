@@ -40,7 +40,6 @@ function DailyMenuForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dailyMenuService.sendDailyMenu(formData, sendDataToRedux)
-        history.push('/dailymenu')
     }
 
     const { starters, mains, desserts, price} = formData
