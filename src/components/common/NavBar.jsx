@@ -79,6 +79,7 @@ function NavBar() {
                 <div id="sidenav">
                     <NavLink  exact to="/admin" onClick={rotateIcon}>Home Administrador</NavLink>
                     <NavLink to="/admin/menu" onClick={rotateIcon}>Carta</NavLink>
+                    <NavLink to="/admin/dailymenu" onClick={rotateIcon}>Menú Diario</NavLink>
                     <NavLink to="/admin/orders" onClick={rotateIcon}>Pedidos</NavLink>
                     <NavLink to="/admin/config" onClick={rotateIcon}>Configuración</NavLink>
                     <div>

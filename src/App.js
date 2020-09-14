@@ -24,6 +24,7 @@ import configService from './tools/configService'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
+import DailyMenu from './components/admin-side/dailyMenu/DailyMenu'
 
 
 function App() {
@@ -67,6 +68,12 @@ function App() {
           render={(props) => 
               <FlowControl children={<Menu {...props} />  }/>
             }
+        />
+        <Route
+          path="/admin/dailymenu"
+          render={(props) =>
+            <FlowControl children={<DailyMenu {...props} />} />
+          }
         />
         <Route
           exact

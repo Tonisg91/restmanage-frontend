@@ -391,6 +391,40 @@ const StyledFlowControl = styled.div`
     }
 `
 
+const StyledFormDailyMenu = styled.form`
+        padding: .7em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    label {
+        text-align: center;
+        color: white;
+        margin-top: .5em;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    input {
+        padding: .8em;
+        margin: .5em;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
+`
+const StyledDailyMenu = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    #form-container {
+        margin: 5em;
+        padding: 2.5em;
+        border-radius: 25px;
+        outline-offset: -10px;
+        border: 7px solid #e2b05a;
+    }
+`
+
 export {
     StyledAdminNav,
     StyledAdminMenu,
@@ -401,5 +435,7 @@ export {
     StyledAdminHome,
     StyledAdminConfig,
     StyledConfigForm,
-    StyledFlowControl
+    StyledFlowControl,
+    StyledFormDailyMenu,
+    StyledDailyMenu
 }
