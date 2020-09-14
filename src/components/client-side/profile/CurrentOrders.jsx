@@ -17,15 +17,11 @@ function CurrentOrders({orders}) {
                 >Ver detalles
             </button>
         </div>
-    ))
+    )).sort()
 
     return (
-        <div>
-            <div>
-                <div id="orders-container">
-                    {displayOrders}
-                </div>
-            </div>
+        <div id="orders-container">
+            {displayOrders}
         </div>
     )
 }

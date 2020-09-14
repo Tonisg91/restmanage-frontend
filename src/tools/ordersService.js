@@ -74,8 +74,6 @@ class OrdersService {
             if (diff <= 30) return order
             }
         )
-
-
         const normalizedData = ordersFilteredByDate.map(order => {
             return {
                 amount: order.amount,

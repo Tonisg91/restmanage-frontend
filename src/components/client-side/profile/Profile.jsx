@@ -45,14 +45,16 @@ function Profile() {
 
         return (
             <div>
-                <div
-                    id="pre-select-container"
-                    className="inside-container blackboard-bg">
-                    <button
-                        className="btn btn-blue"
-                        onClick={() => setDisplayForm(true)}
-                        >Mostrar mi perfil
-                    </button>
+                <div id="top-container">
+                    <div
+                        id="pre-select-container"
+                        className="inside-container blackboard-bg">
+                        <button
+                            className="btn btn-blue"
+                            onClick={() => setDisplayForm(true)}
+                            >Mostrar mi perfil
+                        </button>
+                    </div>
                 </div>
                 <div
                     id="orders-container"

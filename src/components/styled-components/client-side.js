@@ -404,6 +404,10 @@ const StyledClientProfile = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+    #top-container {
+        display: flex;
+        justify-content: center;
+    }
     h1 {
         margin: 1em 0;
         color: white;
@@ -417,13 +421,12 @@ const StyledClientProfile = styled.div`
         justify-content: center;
     }
     #orders-container {
+        width:100vw;
         display: block;
         overflow: auto;
         white-space: nowrap;
         & div {
             display: inline-block;
-            margin: 0 .5em;
-            border-radius: 25px;
         }
     }
     .field {
@@ -432,6 +435,8 @@ const StyledClientProfile = styled.div`
     }
     .order-element {
         text-align: center;
+        margin-right: .5em;
+        border-radius: 25px;
         & h4 {
             margin: 3em 2.5em;
         }
