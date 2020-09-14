@@ -5,13 +5,25 @@ import userAuth from '../../../tools/userAuth'
 import { toast } from 'react-toastify'
 
 function ProfileForm({user, cb}) {
+    const initialState = {
+        _id: '',
+        name: '',
+        email: '',
+        city: '',
+        street: '',
+        number: '',
+        door: ''
+    }
+
+
+    const [formData, setFormData] = useState(user)
     const history = useHistory()
     const dispatch = useDispatch()
-    const [userData, setUserData] = useState(user)
+    console.log(formData)
 
     const handleChange = ({ target }) => {
-        setUserData({
-            ...userData,
+        setFormData({
+            ...formData,
             [target.name]: target.value
         })
     }
@@ -22,7 +34,7 @@ function ProfileForm({user, cb}) {
             type: 'LOG_USER',
             payload: data
         })
-        userAuth.updateUser(userData, authCB)
+        userAuth.updateUser(formData, authCB)
         toast.success('Perfil actualizado con éxito', {autoClose: 1500})
         history.push('/menu')
     }
@@ -33,7 +45,7 @@ function ProfileForm({user, cb}) {
         history.go(0)
     }
 
-    const { name, email, city, street, number, door } = userData
+    const { name, email, city, street, number, door } = formData
 
     return (
         <form onSubmit={handleSubmit}>

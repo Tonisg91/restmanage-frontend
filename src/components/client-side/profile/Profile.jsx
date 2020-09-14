@@ -7,6 +7,8 @@ import { useState } from 'react'
 
 function Profile() {
     const user = useSelector(state => state.user)
+    console.log('user PROFILE.JSX', user)
+    console.log(user.orders)
     const [displayForm, setDisplayForm] = useState(false)
     const [displayOrders, setDisplayOrders] = useState(false)
 
