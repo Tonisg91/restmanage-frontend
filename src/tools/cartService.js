@@ -37,6 +37,15 @@ class CartService {
         localStorage.setItem(this.localStoragePath, JSON.stringify([...productListUpdated]))
     }
 
+    addOrderToLocalStorage(order) {
+        const hasCurrentUser = JSON.parse(localStorage.currentUser)
+        if (!hasCurrentUser) return
+        const updatedUser = {...hasCurrentUser, orders: [...hasCurrentUser.orders, order]}
+
+        localStorage.setItem('currentUser', JSON.stringify(updatedUser))
+    }
+
+
     async sendCart(cart, clientId, totalAmount, email) {
         const body = {
             client: clientId || null,

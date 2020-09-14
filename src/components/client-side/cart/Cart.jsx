@@ -38,6 +38,7 @@ function Cart() {
     }
 
     function addOrderToUser(data) {
+        cartService.addOrderToLocalStorage(data)
         dispatch({
             type: 'ADD_ORDER',
             payload: data
@@ -51,6 +52,7 @@ function Cart() {
         }
         if (cart.length) {
             const newOrder = await cartService.sendCart(cart, id, totalAmount)
+            
             addOrderToUser(newOrder)
             return emptyCart()
         }

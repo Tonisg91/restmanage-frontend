@@ -17,7 +17,7 @@ function CurrentOrders({orders}) {
                 >Ver detalles
             </button>
         </div>
-    )).sort()
+    )).reverse()
 
     return (
         <div id="orders-container">
