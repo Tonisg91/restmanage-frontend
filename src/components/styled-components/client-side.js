@@ -202,9 +202,6 @@ const StyledClientNav = styled.nav`
             text-align: center;
             color: var(--background-color)
         }
-        a:visited {
-            color: transparent;
-        }
         p {
             font-size: 16px;
         }
@@ -407,6 +404,10 @@ const StyledClientProfile = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+    #top-container {
+        display: flex;
+        justify-content: center;
+    }
     h1 {
         margin: 1em 0;
         color: white;
@@ -420,17 +421,22 @@ const StyledClientProfile = styled.div`
         justify-content: center;
     }
     #orders-container {
+        width:100vw;
         display: block;
         overflow: auto;
         white-space: nowrap;
         & div {
             display: inline-block;
-            margin: 0 .5em;
-            border-radius: 25px;
         }
+    }
+    .field {
+        outline-offset: -10px;
+        border: 7px solid #e2b05a;
     }
     .order-element {
         text-align: center;
+        margin-right: .5em;
+        border-radius: 25px;
         & h4 {
             margin: 3em 2.5em;
         }
@@ -443,7 +449,12 @@ const StyledClientProfile = styled.div`
     }
     #pre-select-container {
         display: flex;
+        align-items: center;
         justify-content: space-around;
+        & button {
+            margin: .5em 0;
+            padding: 1em;
+        }
     }
     .inside-container {
         width: 80vw;

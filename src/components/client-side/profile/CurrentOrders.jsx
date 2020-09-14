@@ -17,14 +17,11 @@ function CurrentOrders({orders}) {
                 >Ver detalles
             </button>
         </div>
-    ))
+    )).reverse()
+
     return (
-        <div>
-            <div>
-                <div id="orders-container">
-                    {displayOrders}
-                </div>
-            </div>
+        <div id="orders-container">
+            {displayOrders}
         </div>
     )
 }

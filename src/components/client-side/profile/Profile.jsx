@@ -44,19 +44,23 @@ function Profile() {
         }
 
         return (
-            <div
-                id="pre-select-container"
-                className="inside-container blackboard-bg field">
-                <button 
-                    className="btn btn-blue"
-                    onClick={() => setDisplayOrders(true)}
-                    >Mostrar Pedidos
-                </button>
-                <button
-                    className="btn btn-blue"
-                    onClick={() => setDisplayForm(true)}
-                    >Mostrar mi perfil
-                </button>
+            <div>
+                <div id="top-container">
+                    <div
+                        id="pre-select-container"
+                        className="inside-container blackboard-bg">
+                        <button
+                            className="btn btn-blue"
+                            onClick={() => setDisplayForm(true)}
+                            >Mostrar mi perfil
+                        </button>
+                    </div>
+                </div>
+                <div
+                    id="orders-container"
+                    className="inside-container">
+                    <CurrentOrders orders={user.orders} />
+                </div>
             </div>
         )
     }
