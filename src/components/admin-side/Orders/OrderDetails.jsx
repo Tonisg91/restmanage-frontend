@@ -7,7 +7,6 @@ import dateService from '../../../tools/dateService'
 import { StyledAdminSingleOrder } from '../../styled-components/admin-side'
 import Header from '../../common/Header'
 import { toast } from 'react-toastify'
-import configService from '../../../tools/configService'
 import LoadingPage from '../../common/LoadingPage'
 
 function OrderDetails({match}) {

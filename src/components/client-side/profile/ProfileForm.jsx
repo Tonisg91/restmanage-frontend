@@ -5,17 +5,6 @@ import userAuth from '../../../tools/userAuth'
 import { toast } from 'react-toastify'
 
 function ProfileForm({user, cb}) {
-    const initialState = {
-        _id: '',
-        name: '',
-        email: '',
-        city: '',
-        street: '',
-        number: '',
-        door: ''
-    }
-
-
     const [formData, setFormData] = useState(user)
     const history = useHistory()
     const dispatch = useDispatch()
