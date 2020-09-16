@@ -347,14 +347,40 @@ const StyledClientCart = styled.div`
             font-weight: 600;
         }
     }
-    #action-button {
+    .form-row {
+        background-color: rgba(224, 224, 224, 0.3);
+        padding: .5em;
+        border-radius: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        & label {
+            color: white;
+            font-weight: 600;
+        }
+    }
+    #card-label {
+        margin: 1em 0;
+    }
+    .card-errors {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+    }
+    #checkout {
         width: 100%;
         display: flex;
         justify-content: space-around;
+        & form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
     }
-    #action-button button {
+    #checkout button {
         padding: 1.2em;
-        margin-bottom: 1.5em;
+        margin: 1.5em;
     }
     #empty-cart {
         text-decoration: underline;

@@ -6,6 +6,7 @@ import { StyledClientCart } from '../../styled-components/client-side'
 import cartService from '../../../tools/cartService'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Checkout from './Checkout'
 
 function Cart() { 
     const currentCart = useSelector(state => state.cart)
@@ -104,12 +105,13 @@ function Cart() {
                 <p>{totalAmount} €</p>
             </div>
                 {userEmail()}
-            <div id="action-button">
-                <button
+            <div id="checkout">
+                <Checkout amount={getTotalAmount()}/>
+                {/* <button
                     className="btn btn-blue"
                     onClick={() => sendOrder(currentCart, user ? user._id : null)}
                 >REALIZAR PEDIDO
-                </button>
+                </button> */}
             </div>
             <p
                 id="empty-cart"
