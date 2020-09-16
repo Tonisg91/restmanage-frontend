@@ -40,7 +40,6 @@ Restmanage is an app for manage restaurants.
 | '/signup'                                     | Render signup form                                                            |
 | '/profile'                                    | Render account data (private)                                                 |
 | '/menu'                                       | Render the menu of restaurant                                                 |
-| '/menu/category'                              | Render a product category                                                     |
 | '/:productid'                                 | Render product details                                                        |
 | '/dailymenu                                   | Render daily menu                                                             |
 | '/cart'                                       | Render current order & pay method                                             |
@@ -52,6 +51,7 @@ Restmanage is an app for manage restaurants.
 | -------------------------------------------- | ----------------------------------------------------------------------------- |
 | '/admin'                                      | Render Admin Homepage (Protected)                                             |
 | '/admin/login'                                | Render Login form                                                             |
+| '/admin/signup'                               | Render Signup form for admin accounts                                         |
 | '/admin/menu'                                 | Render the menu of restaurant                                                 |
 | '/admin/:productid'                           | Render product details                                                        |
 | '/admin/dailymenu                             | Render daily menu                                                             |
