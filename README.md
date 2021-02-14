@@ -10,6 +10,9 @@
 
 Restmanage is an app for manage restaurants.
 
+##IMPORTANT:
+If you want to access the administration part, you have to enter the / admin / login path and enter with my account (toni@toni.com Toni123) or create one in / admin / signup (The root password is ironhack)
+
 ## User Stories
 ### Client
 - **home** - As a client I want to see the homepage of the restaurant
@@ -51,6 +54,7 @@ Restmanage is an app for manage restaurants.
 | URL                                           | Description                                                                   |
 | -------------------------------------------- | ----------------------------------------------------------------------------- |
 | '/admin'                                      | Render Admin Homepage (Protected)                                             |
+| '/admin/signup'                               | Render Admin Signup form (rootPassword == ironhack)                           |
 | '/admin/login'                                | Render Login form                                                             |
 | '/admin/menu'                                 | Render the menu of restaurant                                                 |
 | '/admin/:productid'                           | Render product details                                                        |
